@@ -1,0 +1,13 @@
+All right, let's do a quick recap. In this module, you see most of
+the vastly adopted activation functions used to add non linearity
+to your neural networks. Activation functions again, in a neural
+network, they're responsible for transforming the summed
+weight input from the node, into the activation of the node or
+the output for that input. We started with a very, very popular
+activation function, which is the riilu, or the rectified linear unit,
+and its varieties. There's some of the most commonly used
+activation functions in deep neural networks. We then learned how to compile, save and publish models to the cloud AA
+platform for scaled serving. Then we dived into both
+the care sequential, and functional API's and
+understood the differences between them. We finally highlighted some regularization
+strategies that help overfitting or memorizing, when training your models.

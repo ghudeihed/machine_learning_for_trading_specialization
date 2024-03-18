@@ -1,0 +1,120 @@
+Let's see how TensorFlow 2
+and Keras make it easy to write those models to build
+pretty cool neural networks. TF.keras, again, that's TensorFlow's
+high-level API for building and training
+your deep learning models. It's also really useful
+for fast prototyping, state of the art research, and production lies
+in these models. It has a couple of key advantages that you should be familiar with. It's user-friendly. Keras has a simple,
+consistent interface, optimized for your
+common ML use cases. It provides clear and
+actionable feedback for user errors, which makes it fun
+to write ML with. Its modular and compos able Keras models are made together by connecting configurable
+building blocks together with just
+a few restrictions. Also, it's really easy to extend and write your
+own cost and building blocks to express new ideas on the leading edge of
+machine learning research. You can create new layers, create new metrics,
+loss-functions, and develop your whole new state-of-the-art
+machine learning model, should you wish.
+Here's an example. A sequential model, like
+you see here in code, is appropriate for a plain stack of layers where each layer has exactly one input tensor
+and one output tensor. Sequential models are
+not really advisable if the model that
+you're building has multiple inputs or
+multiple outputs, any of the layers in the model have multiple inputs
+and multiple outputs, the model needs to
+do layer sharing, or the model has a
+non-linear topology, such as a residual connection
+or if it multi branches. Let's look at some more code. In this example, you'll
+see that there's one single dense
+layer being defined. That layer has 10 nodes or neurons and the
+activation is a softmax. The activation
+being softmax tells us we're probably
+doing classification. With a single layer, the model is linear. This example is able to perform
+logistic regression and classify examples
+across 10 classes. With the addition of
+another dense layer, the model now becomes a neural network with
+one hidden layer. But it's possible to
+map nonlinearities through that ReLu activation
+we talked about before. Once more, you're going to
+add one layer at the network, now it's becoming a
+deeper neural network. Each additional layer makes it deeper and deeper and deeper. Now, let's try that again. Here's another deeper neural
+network architecture. Needless to say, the
+deeper a neural net gets, generally the more powerful it becomes in learning
+patterns from your data. But one thing you really
+have to watch out for is this can
+cause the model to over fit as it may almost
+learn all the patterns in the data by memorizing it and not generalize
+to unseen data. Now there are mechanisms to avoid that like regularization, and we'll talk about those later. Once we define the model
+object, we compile it. During model
+compilation, a set of additional parameters are
+passed to the method. These parameters will determine the optimizer that
+should be used, the loss function, and
+the evaluation metrics. Other parameter options
+could be the loss weight, the sample weight mode, and the weighted metrics, if you get really
+advanced into this. What is a loss function? Well, that's your guide
+to the terrain telling the optimizer when it's moving in the right or wrong direction
+for reducing the loss. Optimizers tie together that
+loss function and the model parameters by actually
+doing the updating of the model in response to the
+output of the loss function. In plain terms, optimizers
+shape and mold your model into its most accurate possible form by playing around
+with those weights. An optimizer that's generally
+used in machine learning is SGD or stochastic
+gradient descent. SGD is an algorithm that
+descends the slope, hence the name, to reach the lowest point on
+that loss surface. A useful way to think
+of this is think of that surface as a graphical
+representation of the data and the lowest point in that graph as where that
+error is at a minimum. Optimizers aim to take the model there through
+successive training runs. In this example,
+the optimizer that we're using is called Adam. Adam is an optimization
+algorithm that can be used instead of the classical stochastic
+gradient descent procedure to update network
+weights iteratively based on the training data. The algorithm is
+straightforward to implement. Besides being
+computationally efficient and having little
+memory requirements, another advantage of Adam is it's invariability to do the diagonal re-scaling
+of the gradients. Adam is well-suited
+for models that have large and large
+and large datasets or if you have a lot of
+parameters that you're adjusting. The method is also very
+appropriate for problems with very noisy or sparse gradients and non-stationary objectives. In case you're
+wondering, besides Adam, some additional
+optimizers are Momentum, which reduces the learning rate when the gradient
+values are small. Adagrad, which gives frequently occurring
+features low learning rates. Adadelta improves Adagrad by avoiding and reducing LR to zero. The last one, which is
+a pretty cool name, FTRL, or Follow The
+Regularized Leader. I love that name. It works
+well on wide models. At this time, Adam and FTRL make really good defaults for deep neural nodes as well as linear models
+that you're building. Now is the moment that
+we've all been waiting for, its time to train the model
+that we just defined. We'll train models in Keras
+by calling the fit method. You can pass parameters to fit that define the
+number of epochs. Again, an epoch is
+a complete pass on the entire training dataset. Steps for epoch, which
+is the number of batch iterations before a training epoch is
+considered finished. Validation data,
+validation steps, batch size, which determines the number of samples
+in each mini-batch. Its maximum is the
+number of all samples, and others such as callbacks. Callbacks are utilities called at certain points during model
+training for activities such as logging and visualization using tools
+such as TensorBoard. Saving the training iterations
+to a variable allows for plotting of all your
+chosen evaluation metrics like mean absolute error, root mean squared error, accuracy, etc versus the epochs. For example, like you see here. Here's a code snippet with all
+of the steps put together, the model definition, compilation, fitting,
+and evaluation. Once trained, the
+model can now be used for predictions
+or inferences. You'll need an
+input function that provides data for the prediction. So back to our example of
+the housing price model, we could predict the house
+prices of examples of a 1,500 square foot house and an 1,800 square foot
+apartment, for example. The predict function
+in a Tf.keras API returns a NumPy array or
+arrays of the predictions. The steps parameter determines
+the total number of steps before declaring the
+prediction round finished. Here, since we have
+just one example, we set steps equal to one. Setting steps equal to
+none would also work here. Note however, that if the
+input samples and the tf.data dataset or a dataset iterator
+and steps is set to none, predict will run until the
+input dataset is exhausted.

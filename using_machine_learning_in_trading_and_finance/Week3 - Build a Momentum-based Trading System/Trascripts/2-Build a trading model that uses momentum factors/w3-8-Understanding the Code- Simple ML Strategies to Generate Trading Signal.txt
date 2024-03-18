@@ -1,0 +1,131 @@
+In this section, we will try to understand the code in
+our Jupyter Notebook, Simple ML strategies to
+generate trading signal. Before we can use Auquan toolbox to solve their
+sample trading problem, we need to take a few
+preparation steps. First, we need to install
+Auquan toolbox on our Cloud instance along with the sample code and data for
+their first example problem. To do that, you must type
+the following command on your GCP shell or collapse shell or AI platforms notebook. Pip3 install-U auquan_toolbox. This will install all
+the required code for testing your code and it will also automatically install
+the Auquan toolbox. The toolbox contains useful
+features that are designed to make it easier for you
+to solve this problem. Next, we need to
+understand the problem. Not all problems
+are solvable by ML. To implement ML in
+a trading problem, we need to first break
+down the problem so we can make it easier to apply
+ML to solve this problem. Problem, use trading data for a fictitious company to predict whether to buy
+or sell its stock, ticker is MQK, at each point in time
+using momentum factors. We are given its ticker data to which we add some
+momentum factors. Our job is to use an ML
+classification algorithm and momentum factors to
+decide whether to buy or sell at each
+point in time. The ticker data is in
+one minute increments. Use trading data for a fictitious company ticker: MQK to predict the
+basis for the stock. Using its current
+and predicted basis, we will decide to buy or sell
+its stock at each point in time using purely
+momentum factors such as, two minute exponential
+moving average of the basis, five-minute exponential
+moving average of the basis, 10-minute exponential moving
+average of the basis. Are you ready? Let's
+dive into the problem. If you click the
+link in this page, it will download a notebook named simple ML strategies to generate a trading
+signal in your machine. Open it using Python's Jupyter
+Notebook and follow along the code as we discuss applying ML to this
+trading problem. By looking at code, we hope to show you
+how to modify it step-by-step for your own needs. We first noticed that at the
+very top of the notebook, it has a bunch of important
+statements in Python. By installing Auquan toolbox, we get their backtester
+library which contains almost all the
+programs we need to trade. The backtester
+contains ticker data, momentum features we
+can add to enrich the data and exchange
+to buy and sell stock, and a trading system that will implement
+our trading strategy. We get all of this without
+writing much code. The first thing we need to
+try for our model is data. Luckily for us, Auquan
+toolbox comes with a pre-built data source
+that is stored in the download URL that we can
+use to download our data. In this case, we are going to use a fictitious company
+whose ticker is MQK, but there's actually
+real trading data from an asset management
+company that has been masked to make it anonymous. Hence it is somewhat
+similar to real-world data. This data is in one
+minute increments. We need to provide
+the instrument ID, the start and end
+dates for downloading, and the features
+that it comes with, the top bid price and
+the top asked price. We are actually going to average them to get a single price. In this step, we are actually going to
+download the data from the same download URL but use different csv files that are
+there in that URL location. If you want to see them, you can click on the URL above
+and see those data sets. This snippet of code that
+you see on the screen enables us to download
+three data sets, one each for train,
+validation, and test. In this step, we are going to
+define the target variable. If you remember, we downloaded data that was in one
+minute increments. Since our goal is to predict
+basis five minutes ahead, we will create a ruling
+five-minute average of basis and set it up as the target variable
+for this exercise. In this step, we are going
+to define some features. Let's try to create
+some features that may have some predictive
+power on our data. For this first iteration, in order to add momentum factors, we need to define functions
+that calculate momentum such as relative strength index and exponential moving averages. In this step, using
+momentum functions, we create factors such
+as the following, exponential moving
+averages with intervals, two minutes, five
+minutes, 10 minutes. Once we define the features, we run it to create, train, and test data sets. In this case, we call the
+validation data set as test data because we're still planning to
+experiment with a model. Once the model is chosen, we will use the test
+data as test data. In this step, we
+are going to define a complex model called
+ensemble model, which we will train on train data and test on
+the validation data set, though it's called test here. We plot the predicted
+versus the actual values of basis on the right side and it appears to be a pretty
+well-performing model. However, this is no guarantee that it will perform
+well on backtesting. That's what we are
+going to do next. In this step, we are going to use the Auquan toolbox to
+backtest the model. This involves setting
+up a function called MyTradingParams
+with the same kind of parameters we use to download, train, and test the model. All we have to do is to next call backtester and feed it those params and off we go. The backtester does the
+downloading of data creating extra features
+which we have provided, use the trained model
+on the features and predicted repeatedly in
+order to trade the stock. Let's look at some internals
+of that backtester next. What do we have to
+provide the backtester? We have to provide
+the same features as the model was trained on before. This means their exponential
+moving average of two, five, and 10 minutes. What else do we have to
+provide the backtester? We have to provide it the
+same model we trained earlier and the same features as the model was
+trained on before. The predictions are one or
+zero, and they are returned. How do we convert
+predictions into trades by the backtester? We provide model predictions to the backtester's
+execution system and provide it one,
+threshold deviations. Two, limits on long
+and short positions. Three, limits on capital
+usage for a single trade. Four, lot sizes. So what do the results look like? It appears that our
+model can actually work. It shows a PNL of 11 percent return on capital and an R-squared
+of 52 percent. It also shows that we
+make a profit within three trading days since this
+was in one-minute ticks. The backtester also
+provides maximum drawdown, total loss, total profit, and capital usage metrics. Now continue running
+the above backtester with your own model
+and parameters, see which model works
+best in backtesting. The workbook we
+have worked through here is a guided approach to a real trading problem
+on Auquan's platform. It was created to simulate a real problem from one of
+their investment clients. If you are interested and want to explore the problem
+in more depth, you can do so at the link
+shown on the screen. You can learn more
+about Auquan's toolbox from these blogs and
+competitions on the screen. Now that you have created what is hopefully a winning
+trading strategy, you might wonder if this is
+the future. You are right. Let's look at what the
+future looks like. Already by many measures, algorithmic trading volume is a critical component
+of market volume, surpassing 85 percent of
+market volume as of 2012. It is probably more today. Algorithmic traders do not use an intuition or gut to trade but use a computer program
+though they may code their intuition in some
+cases into a program, hence this appears to be
+the right place to be.

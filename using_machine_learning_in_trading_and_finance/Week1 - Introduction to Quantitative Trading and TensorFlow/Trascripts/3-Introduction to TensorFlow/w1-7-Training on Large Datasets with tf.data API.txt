@@ -1,0 +1,74 @@
+Data is one of the most crucial components of your machine learning model. Collecting the right
+data is not enough, you also need to make
+sure that you put in the right processes in
+place to clean, analyze, and transform the data as
+needed so that the model can take the most signal from
+that data as possible. Models which are
+deployed in production especially require
+lots and lots of data. This is data that
+likely won't fit in memory and can possibly be spread across multiple files or may
+come from an input pipeline. The tf.data API
+enables you to build those complex input pipelines from simple reusable pieces. For example, the
+pipeline might be structured data set that
+requires normalization, feature crosses or bucketization. An image model might
+aggregate data from files in a
+distributed file system, apply random skewness
+to each image and merge randomly selected images
+into a batch for training. The pipeline for a text model by involve extracting symbols
+from raw text data, converting them to embedding
+identifier is with a look-up table and then batching together sequences of
+different lengths. The tf.data API makes it possible to handle
+large amounts of data, read it in a different
+file and data formats and perform those
+complex transformations. The tf.data API introduces the tf.data.Dataset
+abstraction that represents a sequence
+of elements in which each element consists of
+one or more components. For example, in an
+image pipeline, an element might be a single training example with a pair of tensor components representing
+the image and its label. There are two distinct
+ways to create a dataset. A data source constructs a dataset from data
+stored in memory or in one or more files or a data
+transformation constructs a dataset from one or
+more tf.dataset objects. Large datasets tend to
+be sharded or broken apart into multiple files which can be loaded
+progressively. Remember that you train
+on mini-batches of data. You don't need to have the
+entire dataset in memory. One mini-batch is all you
+need for one training step. The dataset API will help you
+create input functions for your model that load data in
+progressively throttling it. There are specialized
+dataset classes that can read data from
+text files like CSVs, TensorFlow records, or
+fixed length records files. Datasets can be created from
+many different file formats. Use text-align dataset to instantiate a dataset object
+which is comprised of, as you might guess, one
+or more text files. TFRecordDataset, TFRecord files, fixed length record dataset
+is a dataset object from fixed length records or
+one or more binary files. For anything else, you can use the generic dataset class and
+add your own decoding code. Let's walk through an
+example of TFRecordDataset. At the beginning, the TFRecord op is created and executed. It produces a variant
+Tensor representing a dataset which is stored in the corresponding Python object. Next, the shuffle off is
+executed using the output of the TFRecord op and
+it's input connecting the two stages of our
+input pipelines so far. Next, the user-defined function
+is trace and passed as attributes to the map operation along with the shuffled
+dataset variant input. Finally, the batch op is
+created and executed, creating the final stage
+of our input pipeline. When the full loop mechanism is used for enumerating the
+elements of the dataset, the iterable method is
+invoked on the dataset, which triggers the creation
+and execution of two ops. First, an anonymous iterator loop is created and executed, which results in the creation
+of an iterator resource. Subsequently, this
+resource along with the batch dataset variant is passed into the makeIterator op, initializing the state of the iterator resource
+with the dataset. When the next method is called, it triggers creation and execution of the
+IteratorGetNext op, passing in the iterator
+resource as the input. Note that the iterator
+op is created only once, but executed as many times as there are elements in
+the input pipeline. Finally, when the Python iterator
+object goes out of scope, that delete iterator op is
+executed to make sure that the iterator resource is properly disposed of or to
+say the obvious, properly disposing
+of iterator resource is essential as it is not uncommon for your iterator
+resources to allocate, hundreds of megabytes
+to gigabytes of memory because of
+internal buffering.

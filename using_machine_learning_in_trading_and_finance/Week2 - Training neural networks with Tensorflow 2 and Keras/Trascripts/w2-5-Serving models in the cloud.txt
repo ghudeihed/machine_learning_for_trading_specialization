@@ -1,0 +1,45 @@
+Once you've selected the features,
+transform them as needed, chosen your model architecture, applied to
+any regularization as necessary to ensure good performance, trained your model and
+iterated through this process a couple of times, it's time to
+serve the model for prediction. Of course making individual
+predictions is not really realistic, because we can't expect client code
+to have our model object in memory. For others to use our trained model,
+we'll have to save or export our model to a file,and
+then expect client code to instantiate the model
+from that exported file. We'll export the model to
+a TensorFlow saved model format. Once we have a model in this format,
+we have lots of ways to serve the model, web application, code like JavaScript
+from a mobile application, etc. Let's learn a little bit
+more about saved model. Save model, it's a universal serialization
+format for TensorFlow models. Saved model provides
+a language neutral format, to save your machine learning models,
+that is both recoverable and hermetic. It enables higher level systems and
+tools to produce, consume, and transform your tensor flow models. The resulting saved
+model is then servable. Models saved in this format
+can be restored using the tf.Kerris.models.loadmodel, and they're compatible with
+TensorFlow serving. One of the ways that we
+can serve the model, is to utilize the cloud AI
+platform managed service. The AI platform service also
+performs scale the training, but for now, we'll be focusing on
+just serving trained model, you can start by creating
+a model object in AI platform. Let's give ours a creative name,
+I just decided to call it property price, again with the house price
+prediction example here. Next and this is really important, we're
+going to create a version for our model, we'll call this model version dnn,
+it's going to be a deep neural network. You can also utilize a timestamp,
+or another differentiator in case you have multiple versions
+of the same model type. Now, once the version and
+the model are created, you can just run this command
+to push the model to the cloud. Remember to point to the output directory, in which the saved model
+was actually saved to. The command to push the model,
+also takes other flags such as Python and TensorFlow runtime versions,
+the framework in case you're using something like psychic learn or Xg, boost
+the flag here defaults to TensorFlow. And a bucket in which to save
+the staging training archives, a staging bucket is only required
+if a file upload is necessary, that is, other flags include local paths. Once the model is created and
+then pushed to AI platform, you can just use this command,
+gcloud ai-platform predict, and that'll actually do
+the perform in your prediction. Make sure that the flags include
+the model name, its version, and the path to a file contain the examples,
+that you want to get predictions on.

@@ -1,0 +1,66 @@
+In this session, you will evaluate
+the results of a pair strategy. You will construct a trade blotter,
+quantify and implement a trading rule, and use six performance metrics
+to evaluate your trade. Based on your rules,
+you would have traded various pairs. You need to create a trade
+blotter to record all of it. You record the pair you trade,
+the direction of the trade, the entry date, the entry-level,
+the exit level. And the exit category, whether it was
+profitably exited or stopped out. Now we will focus on quantifying and
+implementing a trading rule. In the previous section we discussed
+the idea of using principal components to determine suitable pairs. You might have a trading rule that uses
+the second principal component to form viable pairs for trading. That means on a given day, you will have
+a pair of stocks like KLAC and ADSK. However, if you update
+the principal components, you may find a different pair to trade. As you use the different amounts or periods of history,
+you get different data sets. When you compute the principal
+components on these data sets, you get different results. Suppose you want to place
+a mean reverting trade. Suppose KLAC and ADSK move apart
+a certain amount, say more than $30. Your proposed model says that you should
+sell short stock that is done better, and buy the stock that is done poorly. If the spread narrows, then cover
+the short and sell the long position. Let's quantify your trading rule. Typically, you will have an entry signal,
+a profit target and a stop loss. If the price spread between KLAC and ADSK
+is greater than $30, you enter the trade. Your profit target is when
+the price spread between KLAC and ADSK is less than $25. Your stop loss is when the price spread
+between KLAC and ADSK exceeds $35. Your timeout will be one month
+when you enter the trade. Now we will focus on back testing and evaluating the performance
+of your trading rule. You would now proceed to
+observe historical data and apply these trading rules. Doing so will produce a trade blotter, adjusting the rules will produce
+a different trade blotter. How do you measure a performance? We should be able to quantify
+this very objectively. Now we are going to look at six
+key measures of profitability and risk of your trading rule. First you have your percentage of wins. When you hit your target,
+you consider that a win. When you hit your stop-loss,
+you consider that a loss. Many traders want rules that have 75% or 80% win ratio to put the odds
+comfortably in their favor. Trades are rarely break even
+because of fixed cost and market impact costs such
+as the bid-ask spread. Second, you should calculate
+your total return. You invested in amount of
+money on the long side. On the short side, ironically you don't need funds up
+front because you borrow the stock. You should look at how much
+money was put into the trade and how much came out, net of cost. Third, you have your average win and loss amounts, even a trade that is more
+likely to win can be unprofitable. If you only expect to make a dollar but lose $10, you can win a majority of
+the trades but still lose money. These average wins and losses take both
+the long and the short side into account. You don't need to detail
+which side made or lost money as the goal is out performance. If the long side has a larger gain or
+the short side has a greater loss, your trade has out performed. Fourth, you have your extreme win and
+loss amounts. The extreme is a single
+statistic to be sure, but you want to ensure that the results
+are not skewed such that one extreme result accounts for most of
+the expected sizes of wins and losses. Fifth, you compute
+the variance of your returns. Here is where volatility comes in. If the returns are wildly different,
+you have uncertain outcomes. You have to wonder if you're just lucky or if you're really skilled
+at picking stocks. Information ratios are used by traders and
+investors to gauge whether a strategy or manager is skillful or just lucky. It adjust the alpha of a strategy for
+the volatility of the strategy's return. Six, you draw a graph that
+indicates the portfolio value. Every completed trade will add or
+subtract to your portfolio. Ideally this line will increase
+over time and be fairly constant. You can quantify it by taking
+the correlation between your market value graph and
+a linear trend of the market value graph. Ideally you would like a trading
+rule that makes money quickly and steadily that is you don't lose money. In reality you'd be happy to use
+a trading rule that makes money steadily. If the P&L line oscillates wildly,
+then you may be unlucky or enter trades that lose
+you quite a bit of money. Ideally, this line would be very smooth. If you have various trading strategies, you can take the second derivative
+of this portfolio value. Then you can compute in
+discrete-time the second derivative. Then you integrate, you would prefer a line whose integrated
+second derivative is at a minimum. Here you are essentially penalizing for
+bumpiness.

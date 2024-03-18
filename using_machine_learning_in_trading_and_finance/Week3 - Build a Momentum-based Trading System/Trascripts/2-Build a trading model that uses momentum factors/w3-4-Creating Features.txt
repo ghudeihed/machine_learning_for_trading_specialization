@@ -1,0 +1,37 @@
+Step 3, creating features. Creating features of feature engineering
+is one of the most important steps in machine learning. Analyze the behavior of your data, create
+features that have predictive power. One of the most important rules of
+feature engineering or feature selection. Is that the predictive power of your model
+should come from the choice of features you make, rather than from the choice
+of machine learning algorithm itself. The reason for this statement is that it
+has been proven time and time again, that features make a bigger difference to your
+models results, than the choice of model. This may sound surprising, so
+we will show you some examples of how and what features you will create for
+this particular problem. Since the choice of features is
+a far greater impact on performance. Then choice of model,
+be recommend the following guidelines. Don't randomly choose a very large
+set of features without exploring its relationship with other variables or
+with the target variable. For example, highly correlated variables
+with each other will result in a defect in linear models such as
+linear and logistic regression. So test variables for their correlation
+to each other, and if they are highly correlated let's say 80% or more,
+just drop one of the variables. Similarly, just adding variables
+with little or no reason for being impactful or causal with the target
+variable will lead to overfitting. There is a joke on Wall Street
+that the price of cotton in Thailand has a high correlation to
+the Dow Jones Industrial Average. But that doesn't mean one
+is predictive of the other. So if there is a correlation make
+sure that there is a reason that the variable is there in the data set. Finally, ranking candidate
+features according to Maximal Information Coefficient MIC or performing Principal Component Analysis
+PCA and other methods will be helpful. Another handy trick in creating features
+is called feature normalization. Normalization is tricky because
+future range of data is unknown. Scaling, divide the features by rolling
+standard deviation over a sample range. Centering, subtract rolling
+mean from current value. Normalization, both of the above
+x minus mean divided by standard deviation over
+the look-back period. Regular normalization,
+standardized data to the range of -1 to +1
+over lookback period, x- min / max- min and re-center. Caveat, since we are using
+historical mean, standard deviation, max or
+min over a lookback period. The same normalized value of feature
+will mean different actual value at different times.

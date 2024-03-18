@@ -1,0 +1,131 @@
+Kalman filters are used extensively
+in financial markets trading to produce estimates of prices and
+correlations. They use a time frame of observed noisy
+prices to create a price estimate that tends to be more accurate
+than using the most recent price. We will first look at
+the general application of Kalman filters in signal processing and
+navigation systems, and then focus on their use and
+trading strategies. Kalman filters are named after
+Rudolf Kalman, who is well-known for his coin mentioned and
+development of this filter. He does a mathematical algorithm that
+is widely used in signal processing, control systems, and
+guidance navigation and control. Kalman filters were used during
+the Apollo program and furthermore, in the NASA space shuttle,
+in navy submarines, and in unmanned aerospace vehicles and
+weapons, such as cruise missiles. Your GPS system probably
+uses it today in your car. It provides an efficient way to
+estimate the state of a process. Let's say you need to
+measure the temperature of a fury path in a rocket booster. Hey, hey,
+no sensor is going to stand that heat. But you can take a measurement
+from another sensor a few inches hidden behind a heat shield. And using that measurement, you can pretty closely estimate what the
+temperature inside the booster pathway is. Kalman filter does this in a way that
+minimizes the mean of the squared error. Doesn't this sound a bit
+like a prediction error? You're right, that's why we are going to
+use Kalman filters in this course, even though they may not be considered
+a machine learning technique by purists. But hey, we are here to use every
+possible advantage we can use to make money trading, hence knowing this filter
+is very powerful in several aspects. It supports estimations of past,
+present, and even future states and you can do so even when the precise
+nature of the model system is unknown. That sounds exactly like
+financial markets, isn't it? Yes, no wonder Kalman
+filters are very extensively used in financial markets trading. Let's see more. A Kalman filter is needed
+when the variables of interest can be measured
+only indirectly or measurements that are available from
+multiple sources subject to Noise. You can think of the Kalman filter
+as an unsupervised algorithm for tracking a single object in
+a continuous state space. Given a sequence of noisy measurements,
+the Kalman Filter is able to recover the true state of
+the underlying object being tracked. Again, keep in mind the temperature on
+the back of the rocket boosters exhaust. A Kalman Filter combines measurement and prediction to find an optimum
+estimate of the target value. For understanding Kalman filters,
+you must know a few technical terms and what they mean. In this course, we're not going to teach
+you the math behind Kalman filter. But we will teach you enough to know how
+to implement Kalman filters in Python, especially for financial markets trading. You can see how the Kalman filter works
+by looking at this Kalman filter here. Given a sequence of noisy measurements as
+you can see in the rocket boosters shield, the Kalman filter is able to
+discover the true temperature of the exhaust pathway by using
+the sensor measurement and applying a continuous,
+recursive series of two steps. The first step is the time update step,
+which predicts, or you can say guesses, the current state estimate using
+the shield sensor's reading ahead in time. The second step is the measurement
+update which adjusts the projected estimate by an actual
+measurement at that time. By this constant estimation
+correction cycle, you can imagine how this series will eventually
+stabilize around the actual value or at least close to
+the temperature in the exhaust. Thus you can see that the Kalman
+filter combines measurement and prediction to find an optimal
+estimate of the target value. For understanding Kalman filters, let us understand how it works
+using a real world example. Let's try to estimate a Car's
+position using GPS Sensors. Our goal is to best estimate
+the Car's actual position using estimates of its observed
+state at various time intervals. Let us plot the car's
+position on the x-axis. At time k minus one, we will call the
+initial estimate of the ca'rs position on the road as x of k minus one. This estimate has a mean and variance as seen in the probability
+density function in the chart. Now let us say that the GPS on the car
+which has its own error gives us an imprecise but somewhat better
+estimate than what we have as y of k. As we see in the chart, y of k has its own probability density
+function with the mean and variance. Now, our goal is to find the next
+estimate at time K, which will be x of k. How do we find it? As we said earlier, a Kalman filter
+gives us the ability to combine the measurement and our prediction to find
+an optimal estimate of the car's position. Of course, we need a few cycles of this
+measurement-prediction loop to continue before we can settle on
+an optimal position. The next question is, how? The equations on the screen show
+you the map behind that loop. The box on top shows you the measurement
+as it goes through its own dynamics to produce a measurement. Let's call it y of k. The box below that shows us a model we
+have built to predict the car's position which we call the car model, and it
+produces its own prediction called x of k. The Kalman filter combines them
+to produce an optimal estimate using a simple equation as we
+will see in the next slide. Voila, here's the Kalman
+filter's main equation. It tells us how we can make
+an estimate of the car's position given our prior estimate. Let's call it a priori estimate and an
+update term, which is a difference of our initial estimate multiplied by a constant
+C and the car's measurement y of k. Notice that this update term is also
+multiplied by another constant called K. So using the a priori estimate and
+the update term, which we will use to predict the next term, we will
+constantly be calculating the K term. We will continue this process
+until the K term stabilizes. Then we know that we have arrived at
+an optimal estimate of the car's position. All of these of course happens in seconds. That's why we see on our GPS,
+a car's position on a map as close as possible within seven feet
+of the actual position on the road. There are lots of different
+kinds of Kalman filters. The one we saw earlier had all kinds
+of linear equations as you saw, and the probability density functions
+were assumed to be Gaussian. Hence, it is known as the Kalman filter. Few assumed a slightly more complex
+equation, such as locally linear function. But the same Gaussian function,
+it is known as the extended Kalman filter. This enables you to model
+slightly nonlinear functions. The next step is
+the unscented Kalman filter, which uses nonlinear equations in its
+model, and has medium computational cost. Finally, the most computationally
+intensive one uses both non-linear equations and does not assume that the probability
+density function is not Gaussian. This example, which is derived from
+the blog post listed on screen, uses two related ETFs. The ishares MSCI Australia
+take our symbol EWA and the iShares MSCI Canada
+take our symbol EWC. We will download their pricing data
+from Pandas data reader to download the daily adjusted closing prices for
+the EWA and EWC ETFs from Yahoo. Let's assume two ETFs,
+EWA and EWC are highly correlated to each other, which as
+you can see, is a valid assumption. The question is, knowing one, can we
+predict what the other's price will be? You might think this doesn't sound
+like a Kalman filter problem of the kind we discussed before. But if you think deeply about it, you will
+remember that Kalman filter is all about predicting one state using another
+state and a measurement, an update. In this case, we will use one
+ticker as a measurement, and the correlation coefficient as
+the multiplier on that measurement. As you can imagine, as long as the correlation holds, we can
+hopefully use one to predict the other. Suppose the correlation varies? In that case,
+instead of using a linear equation, we will use a non-linear
+equation to model our prediction. Clearly, the relationships
+between the ETFs changes between 2010 and 2014 and
+can't be accurately described by a simple linear regression with
+constant slope and intercept. Remember that a Kalman filter is
+a linear state space model that operates recursively on streams
+of noisy input data to produce a statistically optimal estimate
+of the underlying system state. Let's set up a Kalman filter using the
+pykalman library, which you can install. Let's use EWC to predict EWA. We are going to set some initial
+values for the Kalman filter. Then we feed the EWC values to
+the filter and see what we get. Here we will use EWC to predict EWA. Let's look at the mean and covariance of the predicted states
+using the filter apply to EWC's values. Notice that the slope of the correlation
+equation is not a constant, and it actually declined slightly over time. Similarly, the intercept also varies and
+seems to rise slightly over time. A more interesting way to visualize
+this is to overlay every fifth regression line on the EWA
+versus the EWC scatterplot. So we can clearly see how
+the regression line adjusts over time. You can read more about this and
+other topics related to Kalman filter and finance at the link given here.

@@ -1,0 +1,102 @@
+In this module, we'll
+be going over some of the main concepts
+in TensorFlow tool. We'll be looking at tensors, variables, and the
+current API hierarchy. We'll then have a deep
+dive into the tf.data API and learn how to create
+input pipelines for models. The train on data
+that's both in memory, and also data that lives
+in multiple files. Lastly, we'll learn how feature columns are
+used to manipulate and prepare data so that it can be used to train neural
+network models. TensorFlow is an open-source, high-performance library
+for numerical computation. Any numerical computation, not
+just for machine learning. In fact, people have
+used TensorFlow for all kinds of GPU computing. For example, did you know
+you could use TensorFlow to solve partial
+differential equations, which is super useful in physics fields like
+fluid dynamics? TensorFlow as a numeric
+programming library, is appealing because
+you can write your computation code in a high-level language
+like Python, and have it be executed in
+a very fast way at runtime. The way TensorFlow
+works is that you create a directed graph or a DAG, to represent the computation
+that you want to do. The schematic that you see here, the nodes, like those
+light green circles, represent mathematical
+operations, things like adding,
+subtracting, and multiplying. You'll see some more
+complex math functions like softmax and matrix
+multiplication, which are great for
+machine learning. Connecting all of those nodes
+together are the edges, which are the input and the output of those
+mathematical operations. The edges represent arrays of data flowing towards the output. Starting from the bottom, are the arrays of raw input data. Sometimes you'll need
+to reshape your data before feeding it into the
+layers of a neural network, like the ReLU layer you see here. More on ReLU later. Once inside that ReLU layer, the weight is then multiplied
+across that array of data in a matmul or matrix
+multiplication operation. Then a bias term is added, and the data flows through
+to the activation function. All right, I know
+what you're thinking. ReLU activation functions? Don't worry, let's
+start with the basics. I kept mentioning that array of data that's flowing around. What exactly does that mean? Let's actually work where
+TensorFlow gets its name from. Starting on the far left, the simplest piece of data that you can have
+is called a scalar. That's a number
+like three or five. It's what we call
+zero-dimensional, or Rank 0. Now we're not going to get
+very far passing around single numbers in our
+flow, so let's upgrade. Rank 1 or a one-dimensional
+array is called a vector. Now in physics, a vector is something with magnitude
+and direction, but in computer science, you use the word vector
+to mean 1D arrays, like a series of
+numbers in a list. Let's keep going. A
+two-dimensional array is a matrix, a
+three-dimensional array? We'll call it a 3D tensor. Scalar, vector, matrix, 3D
+tensor, 4D tensor, etc. A tensor is an N-dimensional
+array of data. Your data in TensorFlow
+are tensors. They flow through the graph, hence the name TensorFlow. Why does TensorFlow
+use directed graphs to represent computation? The answer is portability. The directed graph is a language independent
+representation of the code in your model. You can build a DAG in Python, store it in a save model, restore it in a C++ program
+for low latency predictions. You can use the same Python
+code and execute it both on CPUs, GPUs and TPUs. This provides language
+and hardware portability. In a lot of ways
+this is similar how Java virtual machine or JVM, and it's bytecode representation helps with the
+portability of Java code. As a developer you write the code in a high-level
+language like Java, have it executed in different
+platforms by the JVM. Now the JVM is itself very efficient and target
+to the exact OS, and hardware written in C or C++. Similar deal with TensorFlow. As a developer you
+write your code in a high-level
+language like Python, and have it executed
+in different platforms by the TensorFlow
+execution engine. Now the TensorFlow execution
+engine is very efficient and target toward the
+exact hardware chip and it's capabilities, and it's written in C++. Portability between
+devices enables a lot of power and flexibility. For example, here's
+a common pattern. You train a TensorFlow
+model on the Cloud, on lots and lots of
+powerful hardware. Then you take the train model and put it on a device
+out on the edge, perhaps a mobile phone or
+even an embedded chip. Then you can do
+predictions with the model right on the device
+itself, offline. Have you had a chance
+to use the Google Translate app on
+an Android phone? The app can work
+completely offline because the train translation model
+is stored on the phone, and is available for
+offline translation. Now I know what you're
+thinking. Do little limitations of processing power
+on your phones? The edge model tends
+to be a bit smaller, which means they're
+generally less powerful than what's
+on the Cloud. However, the fact that TensorFlow allows for models
+to run on the edge, means a much faster response
+during predictions. TensorFlow is this
+portable, powerful, production ready software
+to do numeric computing. It's particularly popular
+for machine learning. It's the number one repository for Machine Learning on GitHub. Why is that? Well, it's popular among deep learning researchers because of the community around it, and the ability to extend it to do some pretty cool new things. It's popular among machine
+learning engineers because the ability to
+productionalize models, to do things at scale. The popularity among
+each of these groups increases the popularity
+in the other. Researchers want to see their
+methods being used widely, and implementing
+them in TensorFlow is a way of ensuring that. ML engineers want to future proof their code so that they can use newer models as soon
+as they are invented, and TensorFlow can
+help them do that. Google open-sourced
+TensorFlow because it's going to empower
+many other companies, and because Google
+subtly potential of is massive community support.

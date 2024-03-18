@@ -1,0 +1,112 @@
+Hi, I'm Jack. One of the course creators and
+also an experienced trader now working with the New
+York Institute of Finance. Welcome to this course
+series all about machine learning and
+trading using Google Cloud. In the first course, we covered the functionality of Google Cloud and
+Jupyter Notebooks, along with introducing basic quantitative
+trading strategies, supervised learning, neural
+networks, and deep learning. In this course, we'll explore
+more advanced concepts and trading such as momentum and
+pair trading strategies. You'll also learn how to
+write low level programs in TensorFlow and use Keras
+to train neural networks. In course number 3, you'll deepen your
+understanding of advanced machine
+learning approaches such as reinforcement learning, which has unique
+advantages when used as the foundation for a
+quant trading system. Machine learning for
+trading is a broad topic, so let's first be clear about who can benefit from
+this course content. This course was created
+in partnership between the New York Institute of
+Finance and Google Cloud. It's a combination of machine learning theory
+specific to finance and trading and the
+practical application of that theory using Google
+Cloud as a platform. Before you take this course, it's recommended that
+you have already taken a foundational machine
+learning course, so you'll be familiar
+with the concepts discussed like
+feature engineering, training, serving
+splits, and more. I'll provide links in
+the course resources of courses and reading materials for you to get
+caught up to speed. The audience that will get the
+most out of this series of courses are data analysts,
+data scientists, and data engineers who
+are looking to apply their ML knowledge to the finance domain,
+specifically trading. We'll cover and quiz you on core trading concepts like fundamental versus
+technical trading, as well as quant theory. Portfolio managers and traders can also use his
+course to learn how machine learning
+techniques can be applied to investment
+in trading decisions. Lastly, while you won't
+leave this course building the next high-frequency
+trading model for Nasdaq 100 futures, you'll leave with a better understanding of
+how you can apply financial trading concepts in theory using the latest
+in Cloud technology. Now let's cover the
+specific module content that you'll learn in this course. There five modules. Module 1, quant
+trading strategies. Two, introduction to TensorFlow. Three, training neural networks with TensorFlow and Keras. Four, building a momentum base trading
+strategy and lastly, in five, you'll build a pair trading strategy
+prediction model. A lot of learners asks what they're expected to
+code is part of this course. While there are eight interactive IPython Notebook based labs for this course, you'll develop your
+skills with TensorFlow and Keras in the
+four lab shown here. One, writing low-level
+TensorFlow programs. Two, manipulating data with
+TensorFlow dataset API. Three, introduction to
+Keras sequential API, and for, intro to
+Keras functional API. You'll also develop
+basic momentum and pair trading strategies
+in this three labs. Momentum trading, pairs
+trading, and Kalman filters. We're also making available an optional lab
+where you can try to improve your momentum strategies using Hurst coefficients. You'll then have the option to take additional momentum labs using ML in the QuantQuest
+platform from Aquant. Through our partnership
+with Google Cloud, each of your labs would be using a real Google Cloud account at no additional cost and compute resources to train
+and run your models. If you've used Qwiklabs before, you've seen the lab
+environment shown here. You'll be given a certain
+amount of time to use the project resources
+before they expire and you'll follow along with
+the lab instructions in the Qwiklab while doing the actual work in
+your provided account. Since most of these labs
+are machine learning-based, you can expect to see
+IPython Notebooks like this one that you'll be
+reading through and executing. If you're unfamiliar
+with IPython Notebooks, check the course resources
+for a quick primer or look at the lab
+solutions where we go through all the lab steps. One key point to note here is that all of these
+notebooks are available publicly in our course
+repository linked here and in the course resources. That means even after
+this course ends, you can still bookmark and
+refer back to the code for this course and
+future courses. Just as is critical, go over what exactly
+this course covers is equally important to talk about what we're
+not going to cover. Machine learning trading and Google Cloud are three
+very broad topics, and this series of courses
+navigates their intersection. Naturally, we can't
+be everything for all audience who will
+provide links for newer data scientists
+to get up to speed and advanced challenges for gurus
+to show off their skills. Specifically, what you won't
+see here are building and implementing the next highly profitable high-frequency
+pair trading algorithm. At the core of highly
+profitable models is likely a series
+of very private and expensive to collect training datasets that
+feed into multiple models. This course will teach you the core trading concepts
+used in professional models, but it's up to you to beat everyone else in the market and build a better model of
+reality for a given stock. With that same topic, the more advanced machine
+learning topics such as LSTMs and reinforcement
+learning models are covered in course number 3. If you already have a
+deep understanding of ML, you may want to focus on learning the new trading concepts
+in this course and experiment in the labs
+and how you can beat the benchmark given
+your ML knowledge. Lastly, if you're new to
+machine learning in Python, we won't cover basic
+intro concepts like what is a feature of model input as there's
+a wide universe of great generic ML
+content out there online. Check the course
+resources for examples, and then come back here
+when you want to apply that theory to
+trading. What's next? In the next course; Reinforcement Learning
+for Trading Strategies, you'll dive into building models with TensorFlow and Keras. One of the specific
+model types is LSTM or long short-term memory models for better time
+series prediction. We'll then look at how reinforcement learning
+techniques can be used to develop a nearly
+autonomous trading system. Don't forget to review
+the course resources to access and download the slides for the modules you've
+just completed, and we'll see you
+in the next course.

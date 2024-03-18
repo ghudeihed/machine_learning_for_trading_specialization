@@ -1,0 +1,134 @@
+Now, generally neural
+network embeddings have three primary purposes. Number 1, finding
+nearest neighbors in the embedding space. This can be used to make
+recommendations based on user interests or
+cluster categories. Number 2, as an input to a machine learning model
+for a supervised task. Number 3, as you'll see here, for a visualization of concepts in relations
+between those categories. Let's take a look
+at an example using a popular handwritten
+digits dataset, m-nist. Take a look. Here, I
+visualize in TensorBoard. All 10,000 points of data where each colored cluster corresponds to a handwritten digit from 0-9, like if you're writing
+an envelope to somebody. You can start to
+look for insights and even misclassifications, but just exploring the dataset in 3D space with TensorBoard. If you take a look at the
+clusters while they spin, you'll see I click
+on a gray cluster, which are the handwritten 5s. It would seem in this
+dataset that people write 5s in many different ways, hence the visual distance between the gray squares not as clumped compared to something
+like a one or an eight. If you take a sparse
+vector encoding and pass it through an
+embedding column and then use an embedding column
+as the input to your DNN and then train
+that deepen neural network, then those trained embeddings will have this
+similarity property. As long as of course, you have enough data for your train to achieve good accuracy.
+Let's take another example. Let's talk about embeddings in the context of movie
+recommendations. Lets say we want to recommend
+movies to customers, that could be music or
+something like that, but let's just use
+movies, I love movies. Let's say that our business
+had a million users and 500,000 movies.
+Remember that number. It's quite small by the way, YouTube and other Google
+properties have a billion users. For every user, our task is
+to recommend 5-10 movies. We want to pick
+movies that they'll watch and rate highly. We need to do this for
+a million users and each user is going to select
+from those 500,000 movies. What's our input dataset? If we represent it as a
+matrix, it's a million rows, million users, and
+500,000 columns. The numbers in the diagram
+denote the movies and the customers have watched and rated. What we need to do is figure
+out the rest of the matrix. To solve this problem, some method is
+needed to determine which movies are
+similar to each other. One approach is to
+organize movies by similarity using some
+attributes of the movies. For example, we might look
+at the average age of the audience and put
+the movies on the line. Cartoons and animated
+movies show up on the left-hand side and a darker adult-oriented
+movies show up on the right. Then we can say that if
+you'd like the incredibles, perhaps you're younger or
+you have a young child, so we're going to go ahead
+and recommend Shrek to you. But movies like Bleu or
+Memento or Arthouse movies where Star Wars and Dark
+Knight Rises are blockbusters. If somebody watched
+and liked Bleu, than they are likely
+to watch Memento, then say a Batman movie. Similarly, someone
+who watched and loved the Star Wars movies are more likely to watch The
+Dark Knight Rises, than generally an
+Arthouse genre movie. How do you solve this
+complex problem? Well, what if we added
+a second dimension? Perhaps the second dimension is the total number of tickets sold for that movie and when it
+was released in theaters. Now, we see that Star Wars and The Dark Knight Rises
+are close to each other. Bleu and Memento are close
+to each other as well. Same as Shrek and
+the Incredibles. Harry Potter is
+in-between the cartoons. Star Wars in that
+both kids watch it, some adult watch it and
+it's also a blockbuster. Notice how adding
+the second dimension has helped bring movies that are good recommendations closer together in our space, and it can form is much better to our intuition about movies. Now, do have to stop at
+just two dimensions? No, of course not. Banning even more dimensions, we can create finer distinctions and better recommendations. Sometimes these distinctions can lead to an awesome
+business opportunity. Take something like
+Netflix, for example, and how they recommend
+movies for their engine. But it's not always the case. The danger of memorizing or over fitting always
+exists here too. The idea is that we have an
+input n number of dimensions. What is n in the case of
+movies that we looked at? Well, it's 500,000 movies. Remember that the movie ID
+is a categorical feature, so we normally be
+one-hot encoding it, and n is 500,000. In our case, we've represented all movies in a
+two-dimensional space. The dimensions d equals two. The key point is that d is much, much, much, much less than n, and the assumption is that
+user interest in movies can be represented by some d aspects
+or dimensional aspects. In all of our examples, we used three as the
+number of embeddings. You can of course use
+different numbers. But what number should
+you use before you train? This is a hyperparameter in
+your machine learning model. Hyperparameter means you set it before model training occurs. You often try
+different numbers of embedding dimensions because
+there's a trade off. Higher dimensional embeddings
+can more accurately represent the relationships
+between the input values. However, the more
+dimensions you have, the greater the risk of overfitting or
+memorizing the dataset. Also, the model gets
+larger and larger and tends to have slower
+training times. A good starting point is to go to the fourth root of the total
+number of possible values. For example, if you're embedding movie ID and you have 500,000
+movies in your catalog, a good starting point might be the fourth root of 500,000. Now, the square root of
+500,000 is about 700, and the square root
+of 700 is about 26. So I'd probably start
+with something around 25. When hyperparameter
+tuning, I would specify a search space between either
+side of that 15 and 35. Of course , this just
+a rule of thumb. Another really cool
+thing that you can do with features besides
+those embeddings is to combine your features to create a new
+synthetic feature. Combining features
+into a single feature better known as feature crossing enables them all to
+learn separate weights for each of the
+combinations of features. A synthetic feature is formed by crossing or taking the
+Cartesian product of individual binary
+features obtained from categorical data or from continuous features
+via bucketing first. Feature crosses help represent
+non-linear relationships. Now, across column does not
+build the full table of all possible combinations
+that can be very, very large. If you use SQL cross joining accidentally can blow
+up your whole system. Instead, it's backed by hashed column to always know
+how large the table is. Back to our real estate example. To train the model, you simply need to write an input function that returns the features
+named in the feature columns. Since you're training,
+you also need to have your correct
+answers as labels. Now, you can simply call
+the train function from the Keras API over my
+custom model build, which will train the
+model by repeating this dataset a hundred
+times, for example. Now, you'll see how
+batching works later. But for those of you
+who already know the concept of batching, the code is written here, trains on a single batch
+of data at each step, and then this batch contains
+the entire dataset. When passing data to the built-in training
+loops of a model, you should either
+use NumPy arrays if your dataset is small
+and it'll fit into memory or tf.data dataset
+objects as you learned here. Once you define the
+feature columns, you can then use a
+dense features layer to input them into
+your Keras model. This layer is simply
+a layer that produces a dense Tensor based on
+your given feature columns. After your dataset is created, passing it into a Keras model for training is quite simple. As you see here, model.fit. We're not going to do
+that just yet though. You'll learn and practice
+the actual training of your model in a later video. First, you got to master dataset manipulation
+with the Keras API.

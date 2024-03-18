@@ -1,0 +1,91 @@
+Next, we will use a clustering algorithm
+to identify related groups of stocks within Excel K. Now let's discuss two ways you can
+use this data to help you find pairs. The first thing you can do
+is run a cluster analysis. What is clustering? It is categorizing. You cluster when you
+organize your kitchen. You put utensils with other utensils,
+cookware together, and you stack similar dishes. Clustering is a way you group things. You start by picking
+some number of clusters, then you will group your
+objects into these clusters. Within a cluster, you find objects more similar to each
+other than to those in other groups. To get ready for hierarchical clustering,
+you select a matrix. The matrix you use is your
+daily returns matrix. You store each stocks return in a column. You bundle all the columns
+you want to use in a row. You then form the matrix which has as
+many rows as there are observations and as many columns as there are stocks. Once you have a matrix,
+you select a way to compute distance. You have a variety of
+ways you can do this. We'll use Euclidean method
+of calculating distance. Formula is d equal square root of
+the sum of x minus y quantity squared, where x is the distance of the first point
+and y is the location of the second point. Note that Euclidean distance is
+the shortest distance between two points. There are other ways to compute distance. We will not explore these. We expect that two stocks that
+are close in distance will wind up in the same cluster. We call this type of clustering
+agglomerative clustering. We'll think of it as bottom up. Here's how it works. You would like to start with the two
+stocks that have the closest distance. This forms a cluster. The companies that are most similar
+are the first ones to form a group. Then we find the next best group. This will either be another stock
+that goes in the first cluster or it can be a new pair that
+forms a separate cluster. You continue this process of
+finding the next best cluster. You do this until you are left
+with just a single cluster. The closer the distance
+between the companies, the more similar the returns of one
+company are to those of the other, the more likely they will
+be in the same cluster. Here you can see that V or VISA and MA, Mastercard are the first
+companies to form a group. They have the lowest height
+value along the y axis. The next most similar
+companies are ADP and PAYX, both payroll processing companies. They have the second lowest height. Then comes TXN or
+Texas Instruments and MXIM. Again, this is the closest
+distance between two stocks. The first three pairings used
+two stocks that were similar. Now you continue to look for
+the next best match. It is actually between ACN and
+the ADP-PAYX cluster. You use a measure of providing
+a center for a cluster. ACN's distance to the ADP-PAYX cluster
+is closer than any other parents. This step illustrates
+the bottom-up approach. Eventually, you will join
+everything to a cluster. Here's how you can use cluster
+analysis to eliminate some data. ADP and PAYX are very closely related
+as seen by their very low height. In fact, it is the lowest. You may choose to drop one of
+the two stocks to simplify. Based on the fact that ATP has a heavier
+waiting in the ETF, you may drop PAYX. Both are in the same
+sub-sector of IT services. However, you can also propose subgroups. Here's the same tree cut into four groups. AMD is the only group
+with just one member. Let's take a look at how this looks
+when plotted in two dimensions. AMD again appears to be
+in a group of its own. Dimension 1 and 2 represent
+the two-dimensional plane contained in 68d hyperspace that minimizes
+the distance between cluster members and maximizes the distance between clusters. Next, we will run a principal components
+analysis of the stocks in XLK and create a scree plot. What are principal components? Think of principal components
+as a data rotation technique. In the plot, we see data for nine common
+features of 30 different models of cars. Using principal components analysis,
+we are able to rotate the nine feature dimensions and come up
+with the two principal components that explain the greatest amount of
+the variation between car models. The first principal component
+explains 63% of the variation and the second 23% for a total of 86%. Now we were able to see
+the similarities and differences between car models in
+two space rather than nine space. Now, let's look at the somewhat
+more complex plot of the data for the 68 companies in the XLK ETF. Here we see that the principal
+component one accounts for over 50% of the variation and
+is strictly positive. Principal component two accounts for 6.2% of the variation and
+can be either positive or negative. AMD is again off by itself. These two dimensions also have
+two important characteristics. First, the dimensions are uncorrelated. That is the axes are perpendicular or
+orthogonal to each other. Second, the dimensions are prioritized
+such that the first dimension will explain the largest amount
+of the variation in the data. The second dimension explains
+the second largest amount of variation. Continuing the third dimension not shown
+explains the third largest amount of variation and
+is orthogonal to the first two. This continues for all dimensions. The good news for you is interpretability. You can interpret these dimensions
+more easily than the original space. Now let's examine the scree plot for
+the stocks in XLK. To understand a scree plot,
+let's first ask what is a scree? A scree is a gentle slope
+consisting of small loose stones that have fallen from
+adjacent cliff faces. You would not want to fall
+off the cliff into the scree. Or a good principal component analysis, the scree plot should have a cliff and
+a scree. Typically, the cliff is one or sometimes
+several principal components that explain most of the variation in the data. Component one does indeed capture more
+than half of the variation of the data. Then there is a sharp drop-off. You see this because we
+chose related stocks. When you consider the stocks
+in the technology sector, they're going to have
+a high correlation matrix. This plot also shows how much
+variance each component explains. On the x-axis, you see each component. On the y-axis, you have variance. This is a good scree plot because you
+need only a few components to explain most of the variation in the data. Although there are 68 dimensions,
+let's focus on the first ten. These ten dimensions contain 87.5%
+of the variation in the data. In the next session, we will examine how each technology
+company affects each individual component. This will give you another
+way of grouping data. This can give you another
+way to form pairs.

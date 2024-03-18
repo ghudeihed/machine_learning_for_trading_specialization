@@ -1,0 +1,99 @@
+In this session, will discuss how to
+calculate and use the Hurst Exponent to detect the presence of long-term memory in
+a time series of asset prices or returns. Momentum can be thought of as
+the persistence of an assets returns. Positive returns tend to be followed by
+positive returns, negative by negative. The Hurst Exponent is also referred
+to as the index of dependence or index of long range dependence. It qualifies some relative tendency
+of a time series either to regress strongly to a longer term mean what
+a cluster in a particular direction. It relates the autocorrelation in the time
+series at different time lags and the rate at which those autocorrelations
+decrease as the time lag increases. Lastly, will look at one method to
+calculate the Hurst Exponent based on ranges of lags for a time series. If we look at these time series, what do
+we mean when we ask if they have momentum? Can we tell which of these has momentum? Momentum is a tendency of a series,
+in our case, stock prices, to continue in the direction
+their trending. Momentum is a type of
+memory within the series. Depending on this memory, the series
+is more likely to do one thing or another going forward. Series1 in the table on the left is
+monotonically increasing by the same amount each period. If these were in assets price, we could say that the asset has
+upward momentum over the period. Series2 is also increasing over
+the time period shown, but has decreases at times 3, 8 and 9. Momentum is positive but not monotonic. The graph on the right shows FAS trading
+in a tight range over the time period shown. Hard to see any momentum there. Here are the previous two graphs and
+a new one. One of the graph shows mean reversion,
+one momentum and one brownian motion. Can you determine visually
+which graph shows momentum, which shows a random walk and
+which mean reversion? Mean reversion is pretty easy to identify,
+but it's a bit harder to distinguish
+between momentum from a random walk. Now let's look at the Hurst Exponents for
+each graph. Hurst can range from zero to one. The left graph is random walk or brownian
+motion with a hearse of approximately 0.5. The middle has moderate momentum has
+a Hurst Exponent is a bit greater than .5. Although the left and
+middle graph seems similar, the random walk graph is a bit more jagged
+and shows frequent reversals of direction. Well, the middle graph is a bit smoother, it shows a clear uptrend followed by
+a downtrend and then by another uptrend. The graph on the right is mean reversion
+with the Hurst well below 0.5. Here we see up moves generally followed
+by down moves around a long term mean of around 5.40. A value of 0.5 indicates
+a true random process. There's no measurable correlation
+between the latest return and the ones that preceded it. Hurst Exponent of .5 to one
+indicates persistent behavior or positive autocorrelation. If there's an increase from
+the preceding time step, then they will likely be
+an increase the next time step. The same is true of decreases were
+a decrease will tend to follow a decrease. This creates opportunities for
+momentum trading. A Hurst Exponent value of between 0 and
+0.5 will be for a time series with anti persistent
+behavior or negative autocorrelation. Here and increase will tend to
+be followed by a decrease or decrease followed by an increase. This creates opportunities for
+mean reversion trading strategies. Now let's look at it series of graphs
+with uniformly increasing Hurst values. Each series represents
+a different Hurst value. The top left starts at 0.1, increasing
+by 0.1 across bottom right is 0.9. Further away from 0.5,
+the greater the impact of the memory, ie, stronger momentum or mean reversion. Hurst Exponents are also useful for detecting when a return series
+has a long-term memory. In the equation shown p of k is
+an autocorrelation function of lag k, which measures the impact of the kth
+lag return on the current return. And LMP is a process with a random
+component where a past event has a decaying effect on future events. The process has some memory of past events
+which is forgotten as time moves forward. For example, a large increase in
+the price of the stock creates positive sentiment around the stock, causing
+more and more investors who want to buy the stock reading further demand and
+moving the prices up. The market acts as if it has
+some memory what took place, although the effect of that initial
+price increase decays overtime. This is the fundamental reason why
+longer term momentum trading exists. In a long memory process,
+autocorrelation decays overtime and the decay follows a power law. Power law decay time series
+are characterized by autocorrelation functions that decay iterative k
+raised to the minus alpha power. Where k is the lag and
+alpha is the decay parameter. When alpha is between 0 and 1,
+the time series exhibit strong persistence with values closer to o,
+indicating even stronger persistence. When alpha is greater than 1 time
+series exhibits high frequency or alternating behavior and
+is said to be anti persistent. The Hurst Exponent is equal to
+1 minus alpha divided by 2. Since alpha is assumed to range between 0
+and 2, the Hurst ranges between 0 and 1. To recap, the Hurst Exponent measures
+the degree to which a time series, either aggressive strongly to a longer term mean
+or cluster in a particular direction. Important values of the Hurst are 0.5, which implies the data
+follows a random walk. A Hurst closer to 0
+implies mean reversion. Hurst closer to 1 implies momentum. In the lab that follows this course,
+you will use a method for calculating the Hearst Exponent that is
+based on using a variable range of lag values from 2 to 20 in
+the example shown here. We determine the Hurst by first
+calculating the standard deviation of the difference between a series and
+its lag counterpart. We then repeat this calculation for a number of lags and plot the results
+as a function of the number of lags. If we plot this on a log scale
+will end up with a straight line. The slope of that line gives us
+an estimate for the Hurst Exponent. As the algorithm shows, calculation of Hurst is related to
+the autocorrelations of the time series. Autocorrelation, also known
+as serial correlation, refers to the correlation between a time
+series and lagged values of itself. In this example,
+it lags range from 2 to 20 periods. In particular Hurst is related
+to the rate at which these autocorrelations decrease
+as the lag increases. We know that we get different values of
+Hurst depending on which lags we use in the calculation. So which lag should you focus on? There's no simple answer to this question. Hurst Exponents have been proposed as an
+alternative to moving average convergence, divergent indicators, or MACDs that
+we covered in the previous session. Like MACDI the signals from Hurst
+must be back tested using varying time windows of lagged values. If you'd like to learn more about
+the Hurst Exponent as a trading signal, please have a look at
+the reading assignment, Hurst Exponent and Trading Signals Derived
+from Market Time Series, by Peter Kroha and Miroslav Skoula. They give a good survey of the theory
+behind Hurst and also create a moving Hurst trading signal that they test
+on data versus an MACD signal. They conclude that moving Hurst is
+a better trading signal than MACD, but that its profits or more than offset when
+realistic trading costs are factored in.

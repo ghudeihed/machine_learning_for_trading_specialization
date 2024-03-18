@@ -1,0 +1,66 @@
+Remember our ultimate goal while model
+training is to minimize that loss value. It's now time to talk about how to do
+that at scale with regularization. If you graph the loss curve
+both on a training and test data set,
+it may look something like this. The graph shows the loss on the y
+axis versus the time on the x axis. Do you notice anything wrong here? Yeah, then loss value is nicely
+trending down in the training data. But whoa shoots upward at some point in
+the test data, that's not good, right? Clearly, there's some
+amount of memorization or overfitting that's going on here. It seems to be correlated with
+a number of training iterations. How can we address this? We can reduce the number of training
+iterations and stop earlier. Early stopping is definitely an option,
+but there's gotta be some
+more better examples. Well, here's where that regularization
+key word comes into the picture. Let's test our intuition
+using TensorFlow playground. TensorFlow playground, if you haven't
+seen it yet, it's a handy little tool for visualizing how neural networks learn. We use it extensively to intuitively
+grasp the concepts visually, especially if you're a visual person. Let's draw your attention to the screen. There's something odd going on here. Notice that the region in the bottom
+left that's looking like blue or bluish. There's nothing in
+the data suggesting blue. The model's decision boundary
+is kind of arbitrary or crazy. Why do you think that is? Notice the relative thickness of the five
+lines running from input to output. These lines or edges show the relative
+weight of those five features. The lines emanating from x1 and x2 are much thicker than those
+coming from the feature crosses. So the feature crosses are considered
+contributing far less to the model than the normal or uncrossed features. Removing all the feature
+crosses gives us a saner model, I'll provide a link for
+you to try this yourself. And you can see how a curved boundary
+is suggestive of overfitting that will disappear and
+that test loss will actually converge. After 1,000 iterations, the test loss
+should be a slightly lower value than when the feature
+crosses were in play. Although your results may vary
+a bit depending on the data set, the data in this exercise is basically
+a linear model plus a little bit of noise. If we use a model that's too complicated,
+such as the ones but too many of those synthetic features or
+feature crosses, we give the model an opportunity to
+squeeze and overfit itself to the training data, at the cost of making the model
+perform badly on test data. Clearly, early stopping
+can't help us here. It's the models complexity that we need
+to bring under control or penalize. But how can we measure model complexity
+and avoid making it too complex? There's a whole field around this
+called generalization theory, or G theory, that goes about defining
+the statistical framework. The easiest way to think about it though,
+I love this, is by your own intuition. Based on the 14th century principle
+laid up by William Ockham, sounds familiar, right? When training a model,
+we apply Ockham's razor that principle as our basic heuristic guide in
+favoring those simpler models, which make less assumptions
+about your training data. Let's look into some of the most
+common and regularization techniques, that help us apply this principle and
+practice and punish complex models. The idea is to penalize
+that model complexity. So far in our training process, we've
+been trying to minimize loss of the data. Given the model, we need to balance that
+against the complexity of the model. Before we talk too much about how to
+measure model complexity, let's pause and understand why we said balance
+complexity against loss. The truth is that over
+simplified models are useless like taxi cab fare always going to be $5,
+useless. If we take it to the extreme,
+you could end up with a no model. We need to find the right
+balance between simplicity and actually accurate fitting
+of the training data. Later, you'll see that the complexity
+measure is multiplied by a lambda coefficient, which will allow us to
+control our emphasis on model simplicity. This makes it yet another hyper
+parameter that requires your expertise in tuning before the model
+training starts. It's fun, right? Your optimal lambda value for any given
+problem is really data-dependent, which means that we almost need to spend
+time tuning this either manually or automated search. I hope that by now this is why this
+approach is a little bit more principled than just cutting the model off after
+a certain amount of iterations or early stopping.

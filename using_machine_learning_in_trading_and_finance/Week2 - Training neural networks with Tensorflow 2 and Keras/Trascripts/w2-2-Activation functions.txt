@@ -1,0 +1,126 @@
+Next, let's take a look at activation functions
+and how they help training deep neural
+network models. Here's a good example. This is a graphical
+representation of a linear model. We have three inputs
+on the bottom, x1, x2, and x3, shown by
+those blue circles. They are combined
+with some weight, W given to them on
+each of those edges. Those are the arrows
+that are pointing up. That produces an output, which is the green
+circle there at the top. There's often an extra
+bias term that's added in. But for simplicity, that
+isn't going to be shown here. This is a linear
+model since it's of the form y equals W_1 times x_1 plus W_2 times x_2
+plus W_3 times x_3. Now, we can substitute
+each group of weights for a similar new weight.
+Does this look familiar? It's exactly the same
+linear model as before despite adding a hidden
+layer of neurons. How is that so? What happens? Well, the first neuron in the hidden layer
+that's on the left takes the weights from all
+the three input nodes. Those are all the red
+arrows that you see here. You can see that's
+little w1, little w4, and little w7, all
+combining respectively, as you see clearly highlighted. Now as you take the new weight and that's the output
+of the first neuron, which in our case
+is little w10 now, as one of those three weights going into the final output. You'll see that we do
+this two more times for the other two yellow
+neurons and their inputs respectively from x1, x2, and x3. Then you can see that
+there's a ton of matrix multiplication going
+on behind the scenes. Honestly, in my experience, machine learning is
+basically taking arrays of various dimensionality
+like 1D, 2D, or 3D, and then smashing them and multiplying them
+against each other, where one array or
+a tensor could be a randomized array
+of starting weights of the model and the other
+is the input dataset. Yet the third is the output array or tensor of the hidden layer. You'll see behind the scenes, it's honestly just a lot of simple math depending
+upon your algorithm. But a lot of it is
+done really quickly. That's the power
+machine learning. Here though, we still
+have a linear model. How can we change that? Let's go deeper. I know
+what you're thinking. What if we just add
+another hidden layer? Does that make it a
+deep neural network? Well, unfortunately, these ones can collapse us all the way back down into a
+single weight matrix, multiplied by each of
+those three inputs, it's the same linear model. We can continue this process
+of adding more, and more, and more hidden neural layers, but it would be the same result. Albeit it will be a lot more costly computationally
+for training and predicting because it's a much more complicated
+architecture than we actually need. Here's an interesting question. How do you escape from
+having just a linear model? Well, by adding non-linearity, of course, that's the key. The solution is adding a
+non-linear transformation layer, which is facilitated by a non-linear activation function such as sigmoid, tanh, or ReLU. Thinking of the terms of the graph that's
+created by TensorFlow, you can imagine each neuron
+actually having two nodes. The first node
+being the result of the weighted sum
+w times x plus b, and the second node
+is the result of that being passed through the
+activation function. In other words, they
+are the inputs to the activation
+function followed by the outputs of the
+activation function. So the activation
+function acts as a transition point
+between layers. That's how you get
+that non-linearity. Adding in this non-linear
+transformation is the only way to stop the neural network from condensing back down
+into a shallow network. Even if you have a layer with non-linear activation
+functions in your network, if elsewhere in your network, you have two or more layers with linear activation functions, those can all still be collapsed down into
+just one network. Usually, neural networks
+have all layers non-linear for the
+first n minus 1 layers, and then have the final
+layer transformation, bilinear for regression, or sigmoid or softmax
+for classification. All depends on what you want
+that final output to be. Now, you might be thinking, what non-linear activation
+function do I use? There's many of them. You've got sigmoid, you got
+scaled and shifted sigmoid, you have the tanh or the hyperbolic tangent being
+some of those released. However, as we're
+going to talk about, this saturation, which leads to what we call the vanishing
+gradient problem, where with zero gradients, the models weights
+don't update anything times zero and training halts. The rectified linear unit, or ReLU for short, is one of our
+favorites because it's simple and it works really well. Let's talk about it a bit. In the positive domain, it's linear as you see here, so we don't have that saturation. Whereas in the negative domain, the function is zero. Networks of ReLU hidden
+activations often have 10 times the speed of training than networks with
+sigmoid hidden activations. However, due to the
+negative domains function always being zero, we can end up with
+ReLU layers dying. Now, what I mean
+by that is you'll start getting inputs in
+the negative domain. Then the output of the activation will be zero, negative times 0, 0, which doesn't help
+in the next layer, getting the inputs back into the positive domain,
+still going to be zero. This compounds and
+creates a lot of zero activations
+during backpropagation when updating the weights. Since we have the
+multiplier errors derivative by the activation, we end up with a
+gradient of zero, thus a weight update of zero. Thus, as you can imagine
+with a lot of zeros, the weights aren't
+going to change and the training fails
+for that layer. Fortunately, this problem has
+been encountered a lot in the past and there's
+a lot of really cool, clever methods that
+have been developed to slightly modify the ReLU to avoid the dying ReLU effect and ensure training
+doesn't stall, but still with much of the benefits that you
+would get for normal ReLU. Here's the normal ReLU again. The maximum operator can
+also be represented by a piecewise linear equation
+where less than zero, the function is zero
+and greater than zero the function is x. Some extensions to ReLU, meant to relax the non-linear
+output of the function, and to allow small
+negative values. Let's take a look
+at some of those. Softplus or smooth ReLU function. This function has its derivative as the
+logistic function. The logistic sigmoid function
+is a smooth approximation of the derivative of the
+rectifier. Here's another one. The leaky ReLU function,
+I love that name, is modified to allow those small negative values when the input is less than zero. Its rectifier allows for a small non-zero gradient when the unit is saturated
+and not active. The parametric ReLU learns parameters that
+control the leakiness in shape of the function. It adaptively learns
+the parameters of the rectifiers. Here's
+another good one. The Exponential
+Linear Unit, or ELU, is a generalization
+of the ReLU that uses a parameterized
+exponential function to transform from positive
+to small negative values. Its negative values push the mean of the activations
+closer to zero. That means that activations
+are closer to zero, enable faster learning
+as they bring the gradient closer to
+a natural gradient. Here's another good one, the Gaussian Error Linear
+Unit, or GELU. That's another high-performing neural network
+activation function like the ReLU. But it's non-linearity results in the expected transformation
+of a stochastic regularizer, which randomly
+applies the identity or zero map to that
+neuron's input. I know you're
+thinking that's a lot of different
+activation functions. I'm a very much a visual person. Here's the quick overlay of a lot of those on that same x-y plane.

@@ -1,0 +1,74 @@
+Let's take a look at
+the API hierarchy, which will consist
+of a spectrum of low-level APIs for hardware all the way up to very
+abstract high-level APIs for super-powerful tasks, like creating an 128
+layer neural network with just a few lines of code
+written with the Keras API. Let's start at the bottom. The lowest layer of abstraction
+is the layer that's implemented to target the
+different hardware platforms. Unless your company
+makes hardware, it's unlikely that you'll
+do much at this level, but it does exist. The next level is the
+TensorFlow C++ API. This is how you can write a
+custom TensorFlow operation. You would implement the
+function that you want in C++, register it as a
+TensorFlow operation. You could find more details on the TensorFlow documentation
+on extending an app. I'll provide the link.
+TensorFlow will give you a Python wrapper that you can use just like you would use
+an existing function. Assuming you're not
+an ML researcher, you don't normally
+have to do this. But if you ever needed to
+implement your own custom app, you would do it in C++
+and it's not too hard. TensorFlow is
+extensible in that way. Now the Core Python API is what contains much of the
+numeric processing code. Add, subtract, divide,
+matrix, multiply, etc. Creating variables,
+tensors, getting the right shape or dimension
+of your tensors and vectors, all of that is contained
+in the Python API. Then there are sets of
+Python modules that have high level representation of useful neural network components. Let's say for example, that you're interested
+in creating a new layer hidden neurons within a
+ReLU activation function. You can do that just
+by using TF layers, just architect and constructed. If you want to
+compute the RMSE or Root as the data comes in, you can use tf.metrics. To compute cross entropy
+with logics, for example, which is a common in loss metric and
+classification problems, you could use tf.losses. These modules provide
+components that are useful when building custom neural
+network models. Why are custom neural
+network models emphasized? Because you often don't need a custom neural
+network model. Many times, you're
+quite happy to go with a relatively
+standard way of training, evaluating, and serving models. You don't need to customize
+the way you train. You're going to use
+one of the family of gradient descent
+based optimizers, and you're going to backpropagate the weights and do
+this iteratively. In that case, don't write
+the low-level session loop, just use an estimator or a
+high-level API such as Keras. Speaking of which,
+the high-level APIs allow you to easily do
+distributed training, data preprocessing,
+the model definition, compilation, and
+overall training. It knows how to evaluate, how to create a checkpoint, how to save a model, how to set it up for
+TensorFlow Serving and more. It comes with everything done
+in a sensible way that'll fit most of your ML
+models in production. Now if you see example
+TensorFlow code on the Internet, and does not use
+the estimator API, ignore that code, walkaway,
+it's not worth it. You'll have to write a lot of code to do device placement, memory management,
+and distribution. Let the high-level API
+handle all of that for you. Those are the TensorFlow
+levels of abstraction. On the side here, Cloud AI platform is orthogonal, or go cuts across
+to this hierarchy. It means it goes from low
+level to high level APIs. Regardless of the
+abstraction level you're writing your
+TensorFlow code, using Cloud AI platform or CAIP, gives you that managed service. It's fully hosted TensorFlow. You could run TensorFlow
+on the Cloud, on a cluster of machines, without having to install any software or
+manage any servers. For the rest of this module, we'll be largely working with these top three APIs listed here. But before we start
+writing any API code and showing you the syntax for building machine
+learning models, we first really
+need to understand the pieces of data that
+we're working with. Let's look at regular computer
+science classes where you start with variables
+and their definitions, before moving on
+to advanced topics like classes and
+methods and functions. That's exactly how we're
+going to start learning. With TensorFlow components, next.

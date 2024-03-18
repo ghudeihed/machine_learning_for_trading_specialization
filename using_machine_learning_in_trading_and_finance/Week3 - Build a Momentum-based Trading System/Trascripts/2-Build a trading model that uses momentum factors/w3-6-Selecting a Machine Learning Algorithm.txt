@@ -1,0 +1,44 @@
+Model selection,
+choose an appropriate statistical or ML model based on the problem. Linear models tend to have high bias and
+low variance. They're good for less noisy data
+with variables that are independent, not highly correlated with each other. Here we see that the linear
+model produces somewhat high root mean squared error
+with a decent Pnl of about 8%. But the number of features is high and some of them seem to be highly
+correlated to each other. Once we do some normalization,
+there is not much change here. We see that the linear model produces
+the same high root mean squared error with somewhat lower Pnl of
+7.5% with normalization. The coefficients in a linear model
+indicate the importance of each variable in predicting the target variable. In this case, high absolute values
+indicate high importance of that variable. Typically when there are lots
+of variables thrown in randomly, a linear model will struggle
+to produce good results. Reducing variables after removing
+highly correlated variables as we have done here with seven variables
+produces a somewhat better model with 8.18% Pnl and
+lower root mean squared error. A support vector machine with RBF
+kernel is a somewhat complex model which works well even when there are lots
+of variables thrown in randomly. Compared to a linear model which will
+struggle to produce good results. Here, an SVR produces
+a somewhat better model with 10.14% Pnl and
+lower root mean squared error. A gradient boosting regressor is
+a highly complex ensemble model which works well even when there are lots
+of variables thrown in randomly. Compared to an SVR model
+which produces good results. Here, a GBR produces a very
+good model with 22.3% Pnl, and lower root mean squared error. But don't be misled by its high
+performance on a small sample of validation data. We must do rigorous back testing or
+rolling cross validation to ensure that the model is not
+over fitting to the training date. So let us see if we can improve our
+model results through a technique known as ensemble learning. Here, we have on the left the same
+training and validation data sets. On the right, we train three different
+models on the very same training data. A linear regression model,
+support vector machines model, and a gradient boosted tree model. We then combine the predictions of each
+model and average them to produce our final prediction for
+either validation data or test data. Why is this prediction any better? Well, the answer lies in a theory
+known as the wisdom of the crowds. It is the idea that large groups
+of people are collectively smarter than individual experts when
+it comes to problem solving, decision making,
+innovating and predicting. It turns out that it works well
+in model predictions, too. Hence by combining three different
+models in what is known as an ensemble, data scientists have found that they are
+better than individual model predictions. This technique is popular
+among data scientists in machine learning
+competitions such as Kaggle.

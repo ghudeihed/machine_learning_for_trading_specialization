@@ -1,0 +1,78 @@
+Another form of regularization
+that helps us build more generalizable
+models is adding dropout layers to
+all neural networks. To use dropout, I add a wrapper to one or
+more of my layers. In TensorFlow, the parameter you passed is called dropout, which is the
+probability of dropping a neuron temporarily
+from the network, rather than keeping it turned on. You want to be very careful
+when setting this number, because for some other functions that have a dropout mechanism, they use and keep
+that probability, which is the complement
+to the drop probability. You don't want to intend to only a 10 percent
+probability drop, but actually now keeping 10 percent of your
+nodes randomly. That's a very unintentional
+sparse model. Let's talk a little bit about how dropout works under the hood. Let say we set a dropout
+probability of 20 percent. That means that at each
+forward pass to the network, the algorithm will
+roll the dice for each neuron in the
+dropout wrapped layer. If the dice roll is
+greater than a 20, assuming you're
+using 100 sided die, then the neuron will stay
+active in the network. But if you got 20 or below, then your neuron will be dropped out and output a value of zero, regardless of its inputs, effectively not
+adding any negativity or positivity to the network. Since adding zero
+changes nothing, and it simulates neuron
+doesn't even exist. To make up for the
+fact that each node is not only kept for some
+percentage of the time, the activations
+are then scaled by one over one minus the
+dropout probability, or in other words, one over keep probability during training. So that's the expectation of that value during activation. When not doing training, without having to
+change any of the code, the wrapper
+effectively disappears and the neuron is normally in the former dropout
+layer are always on and use whatever weights
+were trained by the model. Now the awesome
+idea about dropout, it essentially creates
+an ensemble model because for each forward pass, there is effectively a
+different network that their mini batch of data is
+seeing as it goes through. When all of this has added
+together in the expectation, it's like I trained a
+2_n neural networks, where n is the number
+of dropout neurons, and have them working together in an ensemble similar to a bunch of decision trees working
+together in a random forest. There is also the added
+effect of spreading out the data distribution
+over the entire network, rather than having the majority of signal favor going just along one branch of the network because some of those neurons
+could get dropped out. I usually imagine this
+as diverting water in a stream or a stream or a
+river with multiple shunts, or dams, or rocks to ensure all waterways eventually get
+some water and don't dry up. This way your network uses
+more of its capacity since the signal more evenly flows
+across the entire network. Thus you'll have
+better training and generalization without
+large dependencies on certain neurons being developed in
+particular paths. So we mentioned 20 before. What's a good dropout percentage
+for your neural network? Well typical values
+for dropout are anywhere between 20-50 percent. If you go much lower than that, there's not really that much
+of effect on the network since you're rarely
+dropping out any nodes. But if you go higher than that, the training doesn't
+happen as well, since the network itself
+becomes too sparse to have the actual capacity to learn the data distribution. More than half of
+the network is going away in each forward paths. You also want to use this on larger networks because there's more capacity for the model to learn independent
+representations. In other words, there
+are more possible paths for the network to try. Now the more you drop out, the less you keep, the
+stronger the regularization. If you set your dropout
+probability to one, then you keep nothing, and every neuron is wrapped
+in a dropout layer, is effectively removed
+from the network and outputs a zero during activation. During backprop, this
+means that the weights won't update and the
+layer will learn nothing. Now that's if you set the
+probability to one for dropout. On the other side
+of the spectrum, of you set your
+probability to zero, then all of the neurons are kept active and there's no
+dropout regularization. So it's pretty much just more
+computationally costly way to not have a dropout
+wrapper at all. So again, you can adjust that high parameter 20-50 percent, see what works well
+for your models. Of course, somewhere between zero and one is where you want to be. Particularly, dropouts
+between 10-50 percent were a good baseline at
+starting around 20 and then adding
+more as needed. Keep in mind, there is no one size fits all for
+dropout probability, for all models and all
+data distributions. That's for your expertise, and trial and error
+come into play.

@@ -1,0 +1,88 @@
+Now that you have a
+good understanding of entries and exits and
+trading strategies, we're going to focus on one very important
+exit, the stop loss. This is probably the
+least popular feature of a trading strategy but it is vital to managing P and L and to surviving in
+the trading world. We will look at the main types of stop losses and
+discuss the use of static and dynamic stop losses to help manage trading risk. We will also look at how to structure stop loss is based on your trading view and changes in market
+prices and volatility. First, we're going to explore different types of stop losses. In the previous section, we described the four parameters associated with the
+trading rule or model. There is the entry signal
+where you initiate a trade, the profit exit, the stop
+loss, and the timeout. Some traders do not
+care about timeouts. They will simply hold on until either the
+trade is profitably exhibited or incurs
+a loss against them. Almost all traders
+have a stop loss. If they don't choose one, their risk management
+may choose it for them. Stop losses serve one purpose, they reduce your risk. Suppose you have no stop loss, your trade can go into free fall. Consider if a stock
+is falling because there was a fraud
+associated with a company. If you are still bullish, you could keep your position. However, you may
+regret not taking a small loss compared to a much bigger one at
+prices continue to fall. The graph shows Steinhoff
+a consumer goods company that reported
+irregularities in their accounting. On December fifth, 2017, their stock dropped
+63 percent and since declined further to
+where it is worth less than 10 percent of its
+value on December fourth. So when you're trade
+doesn't go as planned, how do you decide where to exit? Well, there are two
+types of stop losses. The first is static, the second is dynamic. You can set a
+stop-loss statically based on where you
+enter the trait. Suppose you enter at 200. If you can tolerate
+a 2.5 percent loss, then your stop loss
+should be at 195. If you can only tolerate
+a 1.5 percent loss, your stop loss should be at 197. If you were very risk averse, you might only tolerate
+it one percent loss, then your stop loss would be 198. Ideally you want to stop out where the losses within
+your risk tolerance. To do so, you may place a stop loss order
+with your broker. Suppose you place a
+stop loss order 195. Then if the stock trades
+at or below that price, your broker enters a market order to sell and you exit your trade. This helps to limit your loss. Suppose your trade goes
+against you right away. You may hit the
+stop loss quickly. If the stop loss is
+too conservative, whereas traders say too tight, you may hit it based on
+noise in the market. Picking a good stop
+loss is a trade off. You want to stop loss it is
+not so tight that it will be triggered often with
+slight market movements. You also want to stop
+loss that is not so loose that will cause you
+to take a large loss. But what if the trade
+moves in your favor? Suppose you have an
+ambitious aggregate signal of 250 basis points. The stock moves to 203. Do you still want to keep
+your stop loss at 195? If the stock has
+lots of volatility is possible it will drop down. Is there some way you can take advantage of the paper
+profit you've achieved. That is your unrealized
+profit of about three dollar. Rather than set the
+stop-loss statically, you set it dynamically. That is you can set
+the stop loss to be 2.5 percent below
+the current price. So if Apple reaches 203, your new stop losses at 198. This means that you would no
+longer lose 2.5 percent from your entry level but rather from your highest
+unrealized profit. Your dynamic stop
+loss is three dollar more than your original
+static stop loss. You do this because you've
+made unrealized profits. You want to increase the
+chances of keeping them. Now if the trade continues
+to move in your favor, you may simply get profited out. But if the trade
+moves against you, you will only stand to lose
+two dollar or one percent. So the first type of dynamic
+stop loss is where you raise the stop loss so it
+trails the high price. Rather than the entry price. However, you can add another dynamic element
+to the stop loss. Not only can you increase the
+stop loss to fall the high, you can also change
+the percentage. In the earlier example, you kept the stop
+loss at 2.5 percent. But suppose you make 1.5
+percent with Apple at about 203 and your
+target is still 204. You may want to keep some
+of that capital gain. Therefore, you can
+lower the percentage, rather than use 2.5 percent, you may use 1.5 percent. Now your stop loss
+is about 200 dollar. This is the level where
+you entered the trade. Now you exit the
+trade without a loss. What type of stop
+loss should you use? Whatever you decide,
+you should have evidence to support its use. Recall that we have four
+parameters to describe a model. You can back test the model
+with a static stop loss. You can back test and model
+with our dynamic stop loss. You can even back test with a
+variable dynamic stop loss. Hope you get much
+better results using one type of stop loss as
+opposed to the others, then it will be clear which
+stop loss you should use. If you decide to use a
+variable percentage you can base a percentage on back tests with market price
+and volume data.

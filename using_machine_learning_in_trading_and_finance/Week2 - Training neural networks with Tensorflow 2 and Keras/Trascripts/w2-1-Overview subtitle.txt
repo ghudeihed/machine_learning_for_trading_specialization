@@ -1,0 +1,10 @@
+In this module, we'll talk about activation functions
+and how they're needed to allow deep
+neural networks to capture nonlinearities of your data. Then, we'll learn
+how the sequential and the functional APIs of Keras allow us to simply
+write neural network models, and how it can deploy
+those models to cloud AI platform to serve them
+in a scaled fashion. Lastly, we'll discuss one
+of my favorite topics, which is how you can avoid overfitting your
+models by applying regularization techniques
+during model training. Let's jump right into it.

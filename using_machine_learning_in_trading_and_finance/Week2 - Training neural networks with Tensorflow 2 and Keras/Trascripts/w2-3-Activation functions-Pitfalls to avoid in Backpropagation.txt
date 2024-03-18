@@ -1,0 +1,95 @@
+Next, let's talk a little
+bit about backpropagation. In one of those
+traditional courses from machine learning
+or neural networks, you'll hear a lot talked about backpropagation at a
+very granular level. But at some point, it's like teaching people how to build a computer code compiler. Yes, it's essential for a
+super deep understanding, but not necessarily needed
+for an initial understanding. The main thing to know, is that there is an
+efficient algorithm for calculating
+those derivatives, and TensorFlow will do it
+for you automatically. Now, there are some
+really interesting failure cases that you should know that we're going to talk
+about, such as: number 1, vanishing gradients, number 2, exploding gradients, and
+number 3, those dead layers. First, during the
+training process, especially for deep, deep, deep neural networks,
+gradients can vanish. Each additional layer in your
+network can successfully reduce signal versus
+the noise, not good. Example of this is
+using the sigmoid or tanh activation functions
+throughout your hidden layers. As you begin to saturate, you end up in the
+asymptotic regions of the functions which
+began to plateau, that slope is getting
+closer and closer and closer to approximately zero. When you go backwards through the network during backprop, your gradient becomes smaller
+and smaller and smaller, and because you're
+compounding all of these smaller gradients until the gradient completely vanishes. When this happens, your
+weights no longer updated, and therefore, training
+will grind to a halt. A simple way to fix this
+is to use non saturating non-linear activation
+functions such as your ReLus or you ELUs
+that we just talked about. So if they're not vanishing, what's the opposite
+end of the spectrum? Number 2, you can have
+exploding gradients. By this we mean, they get bigger and bigger
+and bigger until your weights get so large that you overflow
+during training. Even when starting with
+relatively smaller gradients such as a value of two, it can compound and become quite large over many
+successive layers. This is especially true for
+sequence models with long, long, long sequence lengths. Learning rates can be a factor here because in our
+weight updates, remember that we multiply
+the gradient with the learning rate and then subtract that from
+the current weight. So even if the gradient
+itself isn't that big, with a learning rate
+greater than one, then it can actually
+become too big and cause problems for us in our
+network during training. There are many
+different techniques to try and minimize this, such as weight regularization
+and smaller batch sizes. Another technique is
+gradient clipping, where we'll check to see if
+the norm of the gradient exceeds some certain
+threshold that you set, it's a hyper-parameter
+that you can tune ahead of training, and if so, you can re-scale your gradient all the way down to
+your pre-set maximum. Another useful technique that
+you'll hear talked about a lot is batch normalization, which solves a problem called
+internal covariate shift. It speeds up training because gradients will
+then flow better. You can also use a
+higher learning rate, and you might be able
+to get rid of dropout, which slows computation
+down due to its own regularization
+due to mini-batch noise. So how do you do it? Well, to perform
+batch normalization, you first find the
+mini-batch mean, then the mini-batches
+standard deviation, then you normalize the
+inputs to that node, then scale and shift by y
+equals Gamma times x plus Beta, where Gamma and Beta
+are learned parameters. If Gamma is a square root of
+x and Beta is the mean of x, the original activation
+is restored. This way you can control
+the range of your inputs, so that they don't
+unnecessarily become too large. Ideally, you would like
+to keep your gradients as close to one as possible, especially for very
+deep neural networks, so you don't compound and eventually overflow or underflow. Last up. That third
+common failure of gradient descent is that
+your real layers can die. Fortunately, using TensorBoard, we can monitor the summaries during and after training of our deep neural
+network models. If you're using a
+pre-canned or pre created deep neural
+network estimator, there's automatically
+a scalar summary, save for each DNN
+hidden layer showing the fraction of zero values of the activations
+for that layer. The more zero
+activations you have, the bigger the problem you have. ReLus will stop working when their inputs keep giving
+them in the negative domain, which result in an
+activation value of zero. It doesn't end there because their contribution to
+the next layer is zero, but despite that the weights connecting it to
+the next neurons, their activations are zero, thus the input becomes zero. A bunch of zeros coming to the next neuron doesn't
+help it get into the positive domain and because these neurons activations
+also becomes zero, you can see that that
+problem continues to cascade that we talked about. Then you perform backprop
+and the gradients are zero and then training doesn't
+update during the weights, so it's not good. We talked about using those
+leaky or parametric ReLus or even a slower ELUs, but you can also lower your
+learning rates to help stop ReLu layers from not
+activating and thus dying. A large gradient, possibly due to too high
+of a learning rate, can update the weights
+in such a way that no data point will ever
+activate it again, and since the gradient is zero, we won't update the weight to
+something more reasonable, so the problem
+persists indefinitely.

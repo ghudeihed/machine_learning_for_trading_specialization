@@ -1,0 +1,97 @@
+Now let's go over tensors
+and variables in TensorFlow. It's time to see some code. How can we bring life to each dimension of a tensor
+that we learned about earlier? Recall that a tensor is that
+N-dimensional array of data. When you create a tensor, you'll specify its shape. Occasionally you'll not
+specify the shape completely. For example, the first element of the shape could be a variable, but that special case
+will be ignored for now. Understanding the shape of
+your data, or oftentimes, the shape that it should be, is the first essential part of your machine learning flow. Here, for example,
+you're going to create a tf.constant three. This is a zero rank tensor. It's just a number 3 scalar. The shape, when you look at
+the Tensor Debug output, is simply an open parenthesis, closed parenthesis,
+it's zero rank. To better understand why there isn't a number
+in this parentheses, let's upgrade to the next level. If you passed in a
+bracketed list like 3, 5, 7 to tf.constant instead, you would now be the proud owner of a one-dimensional tensor, otherwise known as a vector. Now that you have that
+one-dimensional tensor, let's think about that. They'll grow horizontally, like things on the
+X-axis by three units. Nothing on the Y-axis yet, so we're still in one-dimension. That's why the shape is 3, 1-2-3, comma nothing. Let's level up. Now we have a matrix of
+numbers or a 2-D array. Take a look at the shape; 2,3. That means we have two rows
+and three columns of data. The first row being that
+original vector of 3, 5, 7, which also has three
+elements in length. That's where the three
+columns of data comes from. You can think of a matrix
+as essentially a stack of 1-D tensors. The first tensor in
+the vector is 3, 5, 7. The second 1-D
+tensor that's being stacked is the vector 4, 6, 8. We've got height and
+we've got width. Let's get more complex. What does 3-D look like? Well, it's a 2-D tensor with another 2-D tensor on top of it. Here you can see that
+we're stacking the 3, 5, 7 matrix on the 1, 2, 3 matrix. We started with
+2,2 by 3 matrices, so our resulting shape of the
+3-D tensor is now 2, 2,3. Of course you could
+do the stacking code itself instead of just
+counting parentheses. Take the example here. Our x_1 variable is a tf constant constructed from a
+simple list; 2, 3, 4. That makes it a vector
+with a length of three. X_2 is constructed by
+stacking x_1 on top of x_1. That makes it a 2 by 3 matrix. X_3 is constructed by stack in four x_2's
+on top of each other. Since each x_2 was
+a 2 by 3 matrix, that makes x_3 a 3-D tensor
+with the shape of 4.2.3. X_4 is constructed by
+stacking x_3 on top of x_3. That makes it to 4
+by 2 by 3 tensors, with the final shape
+of 4-D tensor. If you've worked with
+arrays of data before, like NumPy, there's similar
+except for two points. Tf.constant will produce
+tensors with constant values, whereas tf.variable
+produces tensors with variable values or
+ones that can be modified. Now this will prove super useful later when we need to adjust those model weights during our training phase
+of our ML project. The weights can simply be
+a modifiable tensor array. Let's take a look at
+the syntax for each, and so you'll become a
+ninja with combining, slicing and reshaping
+tensors as you see fit. Here's a constant tensor produced well by tf.constant of course. Remember that 3, 5, 7 in a 1-D vector, it's just stacked here
+to be that 2-D matrix. Pop quiz. What's the shape of x? How many rows or
+stacks do you see? Then how many columns do you see? If you said 2 by 3 or two rows and three columns, awesome. When you're coding it, you
+can also invoke tf.shape, which is quite
+handy in debugging. Much like you can stack tensors to get higher
+level dimensions, you can also slice them down too. Let's look at the
+code for this for y. It's slicing x. Is it slicing rows,
+columns or both? The syntax is, let
+y be the result of taking x and take all rows, that's the colon, and
+just the first column. Keep in mind that Python is zero index when it
+comes to arrays. What would the result
+be? Remember, we're going from 3-D to 2-D. So your answer should only be a single bracket list of numbers. If you said 5, 6, awesome. Again, take all rows, only the first index column. Don't worry, you'll get
+plenty of practice with this coming up in your lab. We've seen stacking and slicing. Let's talk about reshaping
+with tf.reshape. Let's use the same 2-D
+tensor or matrix of values that is x.
+What's the shape again? I think rows and columns. If you said 2 by 3, awesome. Now, what if I reshaped x
+as 3 by 2 or three rows, two columns? What would happen? Well, essentially Python
+would read the input by row by row and put numbers
+into the output tensor. It'll pick the first two values, put them in the first row, so you get 3, 5. The next two values 7, 4 in the second row. The last two values 6, 8 into the third row. Again, two columns, three rows. That's what reshaping does. Well, that's it for
+constants. Not too bad. Next up are variable tensors. The variable constructor requires an initial value
+for the variable, which can be a tensor
+of any shape and type. This initial value defines the type and the shape
+of the variable. After construction, the type and shape of the variable are fixed. The value can be changed using one of the
+assigned methods; assign, assign_add or assign_sub. As we mentioned before, tf.variable are generally
+used for values that are modified during training such as, as you might guess,
+the model weights. Just like any tensor, variables created with variable, can be used as inputs
+to your operations. Additionally, all the
+operators are overloaded for the tensor class are carried
+over to the variables. TensorFlow has the
+ability to calculate the partial derivative of any function with
+respect to any variable. We know that during training, weights are updated by using
+the partial derivative of the loss with respect to
+each individual weight. To differentiate automatically, TensorFlow needs to remember what operations happened in what order during that forward pass. Then during the backward pass, TensorFlow traverses this
+list of operations in reverse order to compute
+those gradients. GradientTape is a context manager in which those partial
+differentiations are calculated. The functions have
+to be expressed within TensorFlow
+operations only. But since most basic operations like addition, multiplication, subtraction, are overloaded by TensorFlow ops, this
+happen seamlessly. Let's say we want to
+compute a loss gradient. TensorFlow records all
+operations executed inside the context of
+tf.GradientTape onto a tape. Then it uses that tape
+and the gradients associated with each
+recorded operation, to compute the gradients of
+our recorded computation using that reverse mode differentiation
+like we mentioned. There are cases where you
+may want to control exactly how gradients are calculated rather than using the default. These cases can be when the default calculations
+are numerically unstable or you wish to cash an expensive computation from the forward pass,
+among other things. For such scenarios, you can use custom gradient
+functions to write a new operation or to modify the calculation of
+the differentiation.

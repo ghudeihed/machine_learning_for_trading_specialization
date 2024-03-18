@@ -1,0 +1,89 @@
+In this session, you
+will learn how to backtest and update
+your pairs model. You will construct a
+static pairs model and identify the
+steps to backtest it. You will also learn
+about a method to dynamically update your pair
+choice and backtest it. You will learn how backtesting helps you to select
+an optimal pair. In the previous session, we discussed how to
+create a trade blotter. When you execute a trade, you keep track of the pair, direction, entry time and level, exit time and level,
+and category. You will produce an array of historical trades
+known as paper traits. You should assume small
+trading sizes because we're not using the bid size and
+offer size in our model. In previous lessons,
+you also learned about the basics of backtesting. I encourage you to review those
+materials if you need to. We will pick up where we
+left off with backtesting. You could back tests on static pairs or
+dynamically updated pairs. First, let's talk about
+static pair backtests. For example, we
+identified KLAC and ADSK. You could backtest
+using this pair statically for several
+months of data. The direction is determined by the relative performance
+of the stocks. The main advantage of running these backtest is simplicity. This will be your easiest tests both to run and to assess. Similarly, you can run
+other static pairs. When you compare
+how good a pair is, the members remain
+fixed therefore it will be easy to interpret
+and rank the results. Your optimal pair could be a weighted average of
+the following criteria. First, you seek to
+minimize the distance between the two stock
+loadings in component 1. You seek to minimize
+the distance between the absolute value of the two stock loadings
+in component two. You will choose two stocks whose loadings must have
+opposite signs and component 2. Now you will look at
+a potential method to update and change
+your pair policies. You could dynamically update
+the principal components. In doing so, you will
+create new loadings. Recall that you base the pair selection on the
+principal component loadings. Your rule can be formalized to update the principal
+components with the last 12 months of data then you search
+for an optimal pair. Re-running the principal
+components means that you would no longer
+stick with static pairs. Instead, by updating the data, you update the loadings. New loadings could facilitate
+the selection of new pairs. Of course update frequency and choice of optimization
+criteria are key. Should these be part
+of the backtest? It will be difficult. You decide how often to
+update the loadings using your experience and
+the feasibility of computation in
+guiding your selection. Now we will talk about
+optimizing the parameters of your model based on four
+key performance metrics. Let's illustrate the back-test
+of a static example. When you run the Data,
+recall that you are varying three parameters: entry signal, profit-taking level, stop loss. As before, we will assume
+there are no timeouts. For each combination
+of these parameters, which is a model, you will want to expose the
+model to a history of prices. Suppose you have 50
+different entry signals, 50 different profit-taking levels and 50 different stop losses. In total, you have a 125,000
+combinations of parameters. You can clearly see the need
+to have efficient software. You write code that quickly
+produces a trade blotter. You also need to have
+code that quickly summarizes each trade blotter
+with your key metrics. You take the existing history of stock prices as we discussed. You divide this into
+two unequal parts. Suppose you use two-thirds
+of the history for training and you use the remaining one-third of
+the history for testing. We'll call the first
+part the Training data. We'll call the second
+part Testing data. Now you begin backtesting. You take your first set of
+parameter combinations. You apply them to
+the training data. This produces a trade blotter. From previous sessions, you learn how to process a trade blotter. The trade blotter
+get summarized by key metrics: Total
+win, average win, percent win, expected loss, volatility and
+steadiness of returns. Assume that you will
+use static pairs. You define an optimal criteria. You may choose the
+highest sharpe ratio. This measures the total win
+per unit of volatility. Based on your a 125,000 models, you select the top 50 percent. Now you proceed to testing. You want to see how well these
+models do on unseen data. This addresses the
+problem of overfitting. Overfitting means that you model patterns in the data you've seen but you did not generalize the model to work
+well on data it hasn't seen. One of the best ways to
+avoid overfitting is to have some data that is held back when you're training the model. Then you present what you
+think are optimal parameters. Note that you take the top half of models from the training set. You will see how these
+perform in the testing set. Using the testing data, you produce a second
+trade blotter. You can select the same criteria such as the Sharpe ratio. You repeat this for all the models you chose to test after
+the training round. So you now have over
+60,000 models to compare. For each model, you have a training metric and
+a testing metric. You decide to pick the model that has the best overall performance. Suppose you use a criterion
+that weights 33 percent to your training metric and 67 percent to your
+testing metric. You get to choose the specific formula for
+selecting the optimal model. You select those weightings
+based on your experience with model performance in
+paper or live training. In the next section, we will discuss how you can
+improve your model.

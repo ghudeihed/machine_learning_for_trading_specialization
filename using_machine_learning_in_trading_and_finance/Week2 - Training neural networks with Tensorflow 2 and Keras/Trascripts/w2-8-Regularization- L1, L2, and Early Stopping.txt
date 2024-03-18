@@ -1,0 +1,72 @@
+Regularization is one of those major fields of research
+within machine learning. There are many published
+techniques and I guarantee you as soon
+as you watch this, there's many more out there inside scientific
+journals for you to see. We've already mentioned
+early stopping. There's also data
+set augmentations, noise robustness,
+sparse representations. They're all groups of methods
+under the umbrella of parameterized norm
+penalties and many more. In this module, we'll have
+a closer look at L1 and L2 regularization methods from the parameter norm penalties
+group of techniques. I like to penalize in
+the complex models. But before we do that, let's quickly remind
+ourselves what problem regularization is
+trying to solve for us. Regularization refers
+to any technique that helps generalize a model. A generalized model
+performs well, not just on your training data, but also on never
+before seen test data. Let's take a look at L1
+and L2 regularizers. L2 regularization adds a sum of the squared parameter weights
+term to the loss function. This is great at
+keeping weight small, having stability, and
+a unique solution. But it can leave the model unnecessarily large and complex, since all the features
+may still remain, albeit with a small weight. L1 regularization
+on the other hand, adds the sum of the absolute value of the parameters' weights
+to the loss function, which tends to force the weights of not very predictive features, useless features, to zero. This acts as a built-in
+feature selector by killing off those bad
+features and leaving only the strongest in the model. The resulting sparse
+model has many benefits. First, with fewer coefficients
+to store and load, there is a reduction
+in storage and memory needed with a much
+smaller model size. Seems like an awesome win. This becomes especially important for those embedded models, like on the Edge on your phone. Also with fewer features, there are a lot fewer multi-ads, which not only leads to
+increased training speed, but much more importantly,
+increased prediction speed. Even if you had an
+amazingly accurate model, if a user is waiting 60 seconds or a minute and they expected
+it to be sub-second, it's not going to be any use. To counteract
+overfitting, we often do both regularization
+and early stopping. For regularization, model complexity increases
+with large weights, and so as we tune
+and start to get larger and larger weights for
+rarer and rarer scenarios, we end up increasing the loss. So we stop. L2 regularization will keep the weight
+values smaller and L1 regularization
+will make the model sparser by dropping out
+those poor features. To find the optional L1
+and L2 hyperparameters during your
+hyperparameter turning, you're searching for a point in the validation loss function where you obtain
+the lowest value. At that point, any less regularization increases
+your variance, starts overfitting, and
+hurts your generalization. Any more regularization
+increases your bias, starts underfitting, and
+hurts your generalization. Early stopping stops training
+when overfitting begins. As you train your model, you should evaluate your model on your validation step
+every so often, every epoch, a certain number of steps or minutes, et cetera. As training continues,
+both the training error and the validation error
+should both be decreasing, but at some point, the validation error might actually begin to
+start increasing. It's directly at
+this point that the model's beginning to memorize the training data set
+and lose its ability to generalize on the
+validation data set. More importantly, forget
+the validation data set, it can generalize to what
+you're going to be predicting on the future when you deploy this model out in the real world. Using early stopping would
+stop the model at this point, and then would then back up
+and use the weights from the previous step before it hit this validation error
+inflection point. Here, the loss is just length w, D with no regularization term. Increasingly, and
+it's interesting that the early stopping is an approximate equivalent of the L2 regularization as is
+often used in its place, because it's
+computationally cheaper. Fortunately in
+practice, we always use both explicit regularization, L1 and L2, and also some amount of early
+stopping regularization. Even though L2
+regularization and early stopping seem a bit redundant, in real-world systems,
+you may not quite choose the optimal hyperparameters
+until you get your model out there in the real world and see what a real-world data
+set can do for you.

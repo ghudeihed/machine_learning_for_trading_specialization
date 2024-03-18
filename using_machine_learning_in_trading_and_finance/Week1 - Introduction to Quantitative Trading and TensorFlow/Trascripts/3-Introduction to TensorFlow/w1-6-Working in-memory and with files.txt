@@ -1,0 +1,61 @@
+When data used to train
+a model sits in memory, we can create an input pipeline
+by constructing a dataset using
+tf.data.Dataset.from_tensors or
+tf.data.Dataset.from_tensor_slices. From_tensors combines the input and returns a dataset
+with a single element. While from_tensor_slices,
+creates a dataset with a separate element for each
+row of the input tensor. Here is an example
+where we'll use TextLineDataset to load
+in data from a CSV file. This is a dataset comprising of lines from one or
+more text files. The TextLineDataset
+instantiation expects a filename and it is
+optional arguments. For example, like the
+type of compression of the files or the number
+of parallel reads. That map function
+is responsible for parsing each row of the CSV file. It returns a dictionary
+from the file content. Once that's done, shuffling and batching and prefetching
+or steps that can be applied to the dataset
+to allow the data to be fed into the
+training loop iteratively. Please note that it's
+recommended that we only shuffle the training data. For the shuffle operation, you may want to add a
+condition before applying the operation to a dataset to
+ensure that it's training. Finally, we have to address
+our initial concern. Loading a large dataset from
+a set of sharded files. An extra line of code will do. We'll first scan the disk
+and load a dataset of filenames using a dataset
+that list_files functions. It supports a glob-like
+syntax which starts to match filenames with a common pattern.
+It's pretty useful. Then we'll use a TextLineDataset
+to load the files and turn each filename into
+a dataset of text lines. We flatMap all of them together
+into a single dataset, and then we map
+each line of text, we use that map to apply the CSV parsing
+algorithm and finally obtain a dataset of
+features and labels. You might wonder, why are
+there two functions for mapping, map and flatMap? Well, one of them is to
+simply do a one-for-one transformation and
+the other one is one-to-many transformations. Parsing a line of text is a one-to-one
+transformations, we use map. When loading a file
+with TextLineDataset, one filename becomes a
+collection of text files. That's a one-to-many
+transformation, and it's applied with
+flatMap to flatten all the resulting
+TextsLineDatasets into a one. Dataset allows for
+data to be prefetched. Let's say that we have a
+cluster with the GPU on it. Without prefetching, the
+CPU will be preparing the first batch while the GPUs just hang
+around doing nothing. Once that's done,
+the GPU can then run the computations
+on that batch. When it's finished, the CPU will start preparing the next
+batch and so forth. You can see that this
+is not very efficient. Prefetching allows for
+subsequent pack batches to be prepared as soon as the previous batches had been
+sent away for computation. By combining prefetching and multi-threaded loading
+and pre-processing, you can achieve a
+very good performance by making sure that each of your GPUs or CPUs
+are constantly busy. Now that you know how
+to use datasets to generate proper input
+functions for your models, and to get them training on
+large out of memory datasets. But datasets offer a rich API for working on and
+transforming your data. Let's take advantage of them.

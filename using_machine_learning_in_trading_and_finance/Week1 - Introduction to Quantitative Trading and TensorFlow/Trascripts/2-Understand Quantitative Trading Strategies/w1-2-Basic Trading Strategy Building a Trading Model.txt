@@ -1,0 +1,28 @@
+Now we are going to look at
+how you can incorporate exit rules into some basic strategies. Now that you've initiated a trade,
+you've done half the work. Now, you're ready for the second half. How do you exit the trade? We have three types of possible exits,
+one, you make money. This is a profit exit. Two, you lose money. This is a stop-loss. Three, you run out of time. This is a time-out. Let's start by looking in
+an example of a profit exit. Make 25 basis points, recall that
+a hundred basis points equals 1%t. This means that you want to
+make a 0.25% return. Suppose, you bought it 100. Your trading objective
+is to sell at 100.25. Here's another example of a profit exit. I had 100, sell it at 103 for a 3% profit. You make 300 basis points. Certainly, you're more excited
+about making $3 per share and just 25 cents per share. However, you also realize this rule has a
+harder time of getting done if the market starts to move in the other direction. In the example shown of buying Apple
+at 203.88 and selling it at 210. You would have to wait almost
+two weeks to exit your trade. You set your profit exit at
+a level where two things happen. First, you cover all market
+costs such as bid-ask spread, any brokerage commissions and
+exchange fees. Second, you can capture
+a desired level of profit. This level comes from the difference
+between the entry and exit points less market cost. Your goal is to get profited out and earn at least your required
+return on trading capital. Your worst outcome is getting stopped out. Suppose you got the direction wrong,
+the market moves against you? You want to exit the trade with
+as little pain as possible. Here's an example of a stop loss. Close the position,
+you're down 150 basis points. Getting in in 100,
+you would get stopped out at 98.50. When you're profited out you make money,
+when you're stoppe out you lose money. You can also get timed out. This means you ran out of time. Suppose you're only allowed
+to hold the trade intraday. That means that you have to close
+your position by the end of the day. If prices do not move too much,
+you get stuck near your entry signal, you get timed out when you hit neither
+the profit exit or the stop-loss. We'll continue our discussion of these
+stop losses in the next session.

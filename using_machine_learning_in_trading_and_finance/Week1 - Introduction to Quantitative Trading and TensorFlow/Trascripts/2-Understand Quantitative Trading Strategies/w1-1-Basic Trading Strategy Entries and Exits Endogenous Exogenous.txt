@@ -1,0 +1,89 @@
+In this session we will discuss the key
+components that are common to every trading strategy, no matter how complex. I hope this foundation
+will help guide you as you develop more advanced strategies
+using machine learning techniques. By the end of the session, you will understand the different
+types of entry and exit rules. You also know what type of market
+data you need to develop strategies made up of endogenous and
+exogenous trading rules. Lastly, you will construct a strategy
+that incorporates these rules. To begin, let's talk about the entries and
+exits of trading. We'll discuss entry signals and
+exit signals. These are the key features that
+define an algorithmic trading model. In the context of algorithmic trading, I think this is the most
+important way to describe a model. In fact, you can summarize an algorithmic
+trading model by describing its entry and exit signals. Algo traders are objective,
+metric driven, and focused on dispassionate risk management. Discretionary traders on the other hand,
+often bet huge sums on hunches, believes, intuition gut feelings or
+opinions. Their strategies are subject to
+shifts in attitudes, emotions, energy level and
+are heavily skewed by recent memory. Decisions will be affected by their P&L,
+month to month or year today, in an attempt to
+end the year up in profits. Risk tolerance will change as they may
+take greater risks to offset losses or to have one sizable trade
+to make them profitable. The algorithmic trader avoids these
+issues by being objective upfront, objectivity requires a rule for
+trade entry. Overall, there can be two
+types of entry rules. The first is an endogenous entry rule. This means your user rule based
+purely on the security your trading. In this section, we are going to
+explore the use of endogenous rules. When you only have access to price and
+volume data on the asset your trading. An exogenous rules where you
+are able to improve your trading performance with other data sources. For example, you might say buy
+Apple if the price goes below 200, this rule requires you only
+to watch Apple share price. Naturally, you will need to have
+a real-time feed to observe the price of Apple's. When Apple trades below 200
+you submit a buy order. You can stipulate more
+complicated endogenous rules. For example,
+buy Apple if the price hits a 10-day low. Again this rule requires you
+only to watch Apple, but you also need to have an up-to-date
+record of the 10-day low. Let's look at one more endogenous example. You may say buy Apple if the volume
+exceeds the previous day's volume and the closing price is lower
+than the daily average. You still only need to watch Apple, but you also need to monitor
+both price and volume. The stocks volume is part
+of its trading history. Essentially a stocks history
+consists of price and volume traded. You can see in this graph that your
+endogenous rule would cause you to buy Apple on November 20th,
+when Apple closed at about $177. Apple subsequently traded is lowest $171,
+before recovering to about 180. But what if you want to use other data? Then you would use an exogenous rule. An exogenous rule requires you
+to watch not only Apple but other securities or data values as well. For example, you might say buy Apple
+if Microsoft's price falls 5%. You may think the lower sales
+at Microsoft computers may mean increased sales of Macs. Now you must also track
+the price of Microsoft. Here's an exogenous rule
+based on macro data. My Apple if the US
+unemployment rate decreases. You see less unemployment
+as a stronger economy, you believe this optimism can translate
+into higher equity prices for Apple. Therefore you base your entry
+signal on macro economic reports. These economic indicators get
+announced at specific times, so it's easy for you to prepare for
+such trades around events. Let's look at another
+example of an exogenous rule, this time driven by fundamental data. Buy Apple if reported
+quarterly sales increases or profit succeed analyst expectations. While this room may get
+you in the market rate, you can see it involves
+more than Apples price. Here you have to get Apple sales and
+earnings data. This data is not part of Apple
+stock history so it is exogenous. Let's try to understand
+the difference between endogenous and exogenous to bit better. We'll start with endogenous. If you only use a stock price and
+volume, you essentially believe that the data itself contains the information
+for you to initiate a trade. You look for patterns using the prices and
+volumes of the stock. Essentially you're looking for some type
+of extrapolation of the historic data. That is you believe there is some structure to the data by
+looking at the series itself. You may want to take a different approach. You may want to use other securities
+like you did with Microsoft, this makes your model exogenous. You may want to use the company's
+fundamental data, like sales and profitability. In that case you're saying that
+exogenous variables help influence the future prices. It takes more than extrapolation, it requires a synthesis of
+different types of data. Similarly, you may want
+to use economic data. You can use the level of unemployment or
+inflation, or consumer confidence, or any of the numerous economic
+indicators that affect markets. We might also use more complicated
+factors like monetary policy. For example, you predict that the
+Federal Reserve will cut interest rates. Perhaps you want to buy
+stocks particularly Apple, you can use geopolitical
+predictions as well. For example, if you believe there will be a trade
+war you want to sell stocks like Apple. You can get data from other markets. For example, if the options on
+Apple show decrease volatility, you may want to buy Apple. The whole idea is that if
+you use extra variables, there are a variety of ways you
+can construct and specify rules. You use this approach if you have strong
+beliefs that knowing these extra variables can give you better predictions
+than the price and volume alone. This is where machine
+learning helps tremendously. In the industry, we see that endogenous rules tend
+to come from technical analysis. We have different names for
+groups that tend to make exogenous rules. These are quantitative trading groups or
+statistical arbitrage groups or simply strategists.

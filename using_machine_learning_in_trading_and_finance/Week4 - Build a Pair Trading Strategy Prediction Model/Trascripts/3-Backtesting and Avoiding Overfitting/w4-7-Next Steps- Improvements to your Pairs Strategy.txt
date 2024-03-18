@@ -1,0 +1,75 @@
+In the previous lesson, you learned how to
+back test your model. In this section, we will list some qualitative ways
+to improve your model. Some of these ways will involve adjusting for
+external factors and understanding how this impacts the profitability of your traits. We will identify external factors that can affect stock prices and help you understand
+how each type of factor effects trade
+profitability. This will help you include external factors in your models. We will look at a range of
+external factors and events including time and day of week, related markets, economic events, and update to market indices. To start, let's look at time
+and day specific effects. The first thing you look at our at the time of day effects. Do you tend to make
+profits only in the first hour of the
+stock market is open? Do you tend to have
+profitable trades only in the last 30 minutes
+the market is open? Is there a great proportion of daily volume that trades
+at the open and close? You may realize that
+your model may not work the rest of the day when
+trading may be lighter. You should produce a graph
+that illustrates all of your profitable trades broken down by the hour of the day. If you see any differences
+from one plot to another, then you can qualitatively
+state that there is a time of day effect in place. Knowing this, you may choose to filter your data so that you only back-test on those points at the most profitable
+times of the day. In other words, you
+avoid trying to force a one size fits all model. That means that you may back-test parameters for certain
+parts of the day only. For other parts, you
+may choose not to run a model or perhaps you
+back-test that part separately. This is the main idea behind most of the suggestions
+that will fall. When you understand the
+details of your profits you can understand when and
+how your model works. Next, you can examine
+day of the week effects. In many stocks, there
+may be higher volume or higher volatility on some
+weekdays and others. That means you may be
+more likely to trade if you're models require
+some amount of volatility. Perhaps you choose not to use certain weekdays which have
+historically low volatility. The prices and returns of the stocks in your
+pair can also be affected by trading and related markets such
+as derivatives. For example, let's
+consider options markets. Once a month typically
+on the third Friday of the month the options
+on equities expire. Is there more volatility
+on the day options expire? In an annual back-test, there would be 12 such days. Do we detect any difference
+between trades occurring on option expiration days versus trades taken from other days? Some traders decide not to trade these days due to higher
+volatility in the markets. Other traders may make their living just trading
+around these days. Next, we'll look at how
+the periodic release of macroeconomic and
+company-specific information can affect your trading. You can examine economic events. In our first lesson, you learned that economic
+events could be part of the rules that help us
+to initiate a trait. Likewise, when you examine your results just
+to see if they are influenced in any way by
+key economic reports. If you decide to trade when an unemployment
+number is released, you may be in for a surprise. Markets can move very rapidly
+in the minutes leading up to and immediately following such an important
+economic indicator. Any report that has a
+surprise element can create a frenzy trading
+environment that can push an otherwise successful strategy right to its stop-loss level. You also need to anticipate quarterly earnings announcements. Earnings announcement
+usually have a much bigger impact on the effective stock's price
+than announcements of general economic indicators
+trading volume and volatility are much higher before and after announcements, as traders and asset managers reposition
+their portfolios. If you decide to carry a position through
+an announcement, you must make sure that
+your stop loss orders anticipate potentially
+much higher volatility. Updates to market indices can
+affect your trade if one of the stocks in your pair is added or dropped
+from a market index. A market index comprises companies that meet
+certain criteria. Periodically, these
+criteria upgrade certain companies to
+be added to the index. Also you'll see that
+certain companies are deleted from the index. This can have an effect
+on their stock price. Imagine a fund manager
+hasn't investment mandate to track that index. If the stock is no longer in the index the fund manager is likely going to
+sell that stock. The combined effect of this route the market
+can be enormous. Deleted stocks from indices tend to have big drops in price. We've identified some
+events that are periodic, like the hour of the day, day of the week monthly economic indicators and quarterly
+earnings announcements. We've also identified
+less frequent events like index additions
+and deletions. The important point is the
+same for both types of events. You need to understand if and how your trading results will be
+influenced by these events.

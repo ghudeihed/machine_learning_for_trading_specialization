@@ -1,0 +1,119 @@
+Now let's talk about deep neural
+networks with the Keras functional API. In this section,
+you'll learn how to create wide and deep models in Keras with just
+a few lines of TensorFlow code. Take a look at this. No, this section is not about
+ornithology or the study of birds. We all know that seagulls can fly, right? Well, we also know that
+pigeons can fly as well. It's intuitive that animals with wings
+can fly, just like we learned growing up. So making that generalization or
+that leap, it feels natural. [SOUND] But what about penguins? Or I guess you could say ostriches for
+that matter. It's not an easy question to answer. But by jointly training a wide
+linear model for memorization, alongside a deep neural network for
+generalization, one can combine the strengths of both to bring us one
+step closer to the human like intuition. At Google we call it wide and
+deep learning. It's useful for
+generic large scale regression and classification problems
+with sparse inputs. And again, it's categorical features with
+a large number of possible feature values, like high dimensionality. Such as recommended systems, search, and ranking problems, those are some
+of the most common scenarios. Now your human brain is a very
+sophisticated learning machine formed by rules by memorizing everyday
+events like hey, that seagull can fly. Pigeons can fly, but also generalizing those learnings to
+things that we haven't seen before. Well, okay,
+I think animals with wings can fly. Perhaps more powerfully, memorization
+also allows us to further refined our generalized rules with exceptions,
+like penguins can't fly. As we're exploring how to
+advance machine intelligence, we asked ourselves the question, can we
+teach computers to learn like humans do by combining both
+the power of memorization, with generalization making that
+leap from training to inference? This is what a sparse matrix looks like. Super, super wide with lots and
+lots of features. You want to use linear models to
+minimize the number of free parameters. And if the columns are independent
+linear models may suffice. Nearby pixels however,
+tend to be highly correlated. So putting them through a neural
+network or a deep neural network we have the possibility that
+the inputs get decorrelated and mapped to a lower dimension. Intuitively this is what happens when your
+input layer takes each pixel value, and the number of hidden nodes is much
+less than the number of input nodes. A wide and deep model architecture
+is an example of a complex model that can be built rather easily
+using a Keras functional API. The functional API gives your model
+the ability to have multiple inputs and outputs. It also allows for models to share layers. And actually it's a little
+bit more than that, it will ask you to define ad hoc
+network graphs should you need. With that functional API, models are
+defined by creating instances of layers, and then connecting them
+directly to each other in pairs. Then defining a model that specifies
+the layers to act as the input, and the output to the model,
+kind of stringing everything together. The Functional API it's a way for you to create models that are more
+flexible, than the sequential API. It can hit all models with nonlinear
+topology, models with shared layers, and models with multiple inputs or outputs. So consider that functional
+API in those use cases. The API also makes it easy to
+manipulate multiple inputs and outputs. This can't be done with
+the sequential API. Here's a very simple example. Let's say you're building a system for
+ranking custom issue tickets by priority and
+then routing them to the right department. Your model could have these four inputs, the title of the ticket,
+that's a text input. The text and body of the ticket,
+also text input. Any tags added by the user,
+categorical input, an image representing different logos
+that could appear on that ticket. It will then have two outputs, a
+department that should handle the ticket, you can use a classification
+activation function like softmax output over the set of departments. And a text sequence with
+a summary of the text body. In the functional API, models are created
+by specifying their inputs and outputs in a graph of layers. That means a single graph of layers can
+be used to generate multiple models. You can treat any model as if it were
+layer by calling it on an input or an output of another layer. But that was sick and that's kind of cool. Note that by calling a model,
+you're not just reusing the architecture of the model,
+you're also reusing its weights. This is an example of what code for
+an auto encoder might look like. Notice how the operations
+are treated like functions with the outputs serving as
+the inputs in the subsequent layers. Another really good use for the functional
+API are models that share layers. Shared layers are layered instances
+that get reused multiple times in the same model. They learn features that correspond to
+multiple paths in the graph of layers. Shared layers are often used when code
+inputs that come from say similar places, like two different pieces of text, that
+feature relatively the same vocabulary. Since they enable the sharing of the
+information across its different inputs, and then make it possible to
+train a model, a much less data. If a given word is seen in one of those
+inputs that will benefit the processing of all inputs that go in
+through that shared layer. To share a layer in the functional API, just call the same layer
+instance multiple times. Okay, now for the fun part, how do you
+actually create one of these wide and deep models? Okay, so we're going to start by
+setting up the input layer for the model using the features
+of the model data. For this example, we'll be using
+the pickup and drop off latitude and longitude. As well as the number of passengers to
+try to predict the taxi cab fare for a given ride. These inputs will be fed to the wide and
+deep portions of the model. Using the inputs above, we can then
+create the deep portion of the model. Layers.Dense is a densely
+connected neural network layer. By stacking multiple layers,
+we can make it deep. We can also create the wide
+portion of the model, for example, using DenseFeatures,
+which produces a dense tensor based on a given amount of
+feature columns that you define. Lastly, how do you bring
+them both together? We combined the wide and deep portions and
+compile the model as you see here. Training, evaluation, and
+inference work exactly the same way for models built with
+the sequential API method, or the functional API like you
+saw with these examples. Okay, so let's talk about some
+strengths and weaknesses. Strengths, it's less verbose than
+using Keras.Model subclasses. It validates your model
+while you're defining it. In the functional API,
+your input specification as your shape and your dtype is created in
+advance via the input. And every time you call a layer, the layer
+checks that the specification passed to its matches, its assumptions, and arrays
+a super helpful error message if not. This guarantees that any model that you
+build with a functional API will run. All debugging other than
+conversions related debugging will happen statically during the model
+construction and not at execution time. This is similar to type
+checking in a compiler. Your functional model is plottable and
+inspectable. You can plot the model as a graph, and you can easily access
+intermediate nodes in this graph. For example, to extract and reuse
+the activations of intermediate layers. Your functional model can be serialized or
+cloned. Because a functional model is a data
+structure rather than a piece of code, it's safe to serialize and can be saved as
+a single file that allows you to recreate the exact same model without having
+access to any of the original code. See our savings serialization guide for
+more details, I'll provide a link. Here are some weaknesses. It does not support dynamic architectures. The functional API
+treats models as DAGs or directed acyclic graphs of those layers. This is true from most deep learning
+architectures, but not all. For instance, recursive networks or tree
+RNNs do not follow this assumption and cannot be implemented
+in the functional API. Sometimes you just need to
+write everything from scratch. When writing advanced architectures, you may want to do things that are outside
+the scope of defining a DAG of layers. For instance, you may want to
+expose multiple custom training and inference methods to your model instance. This would require subclassing.

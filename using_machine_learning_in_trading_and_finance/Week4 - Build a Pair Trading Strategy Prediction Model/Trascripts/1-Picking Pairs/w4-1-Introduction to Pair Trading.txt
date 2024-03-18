@@ -1,0 +1,80 @@
+In this session,
+we introduced pairs trading. We will discuss what pairs trading is and
+how you can make money doing it. We will discuss what you need to know
+about the members to form a suitable pair. We will look at the advantages
+of trading a pair of stocks or other assets as opposed to
+trading a single stock. We will also explore a number of
+scenarios under which a pair trade can be profitable. Lastly, we will construct
+a beta hedge pair trade. First, we're going to look at some of the
+benefits of trading two stocks together. When you trade one stock,
+you are betting on the direction. Suppose you are bullish on Apple. You buy Apple,
+you expect the price to increase. It does. You sell it at a higher price,
+you were able to buy low and sell high. As long as you cover costs,
+this trade makes you money. To illustrate, let's pick
+a company on which we are bearish. We choose Microsoft. To review, selling short means
+selling something you don't know. First, you have to borrow the stock
+from someone who owns it or has the right to lend it. You may have to put up collateral and
+pay them a borrowing fee. You do this because you
+expect the price to decrease. In your hypothetical scenario, it does. Then you buy it back at a lower price. This is called covering a short,
+you sold high and then you bought low. We have the same story as before but
+in reverse. Again, as long as you cover costs, including the cost of borrowing,
+the trade makes money. Suppose you're bullish on one stock and bearish on another, you think Apple will
+increase and Microsoft will decrease. Is there a way you can trade
+the combination of these two securities as a package? There is. This is pairs trading. Pairs trading involves the combination
+of buying a security long and selling a security short. Again, this is because you have two
+different views on the companies. In the best circumstances, you think
+that the security buy will increase and at the same time you think that
+the security you sell will decrease. However you don't have to be 100% correct. Both companies can increase and
+you can still make money. How? As long as the company you buy
+outperforms the company you short, you will make money. If you're long security increases in price
+more than the short security increases in price, you have made a profitable trade. So you can think of pairs trade
+as a bet on out performance. In fact, you can even make money
+if both companies do worse. If you're long security goes down
+in price but you're short security decreases in price even more,
+then you also have a profitable trade. In this example,
+your long security appreciates and your short security depreciates. Here both sides are profitable. Your long Apple makes $1.21 and you're short Microsoft makes 3.83 for
+a total profit of 5.04. This is your optimal outcome. In this example your long security
+appreciates more than your short security appreciates. Your long Apple produces a profit
+of 3.64 and your short Microsoft produces a loss of 2.21 for
+an overall profit of 1.43. Not great but still better than
+your trade going the wrong way and hitting your stock loss. Suppose for example,
+you have a market correction. Equities fall 10%. To be sure you lose money
+on your long security, fortunately you make money
+on your short security. Can you wait your long and
+short positions so that these gains and losses offset each other? You absolutely can. You have to wait for
+the position sizes appropriately. The best you can do is
+bait await the positions. Suppose you enter a pairs trade
+with Apple and Microsoft. Each stock has a beta. As you recall from your previous
+studies or work experience, beta measures a stock's covariance with
+the market per unit of Market risk,. If the stock's beta is 1.1, then it has a 10% more systematic
+volatility than the overall market. If you were trading large cap stocks,
+you can use the S and P 500 to measure the overall market. If the market we're up 20% over
+some period, then you would expect the stock with a beta of 1.1 to
+be up 22% over the same period. Conversely if the market were down 20%, you would expect that
+stock to be down 22%. Suppose Apple has a beta of 1.1. Suppose Microsoft has a beta 0.96. What do we know? The capital asset pricing model or
+CAPM equation shown here asserts that a stock's expected excess return
+is purely a function of its beta. Times the expected Market risk premium, which is equal to the expected return on
+the market minus the risk free return. According to the estimates of beta based
+on the most recent 3 months of data, Apple is 14.6% riskier than Microsoft. Why? It's beta is 1.1 compared
+to 0.96 from Microsoft. When you form a pair, you will not buy
+the same amounts of Apple and Microsoft. Instead, you will trade an amount
+that leaves you beta neutral. The equation is simple. The beta of Apple times
+the market value of Apple should equal the beta of Microsoft
+times the market value of Microsoft. Recall that the market value is simply
+price times quantity or P times Q. Suppose Microsoft is 135 and Apple is 200. You wish to sell short
+a thousand shares of Microsoft. How many shares of Apple
+do you need to buy? From the equation we see the beta
+of Apple, times price of Apple, times quantity of Apple,
+must be equal to beta of Microsoft times price of Microsoft,
+times number of shares of Microsoft. So you need to buy 589 shares of Apple. We can check the market
+value of each side. The market value of Apple
+is 117,800 with a beta 1.1. The adjusted value of
+the Apple side is 129,580. The market value of Microsoft
+is 135,000 with a beta 0.96. The adjusted value of
+the Microsoft side is 129,600. Within rounding error,
+we are beta neutral. We have no problem finding the prices
+calculating the betas or determining the relative amounts of stock to buy and
+sell to put on a pair of straight. The real difficulty you will face
+is choosing the stocks themselves. How do you decide if two stocks
+are good candidates for pairs trading. This will be the topic
+of the next session.

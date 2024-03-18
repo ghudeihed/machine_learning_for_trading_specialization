@@ -1,0 +1,95 @@
+In this lesson, we are going to look at
+how to build a momentum trading model using Python and an open source
+library called Backtester from Auquan. In this lesson,
+we are going to build a trading model. To do that, we will first look at what the
+critical elements of a trading model are, then find ways to develop a trading
+strategy using machine learning. And finally, implement a momentum trading model using
+an open source library known as Auquan. We will use Auquan to
+generate trading signals and then use the library to build a trading
+model and see how it performs. We will then tweak it and
+see if we can make some money. So are you ready to learn some new tricks? Let's start. All of us want to build and test a trading
+system, that's why we're here for this course, and
+we also want to use ML in this process. How can we build and
+test a training model? In order to simulate algorithmic
+trading on our computers or on the cloud,
+there are several critical components. First, we need to simulate an exchange or
+connect an exchange to trade. What is an exchange? An exchanges where buyers and
+sellers come together to transact assets, could be stocks, bonds, currencies,
+futures, or even Bitcoins. In the chart here, we see that you're
+sitting in front of a computer or a phone want to buy or
+sell a certain asset. What you need is to connect to a broker,
+whether or electronic. Then the broker connects to an exchange
+where many more participants just like you have come together to buy and sell the same asset that
+you're looking to transact. The only question is at what prices and
+what sizes? This is where electronic trading comes in,
+we put in prices that we are willing to buy and sell and the exchange or
+the market simply matches our buy and sell orders against someone else's buy and
+sell orders at a price we have marked. To build an algorithmic trading system and
+test it, first you need to come up
+with a trading strategy. That is,
+decide which markets you want to trade, develop the logic with which
+you want to trade them, and define the parameters by which
+the trading logic is triggered. Next, you need prices of those assets. You can think of it as a database
+that holds historical prices for the assets you want to trade and
+an engine that helps test your strategy against historical prices,
+we will call this the back testing engine. Then you need something like a broker
+which you can think of as an execution engine which holds your assets, transport
+your capital and settles your traits. Then you need an exchange of something
+that connects your trades or other traders and gets it executed. Finally, you need to come up with
+a way to narrow your losses and let your profits run, in other words,
+a risk management system. In this course,
+we have all the four components, you'll be bringing your trading strategy. We will select a tool box, which will act as a back testing
+as well as execution engine. And finally, you will need to come
+up with a risk management system or a way to control your losses. Now that we have discussed all or at least
+a minimum of components, we need for an algorithmic trading system. We need to look for
+a toolbox that we talked about earlier. Since we don't want to create
+all the components from scratch, we have chosen an open source
+library called Auquan Toolbox. So that toolbox will make
+your job of developing and testing our trading algorithms easier. With Auquan's Backtester, all you need to
+do is to set some parameters for trading. It will provide you data sources, help you
+create some features, define your trading strategy, run your strategy,
+execute your trades, calculate your P&L. And finally, give you charts and
+graphs to help you see how it does it. Next, let's look at what's going
+to be the most critical component of this entire trading model,
+your trading strategy. In this section, you will see how to
+develop a profitable trading strategy and what considerations you need to keep in
+mind when using machine learning in that trading strategy. I'm sure you know by now that most
+traders, some say 90% of all traders fail to make money, because they don't have a
+consistently profitable trading strategy. That's right, 90%. So if you who have found a trading
+strategy that you think will consistently make money and keep it, congratulations,
+you're in the select 10% group. What makes a profitable trading strategy? It's more than finding a good idea, a good idea is one that works in one
+kind of stock or one kind of market. A consistently good idea is
+one that makes money in say, one stock over multiple periods or
+multiple markets. Can also be one that makes
+money in multiple stocks or assets in one kind of market. Either way,
+the key word here is consistent. To confidently create a good trading
+strategy takes a lot of back-testing, that's why we need a toolbox
+that makes our job easier. In addition, since this course
+is about machine learning, we need to know a bit more about
+using ML in a trading strategy. Let's look at how to create
+an ML based trading strategy. You need two things,
+one as you well know, any ML model needs features to learn from and
+labels to tell it what it is targeting. So first, you need to create
+features from the prices or fundamental data that you have. Features can be anything that
+helps determine your target. It could be fundamental data such as
+price to earnings ratios, cash flows, and earnings per share. Or technical indicators
+such as moving averages or ratios of price data, correlations,
+or more complex signals, or even combining these to
+create new features. To create features, look at how
+your chosen securities behave and decide on what the foundation will be. Do you want to trade your securities based
+on momentum or mean reverting features? Or are you more interpenetrating such
+as correlated or cointegrated features? Decide on one strategy and stick to it. Third, write an algorithm which will
+be known as your trading strategy using the previously mentioned
+features to decide the following, which instruments to buy, sell, or hold. When to buy or sell and how much,
+what size to buy or sell? These are some of the most important
+elements of your algorithm, take your time to build it and back test it before you
+put it into a live trading environment. That's right, the first rule for developing a sound trading
+strategy is test, test, test. The reason for that rule is that it's better to lose
+paper profits than real profits. So buy consistently working on fine tuning
+a trading strategy until you feel that it's consistently profitable you
+avoid losing real money later. The best traders I know
+always started small, worked very hard until they
+perfected to their trading strategy. And once they felt it was ready,
+they went in with bigger sizes. In the next section, we are going to
+build a momentum trading model using machine learning and
+we will do it step-by-step.

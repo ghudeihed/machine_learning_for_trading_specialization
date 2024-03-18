@@ -1,0 +1,56 @@
+In this session, we will outline strategies for picking pairs. You will use
+correlation to select pair candidates within
+an industry sector. You will also create a
+hierarchical clustering of stocks in the sector using
+their daily return matrix. Lastly, you will
+create a scree plot of the principal components
+of the sector stocks. Picking pair seems simple. The best sets of pairs have some relationship between them. One of the easiest
+ways to describe the relationship is to
+look for correlation. Correlation measures one type of dependency, linear dependency. There are other more complicated
+types of dependencies. One of these is cointegration, we'll discuss that later. Here, let's focus on correlation. Ideally the stocks would
+have a negative correlation. You can think of
+negative correlation as opposing movements, when one increases
+the other decreases. You're already bullish on one stock and bearish
+on the other. A true negative
+correlation will get you profitable on both
+sides of the trade. But that only happens if
+you get the sides right. If you went long a security that actually dropped in price, you'd lose money on
+that as well as on the short security that increased in price, direction matters. To illustrate, let's pick a company on which
+we are bearish. Again, we choose Microsoft. For the record, we're not
+actually bearish on Microsoft. You sell short Microsoft. In the real world,
+it is unusual to find negatively
+correlated stocks. Most stocks have
+positive correlation with each other and
+with the market. You do find some stocks
+that are virtually uncorrelated though.
+How do you start? One way to pick
+pairs is to select two companies and track
+their movements over time. One problem with this is
+that the relationship may change over time and your
+pair becomes outdated. We're going to take a
+different approach. We will allow the pairs
+to change over time. How do you start? You will look for correlations between stocks within a group. One such group or
+the stocks held by a sector exchange
+traded fund or ETF. The S&P 500 is divided
+into 11 sectors. You can get exposure
+to an entire sector by buying exchange
+traded fund or ETF, each fund holds a
+weighted amount of shares in members of a sector. For example, XLK is a sector fund dedicated
+to technology. Its largest holdings
+include Microsoft, Apple, Intel, Cisco, and Adobe. The securities are held in proportion to their market cap. Currently Microsoft
+and Apple account for more than 38 percent
+of XLK market cap. A sector ETF is a good
+place for you to start looking for good pair
+candidates. Here's why. When you examine an industry, you understand the
+different types of businesses, consider
+technology companies. Some companies
+specialize in software, others focus on hardware, some build semiconductors, other developed
+communications equipment. A third of the sector manufacture more general electronics. There are also companies that essentially provide IT services. Before we jump into some
+machine learning techniques, it helps you to
+understand these types. This will allow you to think in groups from which
+you can form pairs. Let's quantify the
+universe of stocks using the daily returns matrix. Suppose you collect
+daily returns from the companies in the XLK ETF, each row represents
+a trading day, each column represents one
+of the 68 stocks in the SLK. In a given cell you have a single stocks returned
+for a particular day. Let's say that you collect and cleanse a year's worth of data.

@@ -1,0 +1,57 @@
+Step 4. Split the data, create training
+cross-validation and test data-sets from the data. Once again, we look
+at the same data. It has lots of features, X1, X2, X3, etc and a target variable Y. We use a model to train
+on the data and predict. But how do we ensure that the model does not predict
+on what it has learned? In which case, it'll give
+very accurate results. For that, we need to do something known as
+cross-validation. One way is to split the
+same data set into three, as training set, second
+as validation set, and the third is test set. What does it all mean? Training data set, the sample of data used to fit the model. The actual data set that
+we use to train the model. Weights and biases in the
+case of neural network. The model sees and
+learns from this data. Validation data
+set, the sample of data used to provide
+an unbiased evaluation of a model fit on the
+training data set while tuning model
+hyperparameters. Evaluation becomes more
+biased as skill on the validation dataset is incorporated into the
+model configuration, hence the model occasionally sees this data but never does
+it learn from this data. Test data set, the sample
+of data used to provide an unbiased evaluation of a final model fit on
+the training data set. This is the held-out data
+that is used once a model is completely trained using
+train and validation sets. More popularly, in
+time-series data, a technique known as rolling
+cross-validation is used. Here the original
+data set is itself splits into two; train and test. After this, we keep aside the test set and choose
+the first X rows of our train data set to
+be the actual train and another Y rows after to
+be the validation set, where X is a fixed number
+of rows, say 1,000 rows. The model is trained and
+validated on these two sets. Once that is done,
+and another set of train and
+validation data sets, which start after the
+last validation row is used to split another train
+and validation data set. Basically, you repeatedly
+use your training set to generate multiple sets of
+train and validation sets. But in a linear way so as not to upset the time
+series nature of your data. Rolling cross-validation
+avoids overfitting and it's getting more
+and more popular. Another curious feature
+of time-series data, and especially
+financial market data is the concept of regimes. Regimes refer to the tendency
+of financial markets to often change their
+behavior abruptly. So while a model
+may appear to work well in the training
+dataset but perform poorly in the validation set
+since the training set maybe in one regime and the validation set maybe
+in another regime. In that case, you need regime switching models that can match the new behavior of financial variables
+which often persist for several periods after
+such a regime change. So you might want to consider
+having multiple models tuned for each regime in the data and then
+ensembling them. Another method is to use a classifier to detect
+what regime you're in and then apply the particular model that
+is trained for that regime. Either one of these
+approaches takes tremendous resources and
+time but it's well worth it. If you want a model, that works well for any kind
+of stock market regime.

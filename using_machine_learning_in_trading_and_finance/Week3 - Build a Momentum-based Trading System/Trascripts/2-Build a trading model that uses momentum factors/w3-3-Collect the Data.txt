@@ -1,0 +1,29 @@
+Step 2, collect reliable data, collecting cleaning data that helps
+you solve the problem at hand. Now that you have defined the problem in
+step 1, you need to collect some data. This is where your market
+data provider comes in. This can be Bloomberg, Reuters,
+Moody's, BlackRock, or any of the hundreds of market
+data providers out there. In addition to collecting
+voluminous amounts of data, you also need to check if the data
+you're getting is accurate. You also have a check if it is adjusted
+for dividends, stock splits, rolls, etc. Another very important check is alignment. This means time alignment. Let's say you collect data
+to predict stock prices. And one of the columns
+is earning per share. If you have a series of EPS for each
+time point in your data and a column for a stock price at each point, you have
+to make sure that the EPS that is known at that point in time for the stock is
+what is really known at that point. In some cases the EPS for
+a start maybe 30 days, 60 days, or even 90 days behind the stock price for
+particular earning season. So make sure you don't
+miss this time alignment. If you get this wrong, you may very
+well have a well performing model during training, but
+it may be completely wrong during testing. So keep this in mind while aligning
+features with your target variable. Nowadays, in the hunt for alpha or
+the exist return over a market return, many traders and portfolio managers are in
+search of what's called alternative data. This could be any of the following. A credit card transactions, email
+receipts, point-of-sale transactions, website usage, obscure city hall records,
+satellite images, social media posts, online browsing
+activity, shipping container receipts, product reviews, some or
+all of these may be useful. But again, the same caveats
+around time alignment of ply. If you don't align the date that
+the alternate piece of data was available with the date of of the target variable, you are likely to have a very
+messed up data for training. So be careful. I can't stress it enough.

@@ -1,0 +1,129 @@
+In order to build a
+momentum trading model, there are six steps involved. The first step is to
+define the problem. Although you may think you
+know what the problem is, you must learn to
+define the problem in terms that can enable you to use a machine
+learning algorithm. That's what we're going
+to do in this step. Let's review once again the key elements of
+building a trading system. First, you need to identify a strategy: decide which
+markets you want to trade, developed a logic with which
+you want to treat them, and define the parameters by which the trading
+logic is triggered. Second, you need to backtest
+the strategy: analyze your strategies performance on historical data,
+and remove biases. Third, execute your
+strategy: link to a brokerage and minimize
+the transaction costs, cost of trading,
+commission, slippage. Finally, manage risk: create pre and post straight
+checks to avoid losses. The good news is that you
+are responsible for two of these elements: strategy
+and risk management. The remaining two elements,
+backtesting and execution, will be done by the open source
+library, Auquan Toolbox. To develop an ML based
+trading strategy, you need to decide what problem
+you are going to solve. That is, designed which
+markets you want to trade, what would be your
+target variable, developed the logic with
+which you want to trade them, and define the features by which the trading
+logic is triggered. In many cases, traders want
+to simply predict the price. In some cases, they want
+to predict the return. In other cases, they simply want to know whether to
+buy or sell an asset, what's known as a
+binary decision. Then there's portfolio
+optimization, which is where portfolio
+managers make, buy, and sell decisions on
+a number of assets in their portfolio sometimes
+simultaneously. Finally, there's the problem of deciding where to buy and sell, what's known as
+efficient execution. You want to find out
+which markets are exchangers or brokers that you want to route your trade into. Each one of these problems
+requires a different dataset. Sometimes the same problem
+maybe attacked from multiple angles using
+very different datasets. Now, let's look at
+how we can implement our momentum trading strategy
+using machine learning. To do that, typically
+in a trading firm, we would need a huge
+infrastructure: servers, networks, data feeds, expensive programmers
+known as Quants, and a backtesting engine. Fortunately, it's 2019, we can mimic most of
+this infrastructure using Google Cloud platform and an open source
+library known as Auquan. Auquan is a new data science and machine
+learning platform for financial services. They have an open source library called Auquan Toolbox that will allow us to implement our momentum trading
+strategy with minimal code. Let's see how we can do that step-by-step in the
+next few minutes. In this lesson, we're going
+to use a problem from Auquan's website
+called QuantQuest. Auquan's website has a
+separate section for data scientists who want to develop algorithms for trading. That's perfect for us. To do that, Auquan holds competitions which allow
+data scientists to develop a trading
+strategy using ML or otherwise to solve challenge presented in the competition. They help you win your
+prizes or a chance for a job interview by
+leading recruiters. In our case, we are
+simply going to learn how to solve a
+simple trading challenge. If you want to try
+more challenges in the current or
+previous competitions, go to their website, auquan.com, and
+register yourself and click on the Data Scientist
+button as soon as you login. Then you can see the present and previous
+competitions there, as you can see in the image here. Today, we are going to
+create a prediction model using machine learning
+to solve a challenge, how to predict the future
+expected value of a basis. Well, what is a basis? A basis is a difference
+between the current price of a stock and the price of the same stock in
+futures markets. In this case, a single
+stock futures market. Since our company is fictitious, we assume it trades in
+a futures exchange. You can substitute this
+data with any real data you have for any asset from a current price and
+the futures exchange. For example, spot prices versus futures prices
+for a currency. Next, know our prediction goal. Let's define our target variable. We define the target
+variable y as the average of next five values of
+basis. That's right. The goal is to predict the average basis
+five minutes hands. We saw in an earlier slide that to create an ML trading strategy, we need data, lots of data. The more data we
+have, the better. But since we are going
+to make this simple, we are going to select
+a small amount of data that's reasonably
+realistic in order to develop a
+simple trading model using machine learning
+and see how it performs. First, we are going
+to use Auquan to download some historical data. In this case, we are using the following
+data for our problem, stock prices of a
+fictitious company whose trading symbol is m, q, k at one minute
+trading intervals for trading days over one month, that is 8,000 plus data points. It has columns for
+stock bid price, ask price, bid volume,
+and ask volume. Future bid price, ask price, bid volume, ask volume, and VWAP. If you don't know what VWAP is, it is the volume-weighted
+average price of a stock. To calculate the stock's VWAP, we multiply bid
+price by ask volume, added to ask price, multiplied by bid volume, and divide the whole thing by the sum of ask volume
+and bid volume. Similarly, we get the
+same for the future VWAP. Many cases, you will
+have to get this kind of data from multiple sources, clean it and make sure it's adapted for dividends,
+stock splits, etc. The good news is
+that that data is already cleaned for dividends, splits, and rolls from Auquan. Here's how a sample of
+our data looks like. The left side is the index or the date and the timestamp
+of the tick data. The columns are for stock
+and futures prices. The basis is the
+calculated field and y is the target variable,
+another calculated field. The way we are going to set up this trading strategy is similar to how we set up an ML model. We create features which could have some predictive power, x, a target variable that
+we'd like to predict, y, and use historical
+data to train an ML model that can predict y as close as possible
+to the actual value. Finally, we use this
+model to make predictions on new data where y is unknown. To create y, we need to create an average of the
+first five basis values, which is a feature, let's say X1, and put it into the
+cell called y_6. Similarly, we will
+compute an average of the next five bases values
+and put it into y_7, etc. Since our goal is to
+predict the average basis, five minutes into the future, we need to create an average of the first five basis values and align them to the first row
+or the first data point. Then we do the same for the next five bases values and align them with the
+second row, and so on. This means, we are creating
+a moving average of basis values with
+a period of five. This method is typical of how we predict in time series using ML. We take values into
+the future and align them back with
+current values. That way, when we need to
+predict five minutes into the future at some point
+much later in time, we will feed the
+current values of our features and wallah, the model should predict what the future value
+of basis will be. Hopefully, you got
+the important point. If not, please rewind
+and review how we set up the x and y variables for this data point until you
+understand it thoroughly. Finally, let us decide
+how we are going to evaluate how good
+our predictions are. Well, to do that, we have some time tested
+measures such as RMSE, or root mean squared error, which is the sum of the
+squared differences between predicted
+and actual values, divided by the number of samples. That lower this
+measure, the better.

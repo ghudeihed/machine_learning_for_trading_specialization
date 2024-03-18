@@ -1,0 +1,100 @@
+As we think about modeling a real problem with
+machine learning, we first need to think about what input signals we can
+use to train that model. In this next section, let's use a common example. Well, real estate. Can you predict the
+price of a property? As you think about that problem, you must first choose
+your features, that is the data that you'll be basing your predictions on. Why not try and build a model
+that predicts the price of area of a house
+or an apartment. Your features could
+be the square footage that's numeric and the category, is it a house or an apartment? So far square footage,
+that's numeric, numbers could be fed directly into a neural
+network for training. But we're going to
+come back to that later and how that's done. The type of the property
+though, that's not numeric. This piece of information may be represented in a database by a string value like
+house or apartment. Strings need to be
+transformed into numbers before being fed
+into a neural network. Remember, a feature column
+describes how the model should use raw input data from
+your features dictionary. In other words, a
+feature column provides methods for the input data to be properly transformed before sending it to a
+model for training. Again, the model just wants
+to work with numbers, that's the tensors part. Here's how you
+implement this in code. Use the feature column API
+to determine the features. First numeric column
+for square footage, then a categorical column
+for the property type. Two possible categories in this very simple model,
+house or apartment. You probably noticed that the categorical column is called categorical column
+with vocabulary list. Use this when your inputs are on a string or integer
+format and you have an in-memory vocabulary mapping to each value to an integer ID. By default, out of vocabulary
+values are ignored. As a quick side note,
+other variations of this are categorical column with a vocabulary file when inputs are in a
+string or integer format, but there's a
+vocabulary file that maps each value to an integer ID. A categorical column
+with identity, that's used when
+inputs are integers in the range of zero
+to the number of buckets and you want
+to use the input value itself as the categorical ID. Finally, categorical
+column with a hash bucket. Let's use when features are sparse in the string
+or integer format and you want to distribute
+your inputs into a finite number of
+buckets by hashing them. In this example,
+after the raw input is modified by feature
+column transformations, you can then instantiate a LinearRegressor to
+train on these features. A regressor is a model
+that outputs a number. In our example,
+the predicted sale price of the property,
+that's the number. But why do you need feature columns in the
+context of model building? Do you remember
+how they get used? Let's break it down
+for this model type. A LinearRegressor is a model that works on a vector of data. It computes a weighted sum of all input data
+elements and could be trained to adjust the
+weights for your problem. Here we're predicting
+the sales price, but how can you
+pack your data into a single input vector that
+the linear regressor expects. The answer is in various ways, depending upon what
+data that you're packing and in what area that your feature columns are using the APIs that really
+comes in handy. It implements very standard ways, the API of helping
+you pack that data into those vectorized
+elements. Let's look at a few. Here values in numeric
+column, they're just numbers. They can get copied
+as they are into a single element of
+the input vector. On the other hand, those categorical
+columns, they need to get one-hot encoded. You have two categories,
+house or apartment. House will be 1,0 and
+apartment will be 0,1. A third category would
+be 0,0,1 and so on. Now, the LinearRegressor
+knows how to take those features
+that you care about, pack them into an
+input vector and apply whatever the
+LinearRegressor does. Besides the categorical
+ones that we've seen, there are many other mode feature column types
+to choose from. Columns for continuous values
+that you want to bucketize, word embedding, column
+crosses and so on. The transformations they apply
+are clearly described in the TensorFlow documentation to always have an idea
+of what's going on, and we're going to take a look at quite a few of them here in code. A bucket size column helps with discretizing continuous
+feature values. In this example, if we were
+to consider the latitude and longitude highly granular of the house or apartment that we're training or predicting on, we would want to feed in the raw latitude and
+longitude values. Instead, we would create
+buckets that could group the ranges of values
+for latitude and longitude. It's like zooming out if you're looking at
+just like a zip code. If you're thinking that
+this sounds familiar, and just like building
+a vocabulary list for a categorical columns,
+you're absolutely right. Categorical columns
+are represented in TensorFlow as sparse tensors. Categorical columns
+are an example of something that's sparse. TensorFlow can do
+math operations on sparse tensors without having to convert them into
+dense values first. This says memory
+optimizes compute time. But as the number of categories of the
+feature grow large, it becomes infeasible to train a neural network using
+those one-hot encodings. Imagine that 0,0,0,0,
+million zeros, 1. Recall that we can use
+an embedding column. Embeddings overcome
+this limitation. Instead of representing
+the data as a one-hot vector of
+many dimensions, an embedding column
+represents the data at a lower dimensional level or a dense vector in which each
+cell can contain any number, not just as zero or a one. We'll get back to our real
+estate example shortly, but first let's
+take a quick detour into the wild world
+of embeddings.

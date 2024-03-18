@@ -1,0 +1,142 @@
+Momentum trading is a strategy
+in which traders buy or sell assets according to the strength of
+recent price trends. Price momentum is
+similar to momentum in physics were
+mass multiplied by velocity determines
+the persistence with which an object will
+follow its current path, like a heavy train on a track. In financial markets, however, momentum is determined
+by other factors like trading volume and
+rate of price changes. Momentum traders bet
+than an asset price that is moving strongly
+in a given direction will continue to move
+in that direction until this trend loses
+strength or reverses. In this session, we will
+discuss how to identify momentum as a feature
+of a trading strategy. We will then look at the use of metrics such as moving
+averages and moving average ribbons to determine trade entries and exits
+in a momentum strategy. Last, we will evaluate
+the effectiveness of these metrics in generating
+trading profits. Creating features or feature
+engineering is one of the most important
+steps in using machine learning to develop a
+quantitative strategy. Before you create
+features you need to know what features you expect to use. Since we are dealing with
+momentum strategies here, let's understand a bit
+more about momentum. Our first step is
+to establish that a tradable momentum trend
+exists for an asset. You've probably heard before
+that a stock has momentum, but what do we mean by momentum? Momentum is a phase in which an asset appears to
+be moving based on past changes in
+prices rather than due to any stock specific
+fundamental or news. When prices move
+higher in reaction to higher prices is known
+as a Bull phase, and when prices move lower
+just because they'd been going lower it's known
+as a Bear phase. A momentum run is clearly seen with the candlestick charts where green represent up days and red
+represents down days. On the chart you can
+see that up appears to be in a bowl momentum phase for a few months in 2014 and is hugging what is
+known as a trend line. A trend line is a straight
+line that connects two or more points which can
+be temporary highs or lows, since stock prices
+tend to be trendy. Trend lines that connect the highest or lows in a
+stock's price history, can help identify
+the current trend and predict what the stock
+price might do in the future. Volume is critical to
+confirming momentum trends. How do you detect a trend? Most discretionary traders say they know a trend
+when they see it. Quantitative traders
+need a measure that is more objective but
+still versatile. They use moving averages to clearly see stock price trends that may not be apparent
+in a forest of price bars. The slope of a moving average's line can show
+you whether a stock is an upward or downward trend and can be used to
+generate trading signals. You'll see how to construct
+moving averages next. Momentum traders use moving
+or rolling averages to identify trends and specified trade entry and exit parameters. You saw earlier that a trend line is a
+good way to look at whether a stock is in a
+sustain momentum phase, either a Bull or Bear phase. The key word here is sustained. Trends don't tell us
+whether the trend will continue or will break abruptly. This is where moving averages
+and crossovers come in. Let's add some moving
+averages and look at the 2014-15 period when the stock was in a
+Bull momentum phase. We'll demonstrate this on the
+same chart you saw earlier, but with some added lines. The slope of the moving
+average line shows whether the stock is in an
+upward or downward trend. A simple moving average is just the average of the close price over
+a specified period. A 50-day simple moving
+average is the sum of all the closing prices in the 50-day period divided by 50. You can see this on the plot
+where the green line begins 50 days after the first
+price data point, and exponentially weighted moving average works the same as
+a simple moving average except the most recent
+prices are given more weight in the average
+than the older prices. This gives you an indicator
+that more closely reflects current market conditions while still including earlier data. A very common way
+to obtain a buy or sell signal is to look for moving average crossovers
+in stock charts. This means computing
+two moving averages of different lengths and waiting for one to cross over the other. The direction of the cross will indicate the direction
+of the momentum. At least that's what
+technical traders believe. Volume is once again a critical component
+in determining whether the crossover is a real
+change in trend or temporary. A Bear cross is when the shorter
+moving average moves below the longer moving average, and a Bull cross is when the shorter
+moving average moves above a longer moving average. Traders take a long position
+after a Bull cross and a short position in a
+stock after a Bear cross. They hold that position
+while the cross is in place. They switch positions
+when the bowl cross moves into a Bear
+cross or vice versa. We can see here that there are four points where the
+averages cross each other. Assume you are currently
+long the stock, the first two crossings come
+close to each other and indicate a quick sell
+and then buy back phase, but the second two crossings
+predict a longer up face. This can be one way to make profits using moving
+average crossovers. However, since most traders are watching the same signals, there is no guarantee these
+will work in the real world. For that you will need to develop more complex trading
+strategies based on more unconventional
+trading signals. Next let's look at how
+you choose the size of your moving average
+window or length. Choosing moving average
+length is very complicated. There are many choices of
+lengths such as 20,30, 50, 65, 200 et cetera. In fact, any integer
+is a possible choice. So the tendency is to look
+at the chart and find the two moving averages that seem to fit the
+given chart nicely, and then use that as a
+trading strategy for all stocks or even for the same stock in a
+future time period. This is known as
+over-fitting and you need to be aware of the danger
+of over-fitting. What works in one time period may not work in
+another time period, even for the same stock. The reason is the choice of
+lengths will strongly affect the signal you receive from your moving average
+crossover strategy. There may be better windows and you can attempt to find them with robust optimization
+techniques. However, it's incredibly easy to over-fit your moving
+window lengths. One approach is to use moving
+average crossover ribbons, withdraw many moving
+averages at the same time, an attempt to extract
+statistics from the shape of the ribbon rather than
+any two moving averages. You can see how
+ribbons look here. You can combine
+quantitative measures of ribbon shape and so
+generate a trading signal. Last we will look at two methods for evaluating or scoring the strength of a
+combination of moving average signals with
+different window lengths. The first is a distance metric and the second is correlation. One way of scoring is to
+use a distance metric. You can use a distance
+metric to see how far away from some given
+ranking our ribbon is. Here we combine ribbons to
+come up with a one to 10 ranking which we normalized
+to a score of zero to one. A perfectly increasing order of ribbons results in
+a score of zero. This can be a signal
+to buy or go long. A perfectly decreasing order of ribbons results
+in a score of one, this can be a signal
+to sell or go short. After ranking the rolling means and normalizing the scores, we plot them on the price chart. We see a number of strong
+cell signals followed by a weak buy signal another strong sell signal and then
+a weak buy signal. Next we will look at what happens after the final buy signal. When we look at
+what happens after the buy signal from
+the previous chart. We see that the stock price rises for bit and then drops by about 20-30 percent over the
+next few months, not good. So you have to constantly be on the lookout for better signals. Another slightly better way maybe to use correlation
+to rank ribbons. You can use a correlation metric, a perfectly increasing order of ribbons results in
+a score of one, this can be a signal
+to buy or go long. A perfectly decreasing order of ribbons results in a
+score of negative one, this can be a signal
+to sell or go short. First, we rank the ribbons using a Spearman's correlation and normalize the score once again. A score close to one
+means a buy signal and a score close to negative
+one is a sell signal. This is somewhat better
+since it triggered three sell signals pretty close to the short-term
+top of the stock. This may be worth
+exploring some more.

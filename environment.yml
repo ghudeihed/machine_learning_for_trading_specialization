@@ -1,0 +1,21 @@
+name: tfenv
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.9.18
+  - ipykernel
+  - pandas
+  - pandas-datareader
+  - plotly
+  - scikit-learn
+  - scipy
+  - tensorflow
+  - tensorboard
+  - tensorboardX
+  - numpy
+  - bs4
+  - pip
+  - pip:
+    - matplotlib
+prefix: /Users/main/anaconda3/envs/tfenv

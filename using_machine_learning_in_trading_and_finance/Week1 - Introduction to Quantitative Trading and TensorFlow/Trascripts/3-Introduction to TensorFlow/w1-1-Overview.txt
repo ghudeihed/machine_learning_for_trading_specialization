@@ -1,0 +1,27 @@
+Hi, I'm Evan, a Tech Lead
+on the Cloud Training team. In this course, we'll be
+talking about TensorFlow. We'll first start with
+an introduction to the framework and preview
+its main components, as well as the overall
+API hierarchy. Tensorflow 2.x was launched
+with tight integration of Keras with eager
+execution by default, and Pythonic function execution among many other features
+and improvements. By the way, when I say it's 2.x, it means everything
+that you learn here is for the second major
+release of TensorFlow, that's the 2, and for any
+minor releases, that's the x. At the time this was recorded, the latest stable
+release was 2.2. But you very well maybe on a future minor release version, the principals in
+syntax that you'll learn will still apply. Next, we'll discuss
+how to train on large data sets using
+the data set API. Then how to use feature columns
+to prepare the data for training and how
+activation functions are needed in order for
+the model to be able to learn from nonlinearities
+in the data. Then we'll introduce
+the tf.keras API. tf.keras is TensorFlow's
+high-level API for building and training deep neural network
+learning models. We'll explore the sequential
+and functional APIs and then learn how to use them to create deep learning models. Finally, we'll
+discuss how to deploy models serving up
+these inferences at scale using the Cloud AI platform managed service.
+Let's get started.

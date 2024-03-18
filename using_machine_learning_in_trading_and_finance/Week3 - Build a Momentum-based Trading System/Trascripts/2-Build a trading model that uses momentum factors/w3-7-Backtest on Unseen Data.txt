@@ -1,0 +1,21 @@
+Now we will look at how
+well our models perform, when back tested on unseen data. This step helps us to identify a model that had been overfitted
+to the training data. Once we do backtesting of
+the different algorithms, we get a better sense of how well they will perform
+in the real world. Here, the linear model is producing three
+percent PnL which is far below the eight
+percent or so it was producing in one
+run on train data. This is what we mean by making sure we do cross-validation. Similarly, we see that
+after backtesting we get a real sense of how they will perform in the real world. Here the gradient
+boosting model which was producing 22 percent PnL in training is barely outperforming the linear model at 3.3 percent. This is what we mean
+by making sure we do cross-validation to
+avoid overfitting. So the rules are, avoid overfitting by, step 1, don't retrain after
+every data point. Two, avoid biases especially
+look ahead biases. Three, be wary of
+data mining bias. Overfitting is the
+most dangerous pitfall of a trading strategy. A complex algorithm may perform wonderfully
+on a backtest, but fail miserably
+on new unseen data. It has not really uncovered
+any trend in the data, and has no real predictive power. Keep your systems as
+simple as possible. Divide available data into
+training and test data.

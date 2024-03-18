@@ -1,0 +1,120 @@
+In the previous session, we looked at how to use statistical techniques
+to identify pairs. The rationale was that this is the first step to form groups. Rather than identify the
+groups qualitatively, you can use machine
+learning algorithms to identify the groups
+quantitatively. We will examine what
+the loadings for the first two principal
+components represent. We will then use those
+loadings to identify two stocks that would have good potential and
+a pair to trade. Lastly, we will determine
+the weightings of each stock in the pair based
+on their respective Betas. To start, we will examine what the loadings for the first two principal
+components represent. In the previous session, we discussed how to use statistical techniques
+to identify pairs. The rationale was this is the
+first step to form groups. Rather than identify the
+groups qualitatively, you can use machine learning algorithms to identify the
+groups quantitatively. The first procedure we ran
+was hierarchical clustering. This statistical technique uses a distance matrix to form groups. Stocks that were similar to
+each other form the cluster. Stocks that behave differently, appear in different clusters. The second procedure we ran was a principal
+components analysis. This statistical technique
+use the correlation matrix. It identify the components that prioritize how the variance
+is orthogonally distributed. In other words, you can look at the first component as
+explaining the largest amount of variation and the
+second component as explaining the second
+largest amount of variation. Also, you have to
+keep in mind that all components are
+uncorrelated to each other. Therefore, each source of variation is independent
+of the others. Let's look at how the
+data get rotated. This is known as the loadings. Here's a graph of the
+loadings of component 1. What are loadings? Remember that the principal components
+analysis is a rotation. In order to rotate from
+one matrix to another, you have to multiply
+the original matrix by a transformation matrix. The loadings above are the
+transformation matrix. You study the loadings of
+principal components analysis, you use this matrix to
+tell you how to get from the original data to
+the transformed data. You can produce a loadings for each of the original
+data dimensions. In our example, you can produce a whopping 68 loading plots. Not all of them are
+equally important. You want to focus
+on those that have significant amounts and
+types of variation. Therefore, whenever you
+look at a loading plot, you should focus on the size
+and the sign of the values. Let's examine what
+makes a loadings plot. You see each technology
+company along the X-axis. You see each company's
+weight along the Y-axis. The companies have
+been ordered so that the largest
+weights appear first. Notice that all weights
+have the same sign. This will be true
+for component 1. This is a weighted average. Some companies are
+weighted more heavily, AMD and NVDA, and some are
+much less weighted, CTXS. Recall from the scree
+plot that this component explains 50.2 percent
+of the variation. Not bad for a single factor
+and a 68 dimensions of space. We might ask, what
+factor one describes? In theory, it should
+be the stocks Beta. If the capital asset pricing
+model worked perfectly, component 1 should have weights in proportion to the stocks Beta. It should also explain 100 percent of the
+variation of the data. However, the CAP end
+does not work perfectly. Despite this, this
+first component is still directly related
+to stock Betas. Note that AMD has
+the highest weight. It also has a high
+Beta of over three. Generally, as you proceed to the right, the weights decrease. Typically, the Betas
+decrease as well. Now we will look at using the first two PCA
+component loadings to select a stock pair. Consider two companies with
+equal weights in component 1. Like KLAC and ADSK. KLA corporation supplies
+process control and yield management systems for the semiconductor and
+nanoelectronic industries. ADSK or Autodesk, makes
+software for the manufacturing, media, architecture, engineering, and
+construction industries. Their equal loadings in
+component 1 tell you that for 50 percent of the historical
+variation in the data, these companies move with
+the same direction and size. Will these companies
+always move together? No. You would have to look at higher number components
+to determine how the rest of the variation
+is accounted for. Here's a plot of the loadings
+for the second component. Just to review, on the X-axis, you label each
+technology company, on the Y-axis, you list each company's weight in
+the second component. Unlike the first component, notice that the
+second component has both positive and
+negative loadings. This component accounts for 6.6 percent of the total
+variation in the data. Recall that the scree plot showed the cumulative variation
+explained by the components. The first two
+components account for about 57 percent of
+the total variation. In this component, some
+of the loadings are highly positive such as Adobe. Some are very
+negative such as WDC, and some are unaffected
+such as DXC. Recall your pair of KLAC
+and ADSK from component 1. In that variation, the stocks
+behave very much the same. In component 2, you get
+a different picture. KLAC has a negative loading
+of about minus 10.3 percent, ADSK has a positive loading
+of about 10.5 percent. This tells you two things. In component 1, their
+weights were almost equal. In this first source
+of variation, KLAC and ADSK move in
+similar directions. You get a different story
+from the second component. KLAC has the same size but
+opposite sign weight as ADSK. So will KLAC and ADSK be a good pair to trade
+under component 1? They will not be. They will move in
+the same direction. Under component 2, they would be. They would move in
+opposite directions. Two stocks may not always be a good pair under all
+market conditions, but if you have anticipated volatility in the market
+explained by component 2, then your KLAC-ADSK
+pair would make sense. Now let's set up a pair straight. You can use KLAC and ADSK. KLAC has a Beta of 1.56, ADSK has a Beta of 1.41. KLAC trades around
+$170 per share, ADSK trades around
+$145 per share. Suppose you purchase
+1,000 shares of KLAC. This has a market
+value of 170,000. How many shares of
+ADSK do you need? Reorganizing your equation to solve for market value of ADSK, you need $188,085 worth of ADSK. At a share price of $145, you would need about
+1,297 shares of ADSK. Rounding will trade 1,300
+shares of ADSK. Let's review. Our equation gives us a
+Beta weighted market value of $265,200 for KLAC, and $265,785 for ADSK. So if you were long one of these positions and
+short the other, you have achieved
+Beta neutrality. If the market goes up, you gain on your long position
+and lose on your short. If the Betas hold, you
+should break-even. Likewise, if the
+market goes down, you lose on your long but
+you gain on your short. Here, you break-even again. Our strategy is our performance. You want your long side to do better than your short side, or you want your short side to drop more than your long side. Typically, the hardest part of the strategy is knowing
+when to get in. How do you define
+your entry signal?
