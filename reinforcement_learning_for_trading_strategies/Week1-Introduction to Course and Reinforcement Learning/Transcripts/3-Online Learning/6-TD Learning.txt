@@ -45,8 +45,8 @@ to use for simulation. To do this, we're going to
 introduce a new variable, Alpha to represent
 the learning rate. Here's what our agent
 is going to do. Every time it takes a time step, it's going to look at
-the state that it's leaving and alter it to be based on the new state is entered and enter your
-words that it picked up. Since we don't know all the possible states we can end up in, we can't do weighted
+the state that it's leaving and alter it to be based on the new state it has is entered, then enter the new 
+rewards that it picked up. Since we don't know all the possible states we can end up in, we can't do weighted
 sum for update. This is why the learning
 rate is valuable. The more experienced
 particular state, the better we can weigh
