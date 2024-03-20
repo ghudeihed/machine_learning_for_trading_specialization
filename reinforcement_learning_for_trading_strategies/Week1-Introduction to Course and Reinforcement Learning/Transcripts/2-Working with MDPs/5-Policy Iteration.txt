@@ -1,0 +1,103 @@
+Now that we've mastered value iteration,
+let's look at the next reinforcement learning breakthrough, which was policy
+duration dry by Ronald Howard and 1960. Value iteration was beautifully
+effective at solving MDPs, but it ran into some technical
+limitations at the time. Computers weren't nearly as powerful
+back then as they are today. And so, researchers set out to find more
+computationally effective strategies. To understand better why more
+efficient strategies were needed, let's take our simple case and
+kick it up a notch. Let's say our frozen
+lake is a bit slippery. Every time we wanted to move
+in a particular direction, we could end up in a spot
+90 degrees clockwise and 90 degrees counterclockwise
+from where we intended to go. Each of these three states has
+equal chance of happening or about 33 percent chance each. On top of that, trying to move
+into a boulder is a valid move. At the gumdrop succeeds and
+moving the direction and attended to go, the boulder will block it and
+it will end up moving anywhere. It would be way too messy to show
+the full MDP for this new mechanic. So I'm showing the MTP just from
+the perspective of the starting position. Whereas before just had two outcomes
+to worry about, this one has 10, yikes. There are four actions and
+two of those actions results in three different outcomes and two of
+them result in two different outcomes. To handle this new probability, we're
+going to update the Bellman equation. Now, when we update the value of a state,
+it's going to be a weighted average of the value of all the state
+primes we could possibly end up in. That's a mouthful, so
+let's take a look at it in action. Here's a table showing all the possible
+states we can reach from state zero based on the action our agent takes. Thankfully, when we actually look into
+the value of each of these states, it turns out there is one action we could
+take that is safe from slipping into the death hole,
+which is if we choose to move up. Two thirds of the time, we won't move anywhere because
+we'll crash up against the boulder. But one-third at a time, we will slip right which will allow
+us to get closer to the goal. With this new edition of
+way the probabilities, you can see how the MDPs
+can get out of hand. The worst-case scenario is when
+our MDP is a straight line. You may have noticed that with value
+iteration, the updates to the values kind of ripple out from the rewards affecting
+adjacent states with each iteration. That's why it takes us six iterations
+to complete the larger lake problem. The longest a cyclic path to get
+to the end takes 6 times steps. We're only dealing with the toy
+problem for the frozen lake. If we have hundreds of states
+with tens of actions each, we can easily reach needing
+to do millions of operations. This was the strategy
+Ronald Howard came up with. He noticed that often, the optimal policy
+is found before the final value for each state. He decides to continue to use the Bellman
+equation but in a different way. First, we'll start with
+a randomly generated policy. We'll look at each possible action for
+each state and just pick one. Then when we do our value updates done,
+instead of comparing the results for each action, we're only going to look at the action
+that is recommended by our policy mapping. Here with State 0, the randomly
+selected policy is to move down. We'll use that to update the value of
+State 0 even though it has a negative one. We were warned that we can
+avoid by moving right. Similarly, we can do the same thing for
+State 1. It's randomly selected
+policy was to move down. We got lucky and
+I already selected the optimal action. Same story, we'll set the prime
+value based on the rewards and future value corresponding
+to the action or policy. As before,
+we'll multiply by the discount and set that to our current values,
+then reset the prime values. I'm going to do a simplified
+version of this algorithm, which is called modified policy iteration. It's done my value updates here. The vanilla version of the algorithm
+continually repeats this value updates tab until the changes are sufficiently
+small like value iteration. But the modified version
+gets summary results for less computation, especially for
+simple problems like this one. Time for the magic to happen. We're going to take a look
+back to our policy map and update the policy based on
+the new values we've calculated. For State 0, you could see that
+going right gives us a better value than going down so
+we'll change your policy. On the other hand for State 1, we're
+comparing left -0.9 with going downs zero, so our policy doesn't change. Rather than look at how much
+our value estimation changes, our stopping condition is when
+the policy no longer changes. So even though State 0's value changed
+significantly from negative to positive because stop iterating here since
+our policy remains the same. This is the code to run one
+iteration of policy iteration. We would run this in a while loop
+that would check if the old policy is different than the new policy or
+next policy as I've labeled it here. So easy, right, only three lines of code. Okay, you caught me. I'm cheating again here. Find future values and
+find best policy each have more to them. Here, I have code to
+calculate State Prime. It's not too different from
+our value iteration code. The difference here is this kit neighbor
+value function which just checks the value of a neighboring state given the current
+state and corresponding policy. Before in value iteration,
+we would have to check all actions. Once we have our new values, here would be some sample code on
+how iwe can find our new policy. This is also similar to value iteration
+as we go through each day and check each action. But here, we're not changing
+the value of any of our states. We're only updating the policy. What's interesting about policy
+iteration is that on paper, it's even more computationally
+complex than value iteration. It still needs to look at
+the weighted sum of future steps. And if we're really unlucky when
+rolling our initial random policy, we might still need to perform
+the iteration for every state. But in practice,
+policy duration converges more quickly. We could see for our frozen lake problem,
+policy iteration converges four steps, whereas, value iteration
+needed at least seven. But the success of policy duration, two schools of reinforcement
+learning were developed. One form of thought is to focus our energy
+on estimating the value of our states. The other view is to focus our energy
+on trying to find the policy directly. The two approaches are very similar. So here's a summary chart showing
+the pros and cons of each. The trick to remembering the difference
+between the two is that value iteration is mathematically precise. So it's going to take a longer
+time to find an accurate answer. Policy iteration takes
+a statistical approach. While in practice it works out well, it is possible it will settle
+on a local optimum policy. For instance, if a longer path actually
+has more rewards to it than a shorter path, policy iteration might select
+the shorter path if it takes too long for value propagation through a longer path.
