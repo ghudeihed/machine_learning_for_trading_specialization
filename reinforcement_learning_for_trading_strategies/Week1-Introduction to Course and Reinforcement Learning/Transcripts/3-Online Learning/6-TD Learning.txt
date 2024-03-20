@@ -1,0 +1,133 @@
+In either case, a
+value iteration and policy duration work great
+on a conceptual level. There are few real-world applications of these techniques. That's what the last 50 years of reinforcement learning
+had been all about. Building on top of these
+theories to be able to apply them to more and
+more real-world problems. One of the first things researchers realized
+they needed to conquer was how to deal
+with unknown situations. Up until now, we've had a
+full view at the frozen lake. The layout, the wards, and move mechanics are
+all told to us upfront. But in reality, none of
+this could be given to us and we might have to
+figure it out on our own. Humans and animals
+are still able to act in and learn from
+unknown situations. How can we start to capture this mathematically so that a computer can mimic our learning behavior? I can't talk about Q-learning until I talk about TD-learning, which is short for a temporal
+difference learning. This advancement comes
+courtesy of Richard Sutton, who has researching
+strategies for what is called online learning. Unlike a video game where the agent may have
+multiple lives, unless you're a cat, chances
+are you only have one life. Still humans, and cats, and animals are able to learn in the moment and are able to update their model of the worlds based on their experiences. That's what Sutton was
+trying to capture. He's just an all-around
+cool dude. How cool is he? Well, he wrote what is considered that foundational textbook to reinforcement learning and he has it available for free online, so you should totally
+check it out. Like Bellman, Sutton came up with a simple situation to
+try and solve for. This problem is even
+simpler than frozen lake because there are no actions
+for us to choose from. We are going to leave everything up to the winds of chance. Hence why this problem
+is called random walk. We're going to
+start in State D as in Daniel and we
+will flip a coin. If we get tails, we will move
+into State C as in Cloud. If we get heads, we will end up fright in State E as an emoji. We'll keep flipping coins and moving right or left
+until we get to State A or G, which
+ends the game. If we end up in A, we get
+nothing, good day sir, but if we end up in G, you get a plus one reward and a hay, our gum drop is happy. Value iteration would
+be straightforward here since we don't even need to
+consider comparing actions. To keep things even
+more straightforward, I'll set the discount equal to 1 and this would be the result. But what if we don't know
+the nature of a walk? What if we just move
+to the neighborhood and it's a bright
+sunny day and we decide to go for a
+walk and we have no idea where life
+is going to take us? So here's a question we'll
+use to live our life to the fullest which
+is called TD(0). I'll explain where the
+zero comes from in a bit. We are going to alter the Bellman equation
+to use for simulation. To do this, we're going to
+introduce a new variable, Alpha to represent
+the learning rate. Here's what our agent
+is going to do. Every time it takes a time step, it's going to look at
+the state that it's leaving and alter it to be based on the new state is entered and enter your
+words that it picked up. Since we don't know all the possible states we can end up in, we can't do weighted
+sum for update. This is why the learning
+rate is valuable. The more experienced
+particular state, the better we can weigh
+the different outcomes that can happen by random chance. A learning rate is zero it
+means we don't learn all. The value of each
+state will update. A learning rate of
+one means that we're completely in favor
+of new experiences over old experiences, we choose not to remember
+anything about the past. In practice, a learning rate of about 0.2 seems to work out well. The smaller the learning rate, the better our agent
+will be able to capture the true value of the weighted
+sum of the new states. However, if we make the
+learning rate too small, it will need more
+training iterations to converge on a policy. Where agent goes
+through a simulation from starting position
+to ending position, our researchers call
+that an episode. So let's go through
+an episode of TD(0). I'll flip heads and go right. Both my previous state
+and current state are valued at zero, so
+nothing changes. When I flip the tails
+and go left again, everything is zero,
+so nothing updates. One more heads and I move right, almost there, and got it. That's when something
+interesting happens. I picked up a reward of plus one. So we look at the state
+we were previously at. There are a lot of
+variables here, but it's really just a
+matter of plug and chug. The value of our
+previous state was zero and the value of
+our current is zero. So the new value at the
+previous state is going to be Alpha times the rewards
+or 0.5 times one. So let's do one more
+episode starting back on D. The more episodes we can do, the closer our understanding of the model will match
+the actual truth. We move right, everything is
+zero, so nothing happens. We move right again
+and enter state with value so the old
+one gets updates. That would be 0.5
+from the Alpha times 0.5 for the value of our
+new state so we get 0.25. Switching things up, we move left and here again things
+get interesting. Now E has value which is going
+to impact F's new value. We plug and chug and turn the values of our old
+state and new state into our modified
+Bellman equation and we end up with 0.375. It's interesting to
+see how the updates to our previous states changed the value of
+our future states as we finish out the episode. If I roll left again, the value for E drops
+because D has a value zero. If I keep going left for
+the rest of the episode, this is what the updates to the remaining states
+would look like. Now that we had the hank TD(0), I promised to tell
+you what zero meant. But before I get there, let's see what the
+formula for TD(1) is. At TD(0), we only pyre updates
+to the previous state, but TD(1) looks across
+the whole episode. To do that, we're
+going to introduce a variable for each state
+called eligibility. Every time we take a step, we're going to decay the
+eligibility by Gamma and this set the eligibility
+to the new State 1. I've set Gamma 2.9 here so you can see the effect
+a little better. Let's play on episode to
+see why we're doing this. I set the value for F 2.5
+to keep things interesting. So if I go right,
+the value estimates don't change because
+everything is zero, but the eligibility changes. The eligibility for
+D gets multiplied by Gamma and so the eligibility
+for E gets set to one. We move right again, F is in a state with
+value so update E with the Bellman equation
+just like we do at TD(0). But here's the cool thing,
+we're going to take that changed state E and apply to all other
+eligible states. You may remember that when
+we did this with TD(0), E changed from zero to 0.25. Here it's 0.225 because
+Gamma is 0.9 instead of one. So take the next state that
+has eligibility which is D, and multiply its eligibility by the changed E and add
+that to the value of E. So that would be 0.9 times
+0.225, which is 0.202. After the value update, the eligibility gets updated. With one more step to the left, we can see how updates
+to our most recent state percolate back in time to
+states earlier in the episode. The value to this approach is we know from the first episode how our earlier choices and states are influenced
+by layered states. It's hard to gauge if that
+influences appropriate. For instance, for
+the first action we took was actually
+the optimal action, but we've gotten lucky, enrolled 120, that bad luck would influence which traces
+we go with for the worst. Now I can finally tell
+you what the zero and one mean with
+TD(0) and TD(1). Turns out there's a clever trick we can do where we multiply the eligibility decay
+with the variable Lambda. If we do this, we can combine TD(0) and TD(1)
+into one algorithm. Well, can you see it? If Lambda is equal to 0, we can only update the most recent state
+when we take a step. If Lambda is equal to 1, we decay all the eligibility by Gamma just as we did with TD(1). The Lambda allows us to
+have something in between. We can change how
+much later states in the episode influence
+earlier states.
