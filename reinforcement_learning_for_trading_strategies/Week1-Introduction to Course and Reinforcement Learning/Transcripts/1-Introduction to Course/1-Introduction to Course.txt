@@ -1,0 +1,37 @@
+Hello, and welcome to the reinforcement learning for
+trading strategies course. My name is Ram Seshadri, and I'm a Machine Learning
+Consultant at Google. I'm Jack Farmer, the lead instructor with the New
+York Institute of Finance, providing training
+to professionals in the financial services and related industries in New
+York and around the world. In this course, we focus on reinforcement learning
+and how it can be used to approve the efficiency and performance of your
+trading strategies. Deep learning and
+reinforcement learning have become very popular in the past decade because
+we're able to take full advantage of the scale of data that's available today. The application of deep
+reinforcement learning for trading still remains
+largely unexplored. However, the promise that this learning
+strategy as shown in other fields has attracted researchers' interests
+and focused efforts towards the exploration of deep reinforcement
+learning for trading. It's still early, but
+chances are good that quantitative trading will be disrupted by deep
+reinforcement learning. In the first module, we introduced some of the history behind reinforcement learning. We also go into the
+technical aspects of reinforcement learning before neural networks
+became commonplace. In the second module, we dive into
+reinforcement learning that leverages neural networks. Also, we cover LSTMs. LSTMs are a type of
+deep learning that have proven really effective in
+modeling sequential data. They are very applicable
+to developing trading strategies because as
+you've seen in this course, trading data is
+usually sequential. In the final module
+of this course, we discuss how to
+develop and optimize a reinforcement learning-based
+trading portfolio. We'll talk about the basics of investment and trading
+risk management. Also we'll introduce the
+Google Cloud Service AutoML, a powerful machine learning tool that can be used to train high-performing models for trading portfolio optimization
+with zero coding. Machine learning is a
+cutting-edge field of research with breakthroughs coming
+in at a fast pace. Methods that are taught today may become outdated tomorrow. Therefore, it's important
+you keep your eyes and ears open for new advancements
+in the field. We will provide you with references to further your
+own knowledge in each module. Welcome to the exciting world of machine learning and
+trading. So let's dig in.

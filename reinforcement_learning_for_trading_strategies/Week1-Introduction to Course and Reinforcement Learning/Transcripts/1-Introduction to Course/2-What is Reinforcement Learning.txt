@@ -1,0 +1,155 @@
+Hi, my name is Danielle. I'm a Machine Learning
+Solutions Engineer at Google Cloud
+Advanced Solution Lab. My area of focus is
+reinforcement learning, and I can't wait to
+share it with you. Reinforcement learning
+is a category of machine learning that explores how rewards over time impact
+a learner in an environment. For instance, how does a video
+game player master Mario? How does a robot find
+its way through a maze. In our case, how does a
+trader optimize assets? All of these deal with the
+idea of delayed gratification. Our actions now could impact
+our state in the future. In this session, we'll go over reinforcement learning
+at a high level. I'll save the mathematics and
+algorithms for next time. Mainly, I'd like to share with you what's needed
+to get started with reinforcement learning and
+what it can accomplish, so you can decide if this
+course is right for you. To start, let's go over how
+reinforcement learning or RL, is different from other
+machine learning techniques. Reinforcement learning is a part of artificial
+intelligence, which is how do we teach
+machines how to solve problems in a way that's
+similar or better than humans? Within that, we have
+machine learning, which is how do we
+teach machines to learn rules based on data
+and experiences? Inside machine learning,
+there are three major fields. There's supervised
+learning, which means we have a bunch of data
+with inputs and outputs, and we want to help them
+machine learn to function, which takes as inputs and predicts the
+corresponding output. There's unsupervised
+learning, which means similarly we
+have a bunch of data. However, the data isn't broken up into
+inputs and outputs, instead our goal is to help
+them machine learn patterns in this data and find a way
+to group like data points. Finally, we have the topic of this class,
+reinforcement learning. So let's try a hand at our
+pattern recognition skills. A supervised learning has
+lots of neatly labeled data, and unsupervised learning
+has lots of unlabeled data. Any guesses what kind of data does reinforcement
+learning have? It actually doesn't have
+previously gathered data. Instead, we'll run simulations and use our experiences
+as the data. We are going to create
+an intelligence called the agent that interacts with what's called
+an environment. It's a purposely
+vague term that means anything that gives us
+an observable state. When we act based on that state, the environment will
+return a reward, which can be positive
+or negative. I just threw a bunch
+of vocabulary at you. So let's take a moment to
+break each of them down. This is what our training
+loop is going to look like. Over here on the left, we have our happy looking agent. This is the intelligence
+that we're going to help learn and
+observe the world. On the right, we have
+our environment, which is the world our agent
+is going to interact in. To begin our training loop, the environment is going to
+give the agent of state. This is what the agent
+can observe about the environment based on
+its current position. Based on the state,
+the agent is going to determine what
+action it should take. This should put the agent in a new state completing the loop. Additionally, after
+performing an action, the agent will get
+reward information. It can be positive or negative. As I said before, these definitions
+are purposely vague, so let's see them in
+different contexts. If this were a video game, the player would be the agent and the game would
+be the environment. The state information would be the current pixels
+displayed on the screen and the player's actions would respond by pressing
+buttons on the controller. The reward will be any points gained by moving from
+one state to the next. For trading, our
+environment would be the stock market and the
+trader would be the agent. The state would be the current statistics
+about the market, the current weekly
+rolling average, the previous day's highs at low, all that great stuff Jack
+and Ron have taught us. Our actions would
+be to go long or short and on which stocks, and our reward would be our
+profit and loss explained. We're going to be building out some equations later
+based on these concepts. State is represented
+by S and action by A. Every time we complete a
+state-to-state transition, that's going to increment our
+time counter or T by one. When we complete that transition, you might get a reward
+or R. Some of you might be wondering about
+sequence modeling with the Riemann LSTMs. Like reinforcement learning, these algorithms
+also deal with time. The key difference is that sequence models will tell us what the next value
+is in a series. For instance, if I have a high
+and low for the past week, can I create a formula
+that predicts what tomorrow's high lows
+are going to be. It's then up to the human to take that number and figure
+out how to act on it. For instance, which
+stocks should be bought or sold and by how much? Reinforcement learning
+is not going to tell us tomorrow's high lows. Instead, it will do interpretation to
+figure out how to act. It will figure out which stocks
+to buy and the quantity. Now that we know how RL
+works at a high level, let's see what it can do. Some students ask me, "Danielle, is there really an
+intelligence we're building? Can we really make
+machines that learn how to problem-solve
+like people do?" My argument to that is, how can we prove humans are
+not super powering machines? When we build algorithms for supervised learning or
+unsupervised learning, don't get me wrong,
+they're impressive. But for reinforcement learning, those algorithms are only a part of what we need to
+build for our agent. For instance, supervised learning might use a neural net
+to solve a problem. That would be like a
+human's prefrontal cortex trying to solve a problem. But there are many more
+components to an agent. We may build in a
+sense of curiosity to help it explore and better
+understand its environment. The agent will need to
+be able to react as in not only does it either way to take in environmental stimuli, in turn it needs to interact
+with the environment. We might also give it memories, so it can continue to learn
+from past experiences. Many of the breakthroughs in reinforcement learning have to do with better understanding how
+humans and animals learn. It is a beautiful art to be able to quantify how we think. In this class, we'll be able to mathematically represent
+such sayings as, "If at first you don't
+succeed, try, try again." "Do one thing everyday
+that scares you." "Practice makes perfect."
+"Why do we fall? So we can learn to pick
+ourselves back up." Pretty much anything you saw as a motivational poster in your high school
+counseling office, we will show has
+mathematical substance. All in all, though, I
+wouldn't be worried about these intelligence agents taking over the world anytime soon. Of course, intelligence is
+already tricky to quantify, but one rough measure would be the number of
+forebrain neurons. Here we have a number of animals laid out on
+a logarithmic scale. On one end of the spectrum, we have the common house mouse
+with 14 million neurons. On the other, we have a long finned pilot
+whale at 37 billion. Us humans are sitting
+pretty at 15 billion. Any guesses on where
+AlphaGo would be? The machine that beat the
+world's top players at Go. How about here, almost off-screen into the left
+of the house mouse. AlphaGo has millions of neurons. So while impressive, even the world's largest
+game-playing neural networks have a way to go before
+catching up to us humans. But if AlphaGo is
+so much smaller, how is it able to beat
+the world's best players? There are few reasons for this. Humans are designed to do
+so much more than play Go. Our bodies are made to find the next good meal or
+where to find a hot date. AlphaGo doesn't have to
+worry about any of that. Every networking fiber of its body is made to go and
+excel at the game of Go. It isn't just some
+giant neural network that was thrown into
+playing many matches, it's a combination of a few algorithms, some
+machine learning, some good old-fashioned
+game theory, and it goes to show
+that it isn't always the largest number
+of neurons needed to be best at
+solving the problem, it's how those neurons are used. How about the
+intelligent agents we'll be making in this class? They'd be off screen
+with things like snails. Still, we are going to make some pretty smart
+intelligent agents for only a few 100 neurons. At the end of it all, we'll
+be proud robot parents. To finish this intro, let's get hyped over some of the successes that
+reinforcement learning has had. In the games department, reinforcement learning could beat the world's best human players
+in chess and backgammon. In video games, RL robots have had success with
+many Atari games, Starcraft, and League of Legends. For finance, much of it's challenges can also
+be phrased as a game, although one with
+money on the line. JPMorgan has an RL agent
+that they use for trading, and Stanford researchers show success using RL for
+currency exchange. There are many other uses for RL that aren't games and finance. Much of the early history of
+RL was focused on robotics, like how do we help a
+robot navigate a maze? Today, that manifests itself
+inside self-driving cars. There are some pretty creative
+uses out there as well, like how Netflix frames movie recommendations as a reinforcement learning problem.
