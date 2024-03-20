@@ -1,0 +1,135 @@
+Enter value iteration. Richard Bellman started his
+career studying mathematics, but due to World War II, he took up teaching electrical
+engineering as part of the war effort. He made numerous contributions to
+mathematics and computer science. But we're going to focus our attention
+towards his work on Markov decision processes or MDPs. Bellman's strategy has to reduce the
+problem down to their simplest possible state and then figure out how to use recursion to
+solve larger more complicated problems. So here's the simplest
+possible lake we can make. We only have two positions,
+our states that we can be in. One is the starting state
+with the gumdrop emoji, and one is the ending state
+with the exit ramp. Also, keeping things simple, there's only one action we can
+take which is to move right. Here's what the MDP would look like for
+our tiny lake. State 0 would be our starting state. Action 2 is moving right which would take
+us to State 1 which is our ending State. Why action 2 and not 0? That's the value AI gym assigns for
+moving right. 0 is left, q is down,
+2 is right and 3 is up. We move from the starting
+state to the ending state. We pick up a reward of 1. How did I come up with this number? Let's look at a more complicated case. I've added another row here. This time, we have a whole death. As the engineer is setting
+up this environment, I'm going to make the argument that
+dying is the opposite of living. So after normalization, we get a plus 1 if
+we leave the lake and a minus 1 if we die. Playing around with the rewards and
+seeing how it improves the performance of the learning of our AI
+is called reward shaping. For video games, using the change in score
+points or for finance using the profit and loss explained are already
+powerful reward functions. Another know about this
+more complicated situation is we now have a loop
+between the two top states. Why not use a depth for
+search to get to the exit? Well, there might actually be some types
+of games where the best strategy is to move back and forth between two states. There's a trick in the original Mario
+where you can keep tripping on a turtle shell for infinite lives. I've included a YouTube link for
+important research purposes. A real life example is koalas. Their best strategy is to alternate
+between eating and sleeping. In order to solve for
+these types of situations, Bellman was inspired by delayed
+gratification from psychology. His goal is to mathematically
+capture the value of a current state based on the future
+states it could lead to. Here's the equation Bellman came up
+with to solve this type of problem. We're going to find a numeric value or
+V for each state or s. We'll defined that as any reward
+we receive given the action or a that we take in our current state. Then we'll add that to
+the discounted value or gamma of the new state that
+we end up in or S Prime. That's what the ' by
+the s on the right means. The discount factor is
+usually between 0 and 1. Let's start simple and
+set the discount to 1. If I do that,
+I value tomorrow as if it were today. For example, let's say I won
+the lottery and get a hundred bucks. Whoo-hoo, that's great,
+I see that as a hundred bucks. Now let's say I win the lottery for a hundred bucks by I can't
+collect until tomorrow. If my discount is 1, that's just as
+awesome as if I could collect today. Now let's say my discount is 0.5. The $100 tomorrow is
+worth $50 to me today. The effect of this is
+multiplied with each time step. For instance, $100 two days from now is
+$50 to me tomorrow and $25 to me today. So, what about the opposite extreme? What if my discount is 0? If you practice yoga or meditation, you might have heard about
+living in the moment. A discounted 0 is the ultimate zen,
+$100 today is great. But if I was told I would get it tomorrow,
+it wouldn't affect me. All my decisions will be based on the now. So what discount should
+we give our gumdrop? It depends on what our goals are. Do we want to prioritize short-term
+games over long-term successes? And practice many people choose
+a discount of 0.9 to start and then we'll adjust
+depending on their goals. Okay, so back to the Bellman equation. Even though this equation is simple,
+it's extremely powerful and it's still the basis for popular
+reinforcement learning algorithms today. We now know how to assign
+a numeric value to a state. But what if we have
+multiple possible action? Which one should we choose
+to update this equation? For that, we'll introduce something
+called the policy function. This is where the learning of our
+agent starts coming into play. Our goal is to find a function
+that takes state information and recommends an action for
+the agent to take. For now, we're going to be greedy. Our gumdrop folds look at
+each action it can take and we'll choose the one that
+least the highest value state. There are other strategies for
+coming up with the policy, but they'll have to do with assigning
+each action of the value. If we follow the best value action,
+then we're following what's called a locally optimal policy and
+we get Pi a fancy star. So we're going to modify our
+Bellman equation to look like this. This is mathematically
+expressing our greedy algorithm. We'll update the value of our current
+state to be the reward plus the value of the highest-valued state we can
+reach within our current state, nice. We have a way to find
+the value of a state. This was Bellman's original strategy for
+how to use it. We'll have two arrays. One is you represent the current
+value of each state and one to represent the value of State Prime. I've laid out these arrays to be
+the same shape as the lake but the structure of this array is up to you. And different strategies may be optimal
+depending on the type of problem. For reference, I have a location of each
+state in the green box called state map. Our ultimate goal is to find a policy or
+what our gumdrop to do in each state. For that, I've created a policy
+map on the bottom left and yellow. We're just getting started so
+everything there is none for now. I'm going to loop through each state and
+calculate its corresponding S Prime value. For State 0, I can reach State 2 and State
+2 by going down and right, respectively. So I would look at the current values for
+each of these. So if we're just starting this process,
+both of them are 0. However, the value of the states do not
+capture the impact of rewards between transitions. If we choose State 2, that's reward of -1. So I'll use State 1 to
+calculate the value of State 0. With the Bellman equation, you get 0
+plus 0, so the resulting value for State Prime and 0 is 0. We'll keep track of what action we used to
+perform the calculation in our policy map, which was a2 in this case. Now, we do the same thing for
+the next state, which is State 1. Unlike State 0, we can pick up
+a reward of 1 by moving down, that's greater than 0 by moving left,
+so use a1 as our action. Since day 2 and three 3 terminal States, they have no actions associated with them,
+so their value remains unchanged. There is one handy trick to note here. Because they are terminal states and
+there's only one way to get to them, we could get the same results if we set
+the value of State 2 to negative 1, and the value state 3 to 1 and
+drop the rewards from our MDP. When we get to doing this in practice,
+taking advantage of this mathematical trick can help save us a lot
+of engineering effort. We're almost done with one
+step of value iteration. To finish it off, we'll take our Prime
+values, multiply them by gamma and set them to our current values. Finally, it can reset the prime values. If I wanted to be absolutely
+mathematically accurate, I should have a separate rewards away
+because the gamma does not apply to the rewards that are picked up. But for this simple problem,
+it's okay if we combine them, so three words only tied to terminal states. Baam, one step down. We'll keep doing the same
+thing until the changes in the current value
+are sufficiently small. We get to choose what sufficiently
+small means as the engineers. For this lake problem, there will be 0
+change into more steps of value iteration. Here's the results after
+two iterations and we would get the same thing if we
+were to iterate again, so we're done. If we look at the policy map, we can see the optimal strategy
+no matter what state we are in. Starting from State 0, the strategy
+would be to go right and down. This is what the process
+would look like in code. The labs are going to do a better
+job of breaking it down and visually showing what it's going on
+than I can just verbally describe. So here,
+I'm going to describe it at a high level. I set up a lake here having -1 being
+the location of a death hole and one being the exit ramp. Next, I set my discount in delta or how little change needs to be
+happened to be considered done. In the while loop, the code will keep
+running value iteration until the values returned from iterate value
+are less than or defined delta. In iterate value function, the prime
+value and policy arrays are initialized. Then each state is looped through
+using the current value of each state. I'm cheating a little bit here. A good chunk of the engineering work
+is in the get max neighbor function. Conceptually and mathematically,
+it's not so tough. But for each environment that I deal with,
+I would need to engineer a function that identifies
+what the neighboring states are. For frozen lake, I need to craft
+a function that checks if I was up against a boulder or if the neighboring
+state is a hole of death or an exit ramp. In practice, reinforcement learning
+specialists are both machine learning engineers and game developers. Here's the results after we run the code. It takes six iterations for the value to finish updating
+in our value mapping array. At the same time, look at the optimal
+policy mapping in yellow on the right. Pretty cool?

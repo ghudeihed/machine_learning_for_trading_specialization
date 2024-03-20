@@ -1,0 +1,36 @@
+In this session, we will go to
+history of reinforcement learning. Well today reinforcement learning
+algorithms can accomplish and press it tasks like being
+the world champion at Starcraft. The practice has been around for
+more than half a century. We'll go over a few of these techniques
+developed by these pioneers as they still influenced the development
+of modern algorithms. Mainly look at value iteration,
+policy duration and q-learning. Before diving into each of these
+algorithms, let's take a step back and look at a timeline. Hindsight is 20/20 as our intelligence
+as we learn and the advances in the field of RL will be more obvious
+given the history surrounding them. Here is a sample of major
+reinforce learning algorithms and famous applications through the decades. Arguably the births of
+reinforcement learning goes back all the way to 1957 when Richard Bellman
+derived the Bellman equation. Although it's a simple equation,
+it's incredibly powerful and the basis for all the algorithms seen here. Because of this I'll be focusing
+on this section of time and blue which are all techniques
+without the use of neural networks. In fact, they can be done by hand. Although computer would
+certainly help speed things up. So before we jump into the math, let's
+see if it can build up our intuition. These algorithms come from trying to
+capture how humans and animals learn. So let's practice quantifying
+our own learning strategies. Time to snuggle up for a story. This is the hero of our
+story the Gumdrop Emoji. It was enjoying a simple winter day
+playing Frisbee when it slipped and fell onto a frozen lake of death. Which looks something like this looks
+like a terrible time, doesn't it? We have ourselves a 4 by 4 grid where
+we can move left down right and up. Those blue swirlies are holes of death. If the gun drop enters a cell with one
+it will fall into icy cold water and die of hypothermia. To make matters worse like a surrounded by
+slippery boulders at the Gumdrop moves in the direction of a boulder and I'm
+slipping back into its original position. Luckily, there is a way off the ice,
+and the bottom right corner, there's a safe ramp to get out which
+leads to a nice warm cup of hot cocoa. This is a famous RL problem uses
+as an introduction into the field. It was popularized by opening I which has
+an API to build this environment if you want to interact with it using python. So what do you think? What's the quickest path off the ice? There are three optimal paths
+one of which is shown here. We as humans can find these kinds
+of paths due to our experience. But how would the Gumdrop figure it out? It's just a bunch of
+bits in an Android phone. It doesn't have our Human Experience. We'll see how the gundrop can
+learn this with value iteration.
