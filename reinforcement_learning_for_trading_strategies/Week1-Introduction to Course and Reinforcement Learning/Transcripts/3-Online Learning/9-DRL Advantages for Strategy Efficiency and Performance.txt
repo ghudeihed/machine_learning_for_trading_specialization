@@ -1,0 +1,112 @@
+Next, we're going to look
+at how you can improve the efficiency and performance of your trading strategy with DRL, the application of deep
+reinforcement learning for trading still remains
+largely unexplored. However, the promise that this learning strategy has
+shown in other fields, has attracted researchers
+interests and focused efforts on the exploration
+of DRL for trading. For now, the odds that
+quantitative trading can be disrupted by DRL look good. Some of the DRL
+advantages include being a good match for a rapidly
+changing market environment, it having a high
+potential power and efficiency and most
+importantly that it builds on other machine
+learning techniques that have proved successful
+in multiple markets. Financial markets are
+dynamic structures. Today we have plenty
+of different types of orders, quantitative
+trading strategies, new asset classes, technologically enhanced
+market participants and many other market
+variables that were not present a short while ago. Also the Markets of today are very turbulent with
+increased volatility, lower liquidity levels, and
+periodic flash crashes. The presence of these factors influences the way we trade and so results in the formation of short-lived or unique patterns. These patterns are
+usually very hard to identify and historical
+data and can also turn out to
+be irrelevant for the accurate prediction of
+future market movements. If similar patterns are
+found in historical data, there is no guarantee that
+the next time they occur, the outcome will be similar. All this has affected even the most
+sophisticated fund in the world, Renaissance
+Technologies. The hedge fund has
+reduced the use of pattern-based strategies
+for futures trading in its Renaissance
+Institutional Diversified Alpha or RIDA fund by more than 60 percent. However, RIDA still
+remains way ahead of the competition
+after the fun game, 3.23 percent in returns in 2018 when compared to the industries average
+of minus 4.75 percent. When it comes to
+other trading firms, the truth is that a major part of hedge
+funds are giving up on trend-following
+strategies after they've struggled to replicate
+past returns. In order for an automated
+strategy to be successful, it has to be flexible and
+capable of adjusting itself to the present situation and not rely solely on past information, just like their
+human colleagues do. For now, deep
+reinforcement learning is the closest thing we have to
+resemble the way we learn. Just like us, DRL agents
+learn on the go and by doing. This means that they are
+getting better at taking real-time decisions based on the specific characteristics
+of the moment. At its core, learning isn't an interactive process that requires feedback
+from both sides. That is why it's
+reasonable to expect that deep reinforcement learning
+agents will become better at navigating
+financial markets due to their ability to adapt to changing environments and learn from the immediate
+result of their actions. Financial markets can be considered as a high
+density environment because of all the variables affecting the result
+of a trading decision. For example, even the
+most basic orders will require the computer to make
+a set of feasible decisions, like price, size, order, time, order type, etc. All these factors
+require the algorithm to make a set of
+interconnected decisions, such as at what price to buy
+or sell and what quantity, whether it should be a
+single or multiple order at different or the same prices. Should it trade at one
+or multiple venues, should it do it one after the
+another or simultaneously. According to the estimations
+in JP Morgan teams, idiosyncrasies and
+challenges of data driven Learning and
+electronic trading study, a medium frequency electronic
+trading algorithm will make 3,600 decisions per hour. This is due to the fact that each action is a consequence of a collection of child orders with different characteristics, price, order type, size, etc. What this means also is
+that financial markets are way too complex for
+straightforward algorithms, as their action space is
+continuously expanding with all the possible combinations of moves and market characteristics
+changing all the time. Existing algorithmic
+models are designed with two main components,
+strategy and implementation. The strategy is
+usually designed by the trader while
+the implementation is handled by the machine. In reality, there are
+autonomous trading mechanisms, although most of them still
+need some human guidance. Although this may seem like a promising human
+machine symbiosis, at some point a
+crucial element in the whole system
+often tends to break down and leaves a
+lot to be desired. In terms of trading
+results, for example, one of the main challenges
+is picking appropriate, unbiased and representative
+financial data. The inability to do so
+is often the traders fall rather than purely
+a technical limitation. Although the data
+quality problem is a well-known weakness in the design of efficient
+trading algorithms, it's still remains
+an issue and it's solution is often quite
+poorly implemented. However, with the
+major improvements in Deep Reinforcement
+Learning Spring, we are getting closer to facing the next level of
+autonomous trading system. One where the machine is
+in charge of both the strategic and the
+implementation parts. Deep reinforcement
+learning mechanisms, as shown in other fields, can help us construct portfolio management systems with basic cognitive skills that can ensure better navigation
+in the complex to castic environments
+of financial markets. Although way more
+flexible and powerful, a deep reinforcement learning
+agent still requires millions of test scenarios to become proficient
+at what it does. Think of Alpha-Go, for example. Also the fact that these types of agents are closer to autonomy, they still require an operator to assign a reward
+to their actions, either positive or negative. From a purely technological
+point of view, the reward part is quite tricky. It has the potential
+to become the make it or break it element
+in the whole system. For example, if you reward a robotic vacuum cleaner with the absolute goal of
+cleaning your living room, you may end up surprised
+to find that it is swept all the dust and
+dirt into your kitchen. What this means is that
+computers are still far from general
+intelligence and will continue to require
+human guidance even if it is in a
+more limited form, for how long remains to be seen. But as things stand, we're closer to a fully
+autonomous trading system than we've ever been before.
