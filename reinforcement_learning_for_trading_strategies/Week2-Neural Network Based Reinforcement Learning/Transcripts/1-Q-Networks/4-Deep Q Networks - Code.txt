@@ -1,0 +1,52 @@
+It's all that in mind, let's see how
+the neural network is constructed. If you're familiar with
+the curious functional API, that's what we're going to be using here. Not too different from a normal
+deep neural network, right? We feed in the state information as our
+input and then predict the Q value for each action as our output. Here's a little trick to
+speed up our training. We'll have another input that is
+the same size as our Q value layer. It represents which actions
+we want to evaluate. So imagine a vector where each
+index corresponds to an action, each cell will have a 1 if we want to
+evaluate the action and 0 otherwise. Then I'll multiply that vector with the Q
+value layer to specify which node we want to activate. For back propagation will
+have 0s everywhere except for one corresponding to the action that we
+took and the memory we're turning on. Instead for predicting we'll give
+everything a 1 because we want to compare the Q values of all the actions and
+select the maximum. While we're at it, let's update
+our agent's act function as well. The first big difference is we'll
+have the agent act randomly until we have enough memories in our
+buffer to fill a training batch. Then we'll also introduce
+something called random_decay. This is to emulate the idea of the agent
+getting more confident in its choices. The more confident we are,
+the less randomly we'll act. There's some pretty interesting
+research out there looking to measure the statistical
+confidence of a neural network. But since it's computationally costly, this random_decay has been
+found to be pretty effective. When we're not acting randomly, before we
+can send the state to a neural network, Keras expects a batch, so
+we'll need to add a dimension. Then we'll make our prediction mask,
+which is an array of all 1s, so we can get a Q value for
+each potential action. So at the end we can return the index
+of the action with the highest Q value. Okay, last giant block of code, this
+is where all the magic comes together. First things first, we're going to pull out a batch of state
+transitions from the memory buffer. I skipped some data processing here. The result is we'll have five
+vectors of the same length, each corresponding to a column
+of our memory buffer. This will allow us to vectorize
+math on these values, which will dramatically
+reduce our computation time. Next we'll get the Q values
+of our state primes. We'll give our Q-network
+our state_prime batch and a corresponding action mask of all 1s. This will give us a Q value for
+each action for state_prime, which we can take the maximum value for. And now that we have the maximum value for
+state_prime, we can calculate our label, which we'll call target_qs. Since there are no future states for
+when the game is complete, I'll take advantage of tensor flows where
+function to replace all the Q values corresponding to the end
+of the game of just reward. Otherwise, we might accidentally over or
+under value the end of the game. Before we fit our labels to our states, we'll one hot encode the actions
+that we took in each state. That will get us the training mask that
+will help our training be more efficient. Finally, since we're
+providing our own batch, we'll use the Keras trade on batch
+function as opposed to fit function. Fit does the batching for us, which
+is great for supervised learning, but here we need the extra customization. Few, that was certainly a lot. As we've learned from our agents the best
+way to master this is to get our hands dirty and experiment. If it's not clicking yet, don't worry,
+fire up that curiosity and don't be afraid to break things
+while going through the lab. Keep at it and
+eventually you'll master the environment.

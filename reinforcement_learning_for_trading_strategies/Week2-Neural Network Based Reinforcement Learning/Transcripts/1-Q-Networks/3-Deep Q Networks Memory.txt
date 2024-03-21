@@ -1,0 +1,36 @@
+I'd like to share what I lost
+function looks like in code. But before I can, let's talk about
+the other key insight deep mind town with their Atari breakthrough,
+which is called experience replay. Instead of training after every
+step like in TD learning, we're first going to collect the state
+transition in a memory buffer. Once we've collected enough memories,
+we'll pull out a sample batch and train on that. The way this works in practice
+is with each time step, we get a bunch of information to train on. We'll create what's
+called a memory buffer. Every time we complete a cycle, we'll append our training
+information as Row in the buffer. In Python, the buffer's usually a deck. So when the buffer is full,
+older transitions are dropped out, just like how older
+memories become forgotten. Once you've gathered enough memories,
+we can start training our neural network. We'll take a uniform random sample
+across all the memories and turn that into our training batch. Let's build out a memory buffer so we can
+get a sense of how this works in code. First thing we'll do is initialize
+a class that takes in a memory size, which is the size of our buffer. And a batch size, which is how many
+memories we want to sample when training. Then we need a method to add
+an experience to the buffer. Python Dex has a handy append method which
+will automatically drop older memories when the buffer is full. Finally, we need a way to
+sample from the buffer. Num_piesRandom.choice function
+is useful here. We can give it the batch size and tell at
+the sampling pool does not replace values that our example from it, so
+we can get a nice list of unique elements. This memory sampling technique was
+a big advantage for a few reasons. The first is that we can
+recycle memories for training which is great because
+simulating experiences can be expensive. The other advantage is that we
+can decorrelate experiences. You may have already heard why shuffling
+is important to supervised learning. If we don't shuffle, our gradient
+descent is likely to train on a batch that's not representative of
+the full population loss curve. Or you may accidentally push your
+training to a local soba Global Optimum. The same is true here, but there's an extra disadvantage
+to not shuffling experiences. Our agent learns based
+on its previous choices. So if it's training towards a local
+optimum, when it comes time to select an action during simulation, it'll tend to
+pick actions based on that local optimum, further pushing it away from
+the globally optimal strategy.

@@ -1,0 +1,34 @@
+TD-Gammon has some weaknesses, and so the use of neural nets in the gaming field
+calm down and remained with hobbyists, and took over two decades for
+the next major advancement. That would be thanks to deep mines
+breakthrough on Atari games. Like teeny Gammon it works by feeding and
+state information into the network. In this case the state
+is pixels on the screen. However, there were a few key
+insights that helps in pixel and the Atari environment. Insight number one, the Loss Function. We're still going to use our old
+friend that Q update function. Instead of using its updated Q table
+cell we'll use it to directly update the weights in our network. Our new Q function will not take
+three parameters estate and action and the weight of our network. Our learning rate from before easy,
+it's the same as our learning rate for the neural network. The final layer of our network is going
+to have a node for each action and is going to estimate the Q value for each of those actions given
+the state fed into the input layer. So the results of this function would
+be the label we're trying to predict. On the other hand this part of the Bellman
+equation value with the state prime is the day I will be fighting against. So if you look back our
+simulation cycle and each term we get state that we
+were in before we took an action. An action chosen by the agent. A reward as the results of that state and
+action. And a new state or
+State Prime as the action is complete. This gives us everything we need to train. We'll start by feeding
+State Prime into our network, that will give us the predicted Q value
+for each action associated with S Prime. We'll take the maximum value prediction
+and use that to calculate our label, which is the max value times
+the discount and add it to the reward. When we prepare our label to be
+compared against the predicted value, we only want to update the output node
+corresponding to our chosen action. And this case the chosen
+action had an index 2, so index 2 has our calculated future value
+and all other output nodes get 0. Finally, we'll feed in our state
+to see is predicted Q values and back propagate based on our label. Let's take a look at our
+update function one more time. If we replace these terms with their
+more commonly used symbol and then take the integral, we get our old friend
+the root mean squared error loss function. That means we could set up our neural
+network just like we would for supervised learning problem and
+use all of our favorite libraries. The majority of the work is
+transforming the data before fitting.

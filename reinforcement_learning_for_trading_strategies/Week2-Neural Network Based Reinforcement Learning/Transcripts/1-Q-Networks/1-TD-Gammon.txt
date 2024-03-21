@@ -1,0 +1,66 @@
+In the previous lesson, we talked about the history of reinforcement learning before neural networks were introduced. Now, let's see how neural
+networks changed the game. We're going to go over two
+major reinforcement learning neural network algorithms. Then, finish off with a
+discussion on how the engineering behind bringing
+these algorithms to life can enhance our agents. There is this renaissance
+happening today with neural network applications
+of reinforcement learning, but the practice has been
+around since the early '90s. There's actually
+an X-Files episode called Ghost in the Machine, with what's called
+an Adaptive Network or Learning Machine. TD-Gammon is famous for not only being one of
+the first hugely successful reinforced learning algorithms to use neural nets, but also because it's one of the first areal
+algorithms to beat humans at strategically
+complex game. I'm going to take a
+walk down memory lane, because I was actually kept the time when all
+this was happening. Both of my parents are gamers. They've played Dr. Mario
+every night against each other for the past
+decade and a half. My dad, in particular, is a very big fan of chess. To this day, I can't beat him. That's why I make robots
+to beat him for me. So in 1994, when IBM's Deep Blue defeated
+the chess world champion, I remember my dad got
+very excited about the future computers and
+artificial intelligence. Chess was and still is considered one of the
+most intellectual games. So the hot topic became, where do computers go from here? The artificial
+intelligence committees shifted their attention
+to backgammon. I actually remember my dad
+teach me backgammon with all the hype surrounding
+it. Why all the hype? The goal at backgammon
+is to move all of your checkers into
+your home position. This is done by taking
+turns rolling two dice, and by assigning each dice to a checker and moving at the same number of
+space is rolled. Like chess, there are many possible positions
+that can be played. But unlike chess, there
+is an element of chance. It turns out that, even before IBM's chess victory,
+another IBM employee, Gerald Tessaro,
+experimented on combining temporal difference learning with neural nets in order to master
+the game of backgammon. So why the need for neural nets? Why not use our good old
+friend, the Q Table? There are a few downsides
+to the table format. The first is that
+the space is needed. In our frozen lake, we only had 16 states and four actions, so that's 64 cells. At backgammon, each player has 16 checkers and there are 24 possible columns
+that they can sit in. With each combination
+of positioning, the number of states is
+in the quintillions. The other issue, although this doesn't apply to backgammon, is that each state must be
+assigned a discrete number. If we have a problem
+with continuous values, like x and y position
+coordinates, we would need to convert
+it into an integer value. First, it would be
+difficult to figure out what value
+should be assigned, and we might lose valuable
+information in the process. Instead of trying to account for each possible word position, to sorrow fed in state
+information and a neural network, which was designed to
+approximate TD Lambda. The agent would play
+by rolling the dice, and then calculating
+each possible board position from
+those dice rolls. It would feed those positions
+into the network and select the action corresponding to the highest possible state. Well, TD-Gammon was ranged just below human backgammon
+grandmasters, it was still considered
+a huge success in the AIM Backgammon
+communities. Its play was strong enough that new strategies were developed
+based on the AI's insights. The reason why it lagged behind human players was due
+to its end gameplay. Data for these types of
+situations were sparse, and so it was weak at predicting the value
+of End Game states. Interestingly, TD
+-Gammon strengths and weaknesses are the
+reverse of Deep Blue. The chess algorithm
+works by brute force calculating many
+moves in advance. So as End Game is very strong, and is weaker during the
+earlier turns of gameplay.
