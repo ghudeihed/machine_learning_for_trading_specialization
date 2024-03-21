@@ -59,11 +59,10 @@ anything about the past. In practice, a learning rate of about 0.2 seems to work
 will be able to capture the true value of the weighted
 sum of the new states. However, if we make the
 learning rate too small, it will need more
-training iterations to converge on a policy. Where agent goes
-through a simulation from starting position
-to ending position, our researchers call
-that an episode. So let's go through
-an episode of TD(0). I'll flip heads and go right. Both my previous state
+training iterations to converge on a policy. 
+When the agent goes through a simulation from starting position to ending position, our researchers call
+that an episode. 
+So let's go through an episode of TD(0). I'll flip heads and go right. Both my previous state
 and current state are valued at zero, so
 nothing changes. When I flip the tails
 and go left again, everything is zero,
