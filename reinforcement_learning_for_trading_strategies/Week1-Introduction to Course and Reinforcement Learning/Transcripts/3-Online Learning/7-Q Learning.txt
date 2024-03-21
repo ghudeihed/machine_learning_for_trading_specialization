@@ -1,0 +1,97 @@
+Q learning is a popular
+application of TD0. In fact, it was developed by
+Chris Watkins for his PhD in 1989. And he consulted Richardson
+while working on it. Cool. Let's take a look at
+our simple lake again. It's been a hot minute when
+Watkins was working on his Ph.D, he was particularly interested
+in how animals learned. So his goal was to come up with plausible
+algorithms that could be used to explain their behavior. He first modified TD0. So it become more of
+a table called the Q table. Why Q? Rumor has it, it was just tricky
+to find an appropriate letter of the alphabet R was used for
+reward S for state T for time U is a common letter for
+a numeric variable in math V is for value. I can see how be tricky to
+come up with the right letter. Anyway Watkins decided that
+instead of finding the value for a state that he would assign values
+to a combination of state and action. So here we have our Q table with
+our rows representing states and the columns representing actions. Our policy is going to be to take the
+maximum value to action given the state road we're currently in. We've just started so
+everything is zero right now. So will randomly select from
+the maximum values plunk. If we randomly choose to move down we will
+meet our untimely demise but that's okay. We can learn from our mistakes well
+up to our table like we did with TD0. It's a negative one reward for falling
+in the water if we have an alpha of 0.5. That's a -0.5 update to our table. Now we know not to go that way
+during our next training episode and we'll select a different
+max value action instead. To compare the equation on what
+we had before with TD Lambda. The Q function is extremely
+similar except it now accounts for the state action pair is
+besides just the state. There is one thing to note which is now
+that we're finding the value of a state action pair which action should
+we use from State Prime. Watkins logic was this. We'll use the action that we would
+use if we were in state prime. Which would be the action that
+gives us the maximum value. So I'll just look at the Q table row
+that corresponds to State Prime and use the maximum value. Let's start building this out in code
+our agent needs three key things away to initialize the Q table a way to
+update it with new information and a way to choose an action
+based on the policy. A way to learn an act. It sounds like our agent is starting
+to turn into an intelligence. If we know the total number of states and actions initializing our Q
+table is not bad at all. We just tell lumpy
+the number of states and actions if we don't know
+those things no problem. We can make python dictionaries that map
+states and actions to rows and columns. If we come across the state or
+action that is not in those dictionaries. Then we expand the size of our Q table and
+add the new indexes to our mappings. I've take you should look familiar. It's the TD0 update rule
+with the max election for State Prime to represent the action
+we would take in that state. The key here is the line where
+we calculate the future value. We take the max value corresponding
+to the Q table row for State Prime. Finally we'll add in a new way to act
+given the current situation we're in. This one is deceptively tricky. First, we'll grab the row corresponding to
+our current state we could use them pies or Mac function to find the action index
+corresponding to the maximum value. But that's going to buy us our agents
+actions how if we have ties for maximum values and up I will only
+return the first cream index instead. We'll use a hardware to find
+the indexes if all the values equal to the maximum then will
+randomly select from those. There's one last observation Watkins
+had about animals that he included in Q learning. In this research he learned that animals
+will purposely make mistakes when they're in a safe place in order to improve
+their understanding of the environment. So far all the algorithms we've
+learned are called on policy. That means given the information
+currently available to us we've gone with the best note action. Watkins introduced off policy, which
+is to purposely do something different than the best-known action for
+the sake of exploration. There are a few ways to incorporate
+this exploration versus exploitation. Turns out one of the easiest ways
+is also one of the most popular. We'll introduce a new variable
+called the random rate. It's also called Epsilon and
+some circles this represents the fraction of times we want to
+choose a completely random action. Then in the X function will roll
+a random decimal between 0 and 1 and
+see if it's lower than a random rate. If it is we'll roll a random action,
+if it isn't, we'll find the best action
+based on a Q table like before. We'll only do this when we're training
+just like humans or robots and I needs a safe environment to
+try new things to make mistakes. But when it comes to a moment that
+counts it will do what it knows is best. Finally, let's put it all together. So the tricky thing here is
+adding in the environment. Thankfully AI Jim makes it super easy for
+us. All I have to do is pass in the name
+of the game Frozen like v-0 and it will build an environment for
+agent to interact with. Otherwise, we need to put on
+our game developer hats and programming environment that
+responds to our agents actions. For curing we will want to
+do just one simulation. We would probably want to do many so I'll make a function play game that
+runs through one full simulation. To start the game will reset
+the environment which returns us to state. We'll pass that state to the agent which
+will use that to choose an action that in turn gets past the environment
+which returns a new state every Ward. And a flag done which indicated
+if the game is over or not. The agent will keep playing updating its Q
+table until it sees that the game is over. We'll repeat this process running
+simulations and checking on the progress of our agent until I'm satisfied
+with the success of our robot child. That's all there is to it. We've completed a large number of non
+neural network based algorithms next up knowing that works and
+why they're needed reinforcement learning. But for now, I'd recommend reflecting
+on everything we've just learned and assessing your own learning and habits. What kind of agent are you do you plan for
+far in the future or do you seize the moment do try new things
+that scare you for the sake of learning. Do you hold on to history or let it go and
+favorite recent experiences. There's no right or wrong answers to these
+questions and diversity of thought is a good thing the more perspectives we
+haves the more problems we could solve. So keep up the good work and
+don't give up yet. There's lots more cool things
+we can learn about learning.

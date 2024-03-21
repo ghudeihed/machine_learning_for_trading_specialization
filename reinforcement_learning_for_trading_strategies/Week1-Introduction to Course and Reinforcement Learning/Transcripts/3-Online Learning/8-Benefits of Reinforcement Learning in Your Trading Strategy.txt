@@ -1,0 +1,87 @@
+Now that you have a solid understanding of the differences between reinforcement
+learning and other types of machine learning, we will look at the
+key features of reinforcement learning
+which can improve the performance of
+trading strategies developed with deep
+learning techniques. By the end of this session, you will understand
+the differences between deep learning and deep reinforcement
+learning and have explored each component of a deep
+reinforcement learning strategy. You will also
+understand how DRL can improve your strategies,
+efficiency and performance. To begin, let's talk about deep reinforcement learning from a financial markets
+trading perspective. DRL puts an agent into an entirely new environment
+and allows it to get use to taking the best
+decisions based on specific circumstances of
+each state it encounters. The agent does not have any previous experience
+or prior knowledge of what consequences to expect from its interaction with the
+surrounding objects. It's main goal is to start collecting information
+about the environment, which can later on help it
+make an informed decision. The agent does this by
+testing how the state spaces it encounters
+react to its decisions. The agents human developers
+sets rewards for each positive choice
+and penalties for each negative choice to help the agent build a
+logical framework with which to differentiate what is considered a good
+and a bad decision. The more frequently the agent interacts with the environment, the more it learns and
+the better it becomes at making decisions that
+will maximize its reward. How is this different
+from machine or deep learning models where a human developer is
+involved in the process. The main difference is that deep reinforcement
+learning agents are given a high
+degree of freedom. Once they are given
+what is considered a positive or negative outcome, they tend to build on
+that logic and further develop it based on their individual
+experience over time. They become to some degree, independent operators that base their decisions on self
+gathered feedback. This allows DRL agents to
+extend beyond the limits of the developer's knowledge and solve more complex problems. In this section, we will look at the key components of a
+DRL trading strategy. Most studies conducted on the DRL framework are
+related to game play. There is not so
+much work-focus on the application of deep reinforcement
+learning to trading. Although the adoption
+is in its early stage, there are some studies
+that point out the superiority of DRL algorithms when compared to existing
+automated trading mechanisms in terms of performance. This means deep
+reinforcement learning can help in handling some of the most complex issues that traders face in
+financial markets. Strategies require
+error-free handling of large volumes of nearly
+continuous data. Agent's actions may result in long-term consequences that other machine
+learning methods are unable to measure. Agent's actions also have
+short-term impacts on the current market
+conditions which makes the trading environment
+highly unpredictable. Now let's find out how DRL's application to trading
+can work in practice. In the process of applying
+DRL on financial markets, researchers have narrowed
+down the architecture of trading algorithms to the
+following main factors; agent, environment,
+state and reward. The agent is the trader; it has access to a
+brokerage trading account, periodically checks the
+current market situation and makes trading decisions. The usual methodology when
+trading is as follows; the agent makes a decision, places an order and then waits
+for the market's reaction, the order is executed
+or isn't executed. Based on the
+environments feedback, the agent then takes
+another action, either submits a new order, changes the terms of the existing one, or remains passive. The agent analyzes the response of the environment and decides on its further actions based on the specification of
+the current state. The agent does not
+have control over the environment or over the
+actions of other agents, all it can do is react to them. This is the market or markets for assets
+that would be traded. The market is full of
+other agents as well, both human and computer-driven. These agents demand
+or supply liquidity. Public liquidity is
+shown in the order book, private liquidity is hidden in dark pools and order
+execution strategies. The interaction between
+all agents within this complex environment
+is what makes creating a trading
+algorithm so challenging. The state of the environment or the market usually is
+unclear to the agent unless it has some insight or information or technological
+advantage over other market participants,it is not aware of the number
+of other agents, their actions, their positions,
+or order specifications. The reward function
+is crucial for the success of the deep
+reinforcement learning algorithm. If the reward function
+is naively driven by absolute maximization
+of potential profits, the algorithm will start
+placing highly risky bets, underestimating the
+potential losses in the name of reaching
+its ultimate goal. In reality, traders strive
+for an optimal Sharpe ratio, which has proven to be the most efficient reward
+goal for DRL algorithms.
