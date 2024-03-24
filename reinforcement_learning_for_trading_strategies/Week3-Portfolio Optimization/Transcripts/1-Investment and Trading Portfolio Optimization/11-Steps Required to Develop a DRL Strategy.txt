@@ -1,0 +1,99 @@
+Next, we will look at the
+steps required to develop a successful deep reinforcement learning
+trading strategy. You should already be familiar with some of the
+steps listed here. Mainly, you need to be aware of the additional steps and
+modifications that RL requires to create an autonomous or nearly
+autonomous trading algorithm. First, the more data you have for security you're
+trading, the better. This should be at least a hundred thousand to more
+than a million rows of historical time series. Anything below that,
+and you can't be confident of the results that
+look good in backtesting. Selection also depends
+on your risk appetite. Crypto is high risk, equities, less so, and FX, even less. Also remember that
+risk is not just dependent on the instrument
+or market you are trading. It can be increased or
+decreased dramatically by the amount of leverage you
+add to your trading capital. Low volume, low liquidity
+markets can be more profitable, but you need to have
+the risk capacity and appetite to trade them. You also need to
+understand the effect your trades have on the
+market you are trading. This is where you need to model market impact costs
+such as slippage, which is the difference
+between the expected price of the trade and the actual price at which the trade is executed. Slippage can occur at any time, but is most prevalent and severe during periods of
+higher volatility, particularly when
+market orders are used. You can eliminate
+slippage by using limit orders with a fixed price, but you run the risk of missing a trading opportunity if
+your order is not filled. You need to make sure you calculate slippage
+in your backtesting. This can only be done if you have bid-ask price data or better yet, visibility into the order book of the security you
+are backtesting. This will allow you to model market impact costs
+more realistically. If you do not
+calculate these cost, your algo may look profitable in testing but will disappoint when deployed in live trading. If this data is not obtainable, you can infer or estimate
+slippage from other indicators such as trade size,
+volume, and volatility. Each time you get access
+to raw financial data, you have an asset whose
+potential value can only be unlocked if
+it is cleaned up. It will take some time, but it is worth the effort. Investing the time needed
+for this tedious job is important and require
+strict attention to detail. Almost every raw dataset
+has missing values. How do you handle
+the missing values? Simpler is better. Use interpolated
+means for filling in small amounts of missing data, but remove the data completely if the proportion of missing data is too high for a certain period. You should create many
+algos that behave differently in
+different time frames and trading environments. Then use the ones
+that behave best in the most recent few
+months to trade live. Or if you're using an
+ensemble of algos, give higher weights to those
+that have behaved better in the recent past when making the decision whether
+to trade or not. Keep on backtesting as
+new data come in and if the behavior of the market and/or the performance of
+an algo changes, switch or reweight the
+algos immediately. Can you blend numerical data
+with classification data? For example, numerical values with sentiment over the news. You can but it works
+much better if you separate neural
+networks for each of these tasks and then
+use the representations of these neural networks
+to feed your RL trader. You can think of
+your neural networks like the intellect
+of a small child. It needs to be guided
+and taught and given clear examples
+without blending lots of stuff together and
+confusing the inputs. Splitting similar data into different neural networks will improve your algo's
+performance immediately. Instead of using
+one neural network to master all of your data, think of the whole process
+and break it into steps. Then build a separate neural
+network for each step. This part of our
+RL trading system is responsible for
+taking the inputs from the deep recurrent
+neural network or DRNN and making a decision. This is the command
+center of our RL trader. What kind of decisions
+should it be able to make? It will choose among
+three possible decisions; buy, sell, or hold. There are also many ways
+to train your RL algo. You need one that can take
+near continuous values, not just snapshots of reality. It will need to learn actions
+based on data analysis in a near continuous feed of sensory data just like a
+trader in front of a terminal. In my experience and
+also in the literature, the actor base reinforcement
+learning methods tend to work better. Now that you have designed your system and
+gathered your data, you are ready to train
+your RL trader or agent. We need to present
+the RL trader with a window of data and
+let it experiment with different actionable
+scenarios while calculating PnL and also Sharpe ratio on later stages in
+every case scenario. You need to punish
+it when it does badly and reward it
+if it does well. This will happen in many
+iterations, and over time, the RL trader will
+learn to trade in a style that maximizes
+this reward. Backtesting in RL
+trader is critical and needs to happen on
+out-of-sample data, which the RL trader
+has never seen, either in training
+or during testing. Only if the algorithm
+performs well on this kind of data should you even consider testing it in a live
+trading environment. Keep a good amount of recent
+data for backtesting. Data that your algo has not been training or testing
+on and make sure that you have all of the representative
+market situations covered such as volatile markets, steady, down trending,
+up trending, etc. Also, make sure that you are representing the
+market accurately. For example, splits
+of stocks, spin-offs, companies that were
+acquired or failed, so you don't have survivor bias.

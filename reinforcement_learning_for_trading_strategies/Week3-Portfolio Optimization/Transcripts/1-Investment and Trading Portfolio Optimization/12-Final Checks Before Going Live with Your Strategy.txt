@@ -1,0 +1,74 @@
+Now you are ready to make
+the final checks before allowing your RL trader
+to trade a live market. You spent a lot of time and experimented with
+different RL models. You've managed to achieve
+a good sharp ratio for your RL trader after
+lots of trial and error. How do you know if your RL
+trader is ready to go live? What are the indications of
+a well-trained RL trader? Don't be in a hurry. It's going to take you a while to create a profitable
+algorithm trader, and you'll never know if it works until you test it
+with real money. In a medium size trading firm, it takes about a
+$100,000 to $250,000 to develop and test
+several strategies until you get one that works out. But then the return can be 10 to 30 times the
+development costs depending on how long you're able to keep your trading edge. Next are a few of the
+key criteria that must be satisfied before you can
+even think of deploying. First, your RL Trader
+seems to perform well over a long historical period and under different
+market conditions. This shows the trader
+has versatility and can be profitable under
+a variety of conditions. Second, your trader
+also performs well with another security that
+you haven't trained it on at the same time
+series timestep. This is a very positive signal. Timesteps are the number of
+lagged observations that you use to predict your next
+value in a time series. Third, your algorithm gets
+decent performance in the test set and has done well in the training
+and development sets. If your algo makes big
+losses in the test set, it means that it has been
+over-fitted and that you need to either
+bring in more data, and/or look for a less deep
+neural network architecture or you need to increase
+your dropout percentage. Recall that dropout
+is a technique where randomly selected neurons
+are ignored during training. They are dropped out randomly. This means that their
+contribution to the activation of downstream
+neurons is temporarily removed on the forward pass and any weight updates are not applied to the neuron
+on the backward pass. With a higher dropout percentage, it is less likely that your algo has been over-fitted
+to the training data. As your neural network learns, neuron weights settle into their context within the network. Weights of neurons are tuned for specific features providing
+for some specialization. Neighboring neurons come to
+rely on this specialization, which if taken too
+far can result in a fragile model that is to specialized to
+the training data. This reliance on context
+for a neuron during training is referred to as
+complex co-adaptations. You can imagine that if
+neurons are randomly dropped out of the
+network during training, that other neurons will
+have to step in and handle the representations
+required to make predictions for the
+missing neurons. This results in multiple independent internal
+representations being learned by the network. The effect of this is
+that the network becomes less sensitive to specific
+weights of the neurons. This in turn results in a
+network that is capable of better generalization and is less likely to over
+fit the training data. Your algorithm performs very badly in the training set
+and cannot be trained. You should use more inputs
+for your neural network, or increase the depth
+of your neural network, or adjust the hyper parameters of the neural network
+and RL Agent. Also make sure that you have
+initialized the weights for the deep learning part before
+starting the training. Your algorithm performs
+well in all train and test sets and you are
+ready to try live trading, but you need to keep on training despite having smaller
+learning rates for your deep neural network. This incremental learning, despite happening
+at a lower rate, will allow you to squeeze
+some more dollars of performance out of your
+algo before live trading. You need to scale the
+implementation of your algo to reflect
+market conditions. You should not deploy immediately into a
+live environment with super high margins and
+extremely volatile conditions. Instead, you start with a
+demo account and trade in demo for a while to
+see what happens. Alternatively, you
+can trade live, but use Microtrace to
+gain some confidence, and see where you might
+need to intervene.

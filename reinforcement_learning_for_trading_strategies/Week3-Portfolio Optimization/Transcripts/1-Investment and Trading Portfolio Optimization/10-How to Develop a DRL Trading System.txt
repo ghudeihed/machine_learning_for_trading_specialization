@@ -1,0 +1,20 @@
+Now that you have a better understanding
+of the different types of reinforcement learning methods, we'll discuss the practical steps
+required to create an RL trading system. By the end of this session, you will be
+able to identify the components of an RL trading system, understand the steps
+required to develop a deep RL strategy. And identify the strategy checks
+needed before going live with your RL trading system. To begin, we'll talk about the main
+components of an RL trading system. An RL trading system is very similar
+to other quantitative systems. Once it has been successfully trained
+in back tested on historical data, it is ready to be paper traded and
+potentially go live. The RL trader whose command center is the
+RL algorithm, receives data on the current market sand acts on it by either
+placing trading order or doing nothing. If it creates an order,
+it may be executed immediately or it may need approval
+from a human operator. For most trading strategies,
+especially high frequency trading, intervention by a human operator would
+not be feasible or necessarily desirable. Due to the need to react quickly
+to changing market conditions. The new market state along with order
+performance data is passed to the policy optimization algorithm. And then the revised policy along
+with new market data are analyzed, tested and passed to the RL trader which
+then makes a new trading decision.
