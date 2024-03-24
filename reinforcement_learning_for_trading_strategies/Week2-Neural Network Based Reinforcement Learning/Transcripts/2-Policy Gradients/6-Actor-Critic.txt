@@ -1,0 +1,49 @@
+Actor critic is an interesting
+variation on policy gradients, instead of using vanilla TD1, or going
+to bring back our BFF the Q-function, so we can Implement a popular version of the
+algorithm called Advantage Actor Critic. There's an even fancier version
+of the algorithm called Asynchronous Advantage Actor Critic or
+A3C, which involves many workers simulating and parallel, but it turns out the simpler
+A2C works just as well in practice. Here's the premise the Q function can
+be broken down into two functions. One is the value function that we already
+know and love from TD Lambda, estimates of value based on the state, the advantage
+function, big a, is how much value of a state changes given an action or little
+a, this is new architecture of a model. There are now three sets of output nodes,
+the first predict, which is the same as our predict for
+policy gradients, it's going to tell us with what
+probability we should choose an action. Next the Actor, it's the same as our
+policy network from policy gradient and trains in the exact same way. Finally at the Critic,
+it's going to try and represent the V and our Q learning function, whereas the Actor
+will learn based off the advantages. It does look like a lot here, but keep
+in mind we've already done this part so far, we just need to figure
+out how to add in this part. This time our network is going to
+return three networks instead of two, but there's only five
+lines we need to change. First up, we need to add an output node
+to predict the value of the finite state. The Actor network is the same as
+our policy network from before and is what we're going to train on. It has two loss functions,
+a custom function for the probabilities like before,
+and mean squared error for the value estimate,
+by default keras will weigh them evenly. The last new line is the critic model,
+it takes in state as an input and outputs it's estimated value. Our learning function combines both our Q
+function learning and our policy gradient learning, when we train will collect
+information on when the episode ends or dones_mb and the critics prediction
+on state prime or next_v_mb. Then we can use the Bellman
+equation like we did before, similarly to how we predict
+the value of S Prime and Q learning, we're going to predict the value of
+our state's using the critic Network. That way we could subtract it from the
+discounted rewards calculated by TD 0 to find the advantage. Finally, we train the Actor
+model with the states and advantage fitting to the chosen action. And for the critic, we train on
+the state's fitting to the discount of rewards, and that's that we've officially
+converted policy gradients to A2C. We went through a lot of code very
+quickly, so if you'd like to go through each algorithm line by line,
+I recommend checking out Phil Tabor. He's a You Tuber who
+does this gutsy thing, where he codes his algorithms live and
+explains what he's doing? That concludes the end of
+our algorithmic journey. I hope you've learned a little
+bit about yourself along the way, were you able to pinpoint
+what type of learner you are? Reinforcement learning is
+still a rapidly growing field. So if you're able to quantify
+your understanding of yourself, who knows you might have a breakthrough.
+
+
+https://www.youtube.com/channel/UC58v9cLitc8VaCjrcKyAbrw

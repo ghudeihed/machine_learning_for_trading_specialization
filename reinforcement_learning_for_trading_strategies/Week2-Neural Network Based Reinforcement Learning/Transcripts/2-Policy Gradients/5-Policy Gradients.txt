@@ -1,0 +1,85 @@
+In the previous lesson, we talked about deep Q-learning, which focused on estimating the value of state action pairs. This lesson, we'll look at the other school of
+reinforcement learning, estimating the policy directly. Thankfully, most of the
+engineering and operations work remains the same between deep learning and
+policy gradients. That means we'll be able to
+focus on just the algorithms. Let's start with
+Policy Gradients, which is the basis
+for Actor-Critic. For deep Q networks, we built a network that takes in state properties and predicts
+the value of each action. On the other hand, policy gradient-based
+algorithms take in state properties and returns the probability we should take in action given the
+state we're in. This can be extremely useful
+for a couple of reasons. Consider again, like
+rock paper scissors, a deep Q-network would
+assess the value of each hand and select the action corresponding
+to the maximum value. Whenever it feels it's
+in the same state, it'll always choose
+the same action, making it easy to exploit
+if the opponent catches on. On the other hand, if we find the probability to
+take an action, even if we're off
+by a little bit, we can still surprise
+our opponent. Well, what's strange
+to me when I was first starting policy gradients is what we're fitting against, which are chosen action
+given the state. I thought to myself,
+"Wait a second, I thought that was what
+we're trying to find? How does that work?" Secret sauce is in the last function. Since our goal is to
+find the optimal policy, we can assume that the
+probability of taking the optimal actions are A star
+and state S should be one. The fancy gradient with Pi? That's the change in our policy that moves towards
+the optimal action. There's a couple of
+gotchas to this, which are pretty similar to the gotchas to policy iteration. Since we're following the
+policy we're training on, we might pick an action that's locally optimal and
+then keep picking the action because the local optimum increases the
+chance to do that action. To counteract this, we'll
+divide our weight in updates by the probability
+we have to choose them. That way, actions
+with high probability to overpower
+low-probability actions. Those with a good eye
+for calculus might recognized this as an opportunity
+to do the chain rule. The derivative of
+the natural log of x is one divided by x. So we can simplify this
+expression into a log function. The other gotcha is based
+on our training sets. How do we know which action pushes towards optimal rewards? For that, we'll
+give our neural net another parameter, g of t, which represents the value we saw from completing the
+action during training. We put this action with code. This is where our custom
+loss is going to look like. We're going to force our
+predicted values to be between two really small numbers. The closer the input of
+our logarithm gets to one, the closer the logarithm
+fans out to zero, which means it will
+stop training. We multiply the result
+by y true or the one-hot representation
+of the action we chose, that means we're only
+training on that action. Finally, we multiply it by g to add in our observed rewards. There are a lot of different
+ways to play with this. I'd like to give a
+shutout to an author who helped me understand
+this much better. If you'd like to see a larger
+breakdown of the math here, I'd recommend checking out the article linked
+below by Christian. This will be the code for
+the full neural network. What's interesting
+here is that we actually have two miles
+which share neurons. One is the policy, which takes and stay in
+the value G to train. The other is the predict network. We don't have the
+current state value when we're choosing an action. So that's why we have
+a separate model with separate inputs. So what is this G and where
+does it come from anyway? It's actually our good
+old friend TD Lambda. We'll alter a memory buffer, so that takes one
+full episode and clears when we sample
+it for training. When we get to fitting our data, we can finally calculate g, which I've labeled
+as discount mb. Any chance this math
+here looks familiar? I hope it does because it's TD1. We're only calculating
+TD1 across the episode. So we don't need to worry
+about the value of the states. We'll just apply Gamma to our rewards working backwards to the episode so we can keep track of s primes future rewards. One thing that's different
+here with TD1 is at the end. We subtract from the episodes average and divide its
+standard deviation. This is just one
+more trick to help prevent the policy
+gradient from going towards the local minimum as episodes become more
+comparable to each other. Finally, we need to teach
+your agent how to act. The new acts function
+is beautifully simple. We feed it our current
+state observation and in turn get probabilities
+for each action. Then we can use numpy to
+randomly choose from them. That's all there is to it. We can take the code that
+we have here and swap it out with what we have for our DQN and our agent will go to town. There's one less algorithm
+I'd like to share with you. It's pretty awesome
+because it will bring together everything
+that we've learned, we'll look at it
+in the next video.
