@@ -1,0 +1,55 @@
+LSTMs, long short-term
+memory networks can mitigate the vanishing gradient problem
+in an ingenious way when they are in fact explicitly focusing on this
+forgetting behavior, but they are also able to more
+explicitly retain memory. To understand LSTMs,
+let's first look at an RNN in general in
+slightly more detail. Generic simple RNN
+would have an input, a hidden state that is fed
+back to the network itself for the next time step and
+an output that can, in simple cases, be the
+hidden state itself. Now, the hidden state of the current time step
+is calculated as a function of the input x and the hidden state in
+the previous time step. In this example, this is just
+a simple tonnage function. However, LSTMs improve in this simple layout
+in a number of ways. First of all, there is
+a memory cell value that's carried over through
+time like a conveyor belt. There are some new
+gates that explicitly learn how to best
+manage this memory. Looking into our visualization in more detail where each line represents a vector data flow, you see there are four different layers
+that are interacting here and there is a
+distinction between the hidden state and
+the actual output. The cell state acts as a conveyor belt to which
+the LSTM can either add or remove information depending on the
+gate layers below. In fact, these gates with their sigmoid functions are able to act as learned choices between letting nothing
+through in case of a zero value and letting everything through in
+case of a value of one. So let's look at the different
+gates that influence the hidden state conveyor belt as well as the actual output. This first one shown on the slide is called the forget gate layer. It comes up with a value
+between zero and one that controls what exactly
+should be forgotten. For example, in case
+of a language model, the gender of the
+last subject could be remembered as long
+as the next word might have to be
+matched for gender. Conversely, the gender might be forgotten if the text starts
+mentioning a new person. Our next gate is the input gate layer
+that uses a sigmoid and the tanh function to decide exactly what to keep
+and for those values, what exact future to
+calculate and keep. The tanh function make sure that the value is between
+minus one and one. So to continue with
+the earlier example, this would be where we might
+store the actual gender. So how do these two gate layers, the forget gate layer and the input gate layer,
+come together? As you can see on
+the chart, first, we forget everything that
+is chosen to be forgotten, and then we store the new
+inputs wherever applicable. Finally, let's look
+at the output gate. We read from the cell state, we are at tanh
+function to project the values between
+minus one and one and another sigmoid layer
+decides what parts of the cell state should actually
+be present in the output. So to read the rate, not all of the internal
+hidden cell state is output, only a filtered part of it. This allows the network
+to retain information that is not directly useful
+for the current output, but might be later. Here is an example
+from Andrej Karpathy of the outputs of a
+character level RNN. This network learned to detect comments and quoted values above, as well as indentation below in this code and red sections
+show the detected areas.

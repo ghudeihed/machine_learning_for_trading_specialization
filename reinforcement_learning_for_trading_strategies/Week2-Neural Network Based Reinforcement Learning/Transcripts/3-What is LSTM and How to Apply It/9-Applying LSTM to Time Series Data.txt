@@ -1,0 +1,92 @@
+Now that we got familiar with
+the LSTM model structure. Let's take a step back and look at a special kind of sequence
+time-series data in more detail. In this section, we will review
+the structure of time-series data sets and prepared to apply LSDM
+networks to time series. There are time-series
+problems all around us, all kinds of things and
+phenomena that are measured over time. And there are clear trends simpler
+complex how these measures increase decrease seasonality change fluctuate or
+grow or shrink in variance over time. Also predicting anything in the future,
+the ultimate domain of time-series is the goal of most
+prediction models on this slide. There are just a few examples
+of time-series problems. In the retail situation it is
+essential to forecast how many items will be sold this week,
+this month, this year. We might also try and
+predict earthquakes where of course, the time component is crucial. While we understand
+that over time more and more tension builds up in a fault
+line it remains exceptionally difficult to correctly predict when
+exactly an earthquake will occur. Finally, fraud detection models can
+also be seen as a time-series problem. When a certain user account can show
+a sudden change from its usual behavior or there are set of transactions one
+by one do not seem suspicious but in a sequence,
+they clearly show inappropriate activity. Now, if we wanted to use a classic
+supervised Machine Learning model specifically a regression model
+to solve a time-series problem. It can be non-trivial how to
+exactly define our features as well as our target label. Of course, our target label is
+future values, but in one second, one day, one month and for
+how long of a period are we predicting. And going back to features and
+we need features because the role past values might not work very
+well to capture the series. We might have to define a whole range
+of statistics of a different past time horizons, and there is no one clear
+way to know how to best define these. So to take an example,
+let's look at a specific time series. We just as well could have taken
+an example from a stock market data set such as a share price over time. But in this case,
+let's look at another market, the median_price of New York City
+real estate over time. As you can see for
+each week the median value of house sales is recorded over
+a course of a few years. Given this time-series, then the way
+to build a supervised learning data set is to run through the time
+sequence with a sliding feature window together with a label sequence for
+each window after a certain horizon. That is we are collecting
+our input signal features, a statistics from inside
+the sliding window. And we are using each to predict the label
+or sequence of labels at a fixed relative distance range from
+the sliding window in the future. Here is an example for creating features. In this case our first sliding
+window plus it's label, the first row on the right side,
+corresponds to the window of the first three rows on the left side
+plus the fourth row as the label. And so on until the last
+right side row corresponds to the last three plus one rows on the left. As you can see here, we have the simple
+label of the last single value and the simple statistics of
+the previous three values. It is useful to actually create
+a function to which we can just pass the original data set as well
+as the required window size and horizon and potentially the length
+of the prediction window to automatically create
+the restructured table. An example for
+such a function is shown on the slide and is available in the link
+GitHub repository. It is also useful to consider
+pre-processing dates to provide strong feature signals. Initially we might think that dates
+are nothing but just numbers, and we could certainly use them that way too. However, for many practical scenarios, it does make sense to
+explicitly create day of week, month, year features as well
+as holiday flags and so on. Once we are done with this
+restructuring we need to consider data partitioning that is how to split
+our data for training and testing. Unlike other supervised learning
+problems in general we're often random split is the best. In this case it is very important
+to make sure that our test set is strictly later than our training
+set to avoid data leakage. Then we can train based on all
+the available rows in this earlier, typically larger portion
+of our time-series and use the later smaller portion for testing. Finally, we can predict by taking
+the last available sequence parts as our input and
+predict into the unknown future. If we need multiple time points
+in the future to be predicted, this can be accomplished
+in a number of ways. For example, we could explicitly
+define the length of our prediction window in our earlier
+pre-processing function. Or we could just recursively apply
+a forecasting model forecasting a single value and bootstrapping one prediction
+as a new feature for the next. So let's start building actual models. It is always a good idea to start with
+one or more baseline models, for example, using a long time average or just the last
+available value as our baseline forecast. Any other more complex model
+should be able to provide more accuracy than these
+baselines to be useful. One approach as you can see on
+this slide is to use the classic powerful supervised learning
+algorithm Random Forest. While Random Forests are not
+specifically designed at all for time-series or even sequences,
+they can still prove useful as we transformed our data into
+a supervised learning structure. However, recall from the earlier lecture
+that we just explored how sequence models such as RNNs can understand
+more of the structure of sequences. Therefore, in the coming lab we
+will a actually use an honest LSDM model to predict time-series and
+will be able to compare it with our baseline as well as our
+structured random forest model.
+
+
+https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/blogs/gcp_forecasting/time_series.py

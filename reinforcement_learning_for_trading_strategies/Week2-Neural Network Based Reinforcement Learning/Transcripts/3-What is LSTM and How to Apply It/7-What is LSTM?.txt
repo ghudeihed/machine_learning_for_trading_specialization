@@ -1,0 +1,84 @@
+Hi, I'm Daniel and I'm a Machine Learning
+Solutions engineer at Google Cloud. In this section, we will learn about
+LSTMs, a special type of recurrent neural networks that proved really
+popular in the last couple of years. Let us first recap what
+sequence models are and how they differ from other structured
+data problem formulations. Observe these examples, in the first case, the task of predicting the next word
+in a sequence and in the second case, the problem of translating,
+in this case between English and Russian. What do these two language
+models have in common? Our intuition is that
+the order of the data, that is the order of the words
+is really important. Here is another example of
+a sequence model problem. You might already be familiar with the
+smart reply feature in Gmail where based on our incoming email, three different
+short answers are suggested to you. This is another example where the order,
+in this case, the order of sentences matters. Finally, moving on from written text,
+in case of speech to text transcription, the sequence of uttered
+sounds also becomes key in successfully parsing the written
+version of the spoken words. So what could we use to process written or
+spoken text or any other sequence? It is in fact possible to just use
+classic deep narrow networks on text and other sequences as well. But as we will see, recurrent neural networks are usually
+better suited for the task. Here is a very schematic view of a classic
+deep feed-forward neural network, the input layer at the bottom
+reads in the input data, the hidden layers in
+the middle learn features and the final output layer is expected
+to reconstruct the desired output. A few things to notice here for
+each type of layer. In case of the input, there is no
+defined order for our input data. Of course, the data vector or tensor is
+passing the input data in a given order, but we could just as well rearrange this
+order to a different permutation and would end up with an equivalent network. In case of the hidden layers, their inference is stateless meaning
+during prediction, they will not change its future values dependent on what
+they have seen before the current input. Finally, the output layer structure
+means that there is a fixed output size. One could think of ways to manage this
+such as having an output layer of the size of the longest sequence, but
+this might be impractical. As we just discussed regarding
+the fixed-length output layer, indeed sequences can come
+in arbitrary length and real language also contains both short and
+long sentences such as in this slide. Now if we try to feed
+these into our network in this class including an embedding
+layer, this would make it possible to aggregate the embeddings into
+fixed size output vectors. But basically this is still just
+a bag of words approach and we still do not make use of the order
+of the words in a sentence. In real life however,
+just as for languages as for many other sequences, the order,
+the structure can be very important. On the left side, the first sentence means
+much more than just the bag of words below and more often than not,
+this bag of words could spell out multiple grammatically correct but
+not as I said earlier true sentences. Other examples were the structure
+of the sentence is essential as in the case of humor or sarcasm which are famously hard to understand
+in any case with machine learning. That said, for example, if we were only
+interested in topic understanding, then for such tasks,
+indeed a ranked list of words or ngrams, which are groups of n
+words can be sufficient. Here is an example for our earlier
+sentence represented as bi-grams. This representation does retain
+slightly more of the structure than pure bag of words. However, while it might be tempting to
+increase n to create longer and longer ngrams, this would cause an explosion of
+dimensions and also various sparse values. So let's look into recurrent
+neural networks, RNNs. The key insight behind RNNs is that why don't we wrap a classic
+deep neural network in a loop? To understand this view of RNNs, first, let's have a look at
+a simple schematic example. This network has a time variant input x,
+a time variant output h and A is a small neural network with its
+output h also fed back into it as input. How is this even possible? Well, during training, we will consume the whole sentence through
+this network with a feedback loop and we will use the gradients to adjust
+weights across the whole sequence. Let's look at the same network in
+a different visualization unrolled. In this case, we show the neural
+network A multiple times. But remember that they still
+share the same weights. Indeed, this idea is
+the secret sauce of RNNs, the right side might look like
+a classic deep neural network, however, for each A,
+they share their weights and the backpropagation uses gradients for
+all time points. This logic will allow the RNN to be
+able to provide temporal context, that is if a piece of information
+was shared a few time steps earlier, the hidden state of the network
+might still be able to use that knowledge to help correctly
+predict in this case the next word. So, if RNNs are so great,
+do they have any drawbacks? It turns out that the simpler ones do and let's look into what these are before
+we introduce a solution to them. There are two main problems
+with long-term RNNs and both are related to the gradients and
+the effect of chaining on them. As the gradients pass through
+the whole potentially long sentence, they can be unstable either way, either exploding to very large values or
+vanishing towards zero. This ladder, vanishing gradients, in other words means that the network
+can in practice forget relatively fast. Again while in theory even the very
+last time step is influenced by the very first steps even in a very long sentence,
+in practice however, this effect can fade out in many
+cases partly for numerical reasons.
