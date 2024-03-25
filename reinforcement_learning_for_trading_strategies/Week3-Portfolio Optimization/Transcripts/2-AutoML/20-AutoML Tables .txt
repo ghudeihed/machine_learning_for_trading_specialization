@@ -1,0 +1,76 @@
+Finally, let's go into Auto ML tables for
+tabular data. Tabular data is what you might
+find in a spreadsheet for example, while Auto ML Vision and
+NLP are for unstructured data,
+Auto ML table is for structured data. The development of Auto ML table is a
+collaboration with the Google Brain team, while the technical details of the project
+haven't been released yet to the public. The team basically took the architecture
+search capabilities used for image classification and translation problems,
+and found a way to apply to tabular data. Let's describe a data set where
+Auto ML tables performs really well. The Mercari Price Suggestion Challenge, Mercari is Japan's biggest community
+powered shopping app and marketplace. Mercari created the price
+suggestion challenge for predicting the price of a product
+offered on the marketplace, so that they could give price
+suggestions to their sellers, participants were given some 1.5 million
+rows of rich data, with plenty of noise. The challenge lasted for three months and
+culminated in $100,000 price, over 2,000 data scientist competed for
+the price. This plot shows the performance of Auto ML
+tables on the Mercari challenge for several different training times. You can see that after 24 hours of
+training Auto ML tables pretty much puts you on the leaderboard,
+even after only one hour of training you get to the plateau of leaders,
+which is extremely impressive performance on a million-plus road data set
+with significant complexity. Compared to the hundred K price for this challenge,
+one hour of training is just $19. Since the search process for
+Auto ML tables is random, you might get slightly different results
+if you try to reproduce this performance. The easiest way to import your data
+into Auto ML tables is through BigQuery, you can also import data using CSV files
+start locally or on cloud storage. One of the advantages of importing data
+through BigQuery, is its support for a raise and struts, regardless for
+both import sources, your data must have between a thousand and
+a hundred million rows, between two and a thousand columns,
+and be a hundred gig or less in size. Once your data is imported, the next step
+is to select the features you want to use and to specify the column
+you trying to predict. In the next step of building
+an Auto ML table model you go through a data validation phase,
+the purpose of this step is to ensure you're not passing
+bad data to your model. This includes checking for
+columns that have too many null values, outliers that are skewing
+the distribution of a column, and columns that are not correlated to
+the target you're trying to predict. As you saw in the slide on Auto ML tables
+performance on the Mercari challenge, you can train a model for
+a variable amount of time, you can set a training budget
+in node hours, to cap costs. By default Auto Ml tables
+will stop training if the model isn't seeing significant
+performance gains anymore. Once your model is train,
+you should look at the training metrics, be wary of models that
+are too good to be true. In this case, you likely have a data
+issue you'll need to resolve. For classification, the report includes
+metrics such as area under the curve for precision recall curve,
+accuracy, and the F1 score also a confusion matrix is output
+along with feature importances. These two sets of metrics
+are particularly useful in diagnosing low-performing models. For regression models, the root mean
+squared error, mean absolute percentage error, and feature importances,
+are returned among other metrics. Check the Auto ML table documentation for a full list of metrics that get
+generated after model training. It's arguably more important to look
+at the performance metrics generated on the test set to get a feel for how well
+your model will generalize, the same metrics generated for the training
+data are also available for test data. For classification models, it may be
+useful to set the score threshold to a value other than the default of 0.5. Increase the score threshold, to make your classifier output
+a positive label with more confidence. Once you're happy with your model
+performance, you can go ahead and deploy it, you have the option of
+making batch or online predictions. For online predictions you can
+make calls using a curl command, or one of the Java, Nodejs or python APIs, the same APIss are available for
+batch predictions. You can make better predictions on
+either BigQuery tables or CSV files. However, the BigQuery data source tables,
+must be no larger than a 100 GB. For CSV files each data source file,
+can be no larger than 10 GB and if you include multiple files, the sum
+of all files cannot exceed a 100 GB. We return to the question of
+when should you use BQML or AutoML versus building a custom model,
+the short answer is it depends on how much time you have to build the model,
+and what resources you have available. This table may provide some
+guidance given the low barrier of building a model in either BQML or
+AutoMl give either a try first, if the resulting model is not sufficient, only then should you throw
+more resources at it. To summarize Cloud AutoMl can
+build really powerful machine learning models with no coding. The models will be customized to
+your data, use AutoMl vision for image data or ML NLP for text data, and AutoML tables for
+structured or tabular data.

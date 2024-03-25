@@ -1,0 +1,44 @@
+Let's move on to Auto ML NLP or Natural
+Language Processing. Cloud auto ML Natural Language, specializes in training
+models for text data. For example, if you have a
+set of newspaper articles, you can use the
+Auto ML NLP service to classify if a
+given article is, for example, about
+sports, or politics. The text to be recognized can be inline texts in the
+cell of the CSV file. More commonly, the text is
+contained in documents which are.TXT files or
+compressed in zip format. The path to the Cloud
+storage location of the document appears
+in the CSV file. Currently, the documents must be standard text and do
+not support unicode. The documents can be as
+small as one sentence, or up to a maximum
+of a 128 kilobytes. You can have anywhere
+from 2-100 labels. The custom model is evaluated
+on average precision, that is a value from 0.5-1.0. Its formal name is the area under the precision/recall curve. A higher number indicates more accurate classification
+and prediction. The evaluation report also supplies confidence
+of threshold curves, which is a way of characterizing false positive classification
+against true positives. For models that apply
+one label per document, the evaluation report
+includes a confusion matrix. You can read more about
+the evaluations and how to interpret them in the
+online documentation. If a natural language
+custom model is not used for 60 days, it will be deleted. If a natural language
+custom model is being used, it will be deleted
+after six months. So you'll be required
+to retrain your model. The reason for this is that
+training and serving methods inside Cloud Auto ML are
+frequently improved and updated. These changes are not guaranteed to be
+backwards compatible. They may render a custom model incompatible with
+the current service. High confusion and low
+average precision scores indicate that the
+prepared dataset needs additional entries, or that the labels are
+being used inconsistently. You may be able to improve low quality evaluations for particular labels with
+one of these methods. Add more documents associated
+with those labels. In other words, they
+might just not be enough training data
+to get a good result. You also may need to
+increase the variety of documents by adding longer
+or shorter examples, documents with different
+writing styles or word choice, or by different authors. Finally, for labels that are not useful or have low-quality, you may want to remove
+them altogether to increase the accuracy of
+the remaining labels.

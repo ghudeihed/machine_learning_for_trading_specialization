@@ -1,0 +1,136 @@
+Hello and welcome to the course,
+Custom Model Building with Cloud AutoML. Cloud AutoML is a service
+on Google Cloud platform, that allows you to build powerful machine
+learning models with minimal effort and machine learning expertise. They're ideal when you have a need to get
+a machine learning model off the ground as quickly as possible. In this course, we're going to dive
+into some of the Cloud AutoML products. Auto ML Vision is for
+image data, NLP is for text-based data, and
+Tables is for tabular data. First, let's start off by making the case
+for why you may want to use AutoML. Where does AutoML sit in the suite
+of GCP products that can be used for machine learning? On one hand, with products
+such as Cloud AI platform and BigQuery ML, you can build very
+customized machine learning models. However, to use these products, you'll need someone with machine learning
+expertise and coding experience. You'll be responsible for training the machine learning model
+yourself, which can take a lot of time. On the other hand, on GCP,
+you can call pre-trained models using services like Cloud Vision API and
+Cloud Speech API. No model training is required for
+the services. You simply feed the API your data,
+and it returns predictions. The downside of using pre-trained
+models is that they only yield good predictions when your
+data is relatively commonplace, as in social media images or
+customer reviews. Cloud AutoML sits somewhere
+in between these two. A model is trained specific to your data,
+but you don't need any code to train it. If you're going to train a machine
+learning model from scratch, you need machine learning and
+coding expertise. Anecdotally, building machine learning
+models follows the Pareto principle, where you can launch a functional machine
+learning model relatively quickly. However, most of the time and
+effort will go into debugging and making the machine
+learning model performant. Cloud AutoML follows
+a standard procedure that is divided into three phases train,
+deploy, and serve. The training phase has several steps,
+first, you have to prepare a data set that will be used in
+the supervised training process. Next, you need to analyze the data
+set to make sure it has qualities that will enable it to be effective. After the data set is prepared and
+validated, you use it to train the model. Finally, the model is used with
+test data to evaluate whether it is going to be effective in
+predicting and classifying new cases. If the model doesn't work well at this
+point, you may have to go back and modify the data set and try again. The second phase is to
+deploy the model and manage it, that means getting
+rid of old or unused models. The third phase is hosting
+the model on a service where it can be used to predict and
+classify. In traditional machine learning, the
+deploy and serve phases are complicated and involve moving the model from
+the model building system like TensorFlow, to a model hosting system
+like Cloud ML Engine. However, Cloud AutoML handles most of
+the complexity of these activities for you, making these activities easy. Cloud AutoML uses a prepared data
+set to train a custom model. You can make small prepared data sets for experimentation directly in the web UI,
+but it is more common to assemble the information in a CSV
+comma separated value file. The CSV file must be UTF-8 encoded, and located in the same cloud storage
+bucket as the source files. You can also create and manage prepared
+data sets programmatically in Python, Java, or Node.js. The first column in
+the CSV file is optional. It assigns the data in each row
+into one of the three groups train, validation, or test. If you leave out this column, the rows
+will automatically be assigned with 80% going to train,
+10% going to each validation and test. The next column in the CSV file
+identifies source files that are hosted in cloud storage. These are paths beginning
+with GS colon slash slash. The source file format depends on
+the kind of model you are training, but can also be compressed ZIP files. Subsequent columns specify labels. The labels are alphanumeric and
+can contain underscores but not special characters. The CSV file should not
+contain duplicate lines, and may not contain blank lines or
+unicode characters. Currently, the CSV file and
+all the source files must be in a cloud storage bucket in the same
+project where AutoML runs. Prepared data sets do not expire. You may accumulate many prepared data
+sets in a project, you can list and delete those that you do not need. Cloud AutoML performs basic checks and a preliminary analysis of
+the prepared data set, to determine if there is enough information and
+if it is organized properly. If the prepared data set is not ready,
+you will need to add more rows or more labels to the CSV file. When it is ready, you can start training. Training can take from ten
+minutes to several hours, depending on the kind of model. You can check the status while
+it's running, import and training tasks can be canceled. The train group of data is used
+to train the custom model. The source files have already been
+associated with the correct labels in the prepared data set. So Cloud AutoML uses a supervised learning
+method to train the custom model. Part of the process uses
+the validation group data, to verify how well the model works
+at classifying and predicting. Supervised learning works
+on correctable error. Cloud AutoML constructs an algorithm
+that guesses the labels for source data. When the guess is right,
+it strengthens the algorithm, when the guess is wrong, the error
+is used to correct the algorithm. And this is how learning occurs. One full run through all the train
+group data is called an Epoch. Total error is tracked and
+minimized through multiple epochs, to create the best model possible
+from the training data provided. The result is a train custom model. The custom model works well
+with the training data, but is it good at categorizing new instances
+of data it has not seen before? Data from the test group is used
+to evaluate the custom model, and to remove bias from the evaluation. The predictions and classifications are compared with
+the labels in the prepared data set. The evaluation report provides indicators
+that are specific to the kind of model, and help understand how effective the
+model is at predicting and classifying. There is nothing you need
+to do to activate a model. However, if it has been some
+time since you used a model, the system may need to warm up for a few
+minutes before the model becomes active. Once it exists,
+if you have the project credentials and model name, you can access and
+use the custom model. Each time you train with a prepared
+data set, it creates a new custom model. You can list and delete unneeded models. Custom models are temporary,
+they are eventually deleted and they cannot be exported or
+saved externally. Models that are not used for prediction
+are automatically deleted after a period of time, models that are used
+are eventually deleted. So you will need to train a new
+custom model periodically, to continue predicting and classifying. How long models remain before they
+are deleted depends on the model type. The primary classification
+interface is at the URI shown. You can make a classification
+using the web UI, or from the command line using CURL
+to send a JSON-structured request. There are also client libraries for
+Python, Java, and Node.js. After you have set up authentication to
+use the rest API, you send your request with the model name and the payload,
+which is the data you want classified. The service returns JSON containing
+multiple fields called display name. These are the labels that matched. Then it contains the keyword
+classification followed by a score. The score is a confidence value
+where 1.0 is absolute confidence, and lower fractional numbers represent lower confidence in the correctness
+of the classification. Quotas apply for both model creation and
+service requests. Cloud AutoML lowers the effort required
+to create a model when compared to traditional machine learning. With traditional ML,
+models were hard to create, so there was a tendency to try to make
+the data set and model all inclusive. With Cloud AutoML, you can create smaller, more specialized custom models,
+and use them programmatically. So you don't have to squeeze
+everything into one model. You can break apart a classification
+into multiple steps, and you can use the results of one
+classification to make choices about what kind of
+classification to perform next. Here's an example,
+a company that sells clothing has a service office that
+receives emails from customers. The first job might be to distinguish
+email containing feedback about products, from emails requesting
+information about the company. Model 1 could be used to
+classify feedback email. The second job might be to distinguish
+whether the email is describing pants, shirts, shoes, or hats. This might be the job of Model 2. Model 3 might be used only for emails talking about shirts, to see if
+the style of the shirt is mentioned. Model 4 might be used only for emails about shoes,
+to see if the shoe style is mentioned. You can see from this example that
+a collection of models might be able to accomplish magic in your own
+application by focusing the scope and purpose of these models. You can also programmatically
+combine your custom model, with a standard model such as
+Cloud natural language API. When should you use Cloud AutoML? The recommended application strategy
+is to first use the pre-build artificial intelligence services. Next, you can use Cloud AutoML
+to produce custom models, which can be used with the pre-built
+services or on their own. Remember that you can divide
+a problem into specialized parts, and use multiple custom models together. Finally, if you discover you need more
+advanced features, you can use the machine learning and artificial intelligence
+services to create new models.

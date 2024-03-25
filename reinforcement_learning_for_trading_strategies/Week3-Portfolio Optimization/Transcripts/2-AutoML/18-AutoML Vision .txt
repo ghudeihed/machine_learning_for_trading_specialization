@@ -1,0 +1,36 @@
+Now, we'll describe
+AutoML Vision. This is a Cloud Auto ML
+product for image data. Cloud AutoML Vision specializes in training models for
+image classification. You can load the CSV file
+and the image files from Cloud storage or you can upload them from your local
+computer using import. Training supports
+several file formats including JPEG and PNG. The images can be up to
+30 megabytes in size. They have to be converted
+to base 64 encoding, which stores the
+image as a text file. The prepared file will be a txt file or a
+compressed zip file. Service request only
+recognize JPEG, PNG, and GIF files up
+to 1.5 megabytes. The trained model will
+work best when there are at most 100 times more images for the most common label than
+for the least common label. Consequently, for
+model performance, it is recommended that you remove very low-frequency labels. You can label the images in the web UI or in some
+cases you can use the human labeling service
+offered by Google if you have more than
+100 unlabeled images. To gauge your trained
+model's readiness, AutoML Vision creates
+the confusion matrix for up to 10 labels. If you have more than 10 labels, the matrix includes the 10 labels with the most
+incorrect predictions. The quality of vision
+custom models has a lot to do with the
+choice of training data. Train on images with similar properties to those
+you intend to classify, for example, images of
+similar resolution, lighting, focus, and
+level of detail. High confusion, low
+average precision scores or low precision
+and recall scores can indicate that
+your model needs additional training data or
+has inconsistent labels. Perfect is the enemy of good. Perfect or very high
+average precision scores could indicate that something
+is wrong in the model. The data is too easy
+and not varied enough, it could mean that
+the model might not work well beyond the test data. In this case, increase the variety of images in
+the prepared data set.

@@ -1,0 +1,65 @@
+In this notebook, we'll
+explore what Ray Dalio, referred to as the Holy
+Grail of Investing. How by increasing
+diversification, you are able to reduce
+your overall risk as measured by the standard
+deviation of portfolio returns. The idea here is to show that if you can
+create a basket of uncorrelated or low
+correlation return streams, you can reduce your
+portfolio risk significantly by
+increasing the number of streams in your portfolio. The first step is to
+increase the resolution of your plotter to retain level and import the
+required libraries. In order to get the same
+results as will be shown, set the random seed to 42. Next, you create a
+function that simulates n return streams with a given
+mean and standard deviation, which you name risk, and a given average correlation, which you name corr or
+C-O-R-R, between them. Ideally, you will have
+real data and be able to generate real return streams for the assets in your portfolio. We are using simulated
+returns streams here to generalize this example. Just to make sure, let's do a
+sanity check by calculating the means and standard deviations
+of the returns streams. This is the simplest way to
+construct such a portfolio. You create an array of
+pairwise correlations between assets that are equal
+to a given level of corr. The important point
+is that the average of all pairwise
+correlations should be equal to corr or 0.6,
+in this example. Then you'll create a helper
+function to calculate the pooled risk given a number of return streams
+in the portfolio. Next, you'll build your
+simulated data set. You'll analyze your
+return streams with risks levels in the range
+of 1 percent to 14 percent, for very number of streams
+ranging from 1-20. You'll plot the risk levels for different average correlations
+ranging from 0-0.7. You can already see
+in this array where the first line
+represents the risk for a one asset portfolio for correlations ranging from 0-0.7, how the portfolio risk decreases
+as you add more assets. You can also see how the decline in the
+risk is much sharper, when there is a low correlation
+between the assets. For example, going
+from one asset to 10 assets with a
+correlation of zero, reduces your risk from 14.14
+percent to 4.44 percent. With a correlation of 0.7, the reduction in
+risk is only from 14.12 percent to 12.1 percent. Next, you create a function
+that produces a plot given your simulated data and a chosen risk level
+of 10 percent. Your plot shows how
+diversification benefits to portfolios with assets that have a risk level of 10 percent. More highly correlated
+portfolios do not benefit as much from
+increased diversification. You get only small
+reduction by adding highly correlated assets beyond
+a total of three or four. In contrast, you can
+have the risk by adding just six or
+seven uncorrelated, or more realistically, weakly correlated assets to a portfolio. The benefits of
+diversification are reduced risk through exposure to different sources
+of trading revenue. The insight that
+Dalio brings is that the construction of a
+diversified portfolio, through a combination of
+uncorrelated return streams, significantly reduces
+your overall risk raising in turn your return
+to risk or sharp ratio. By the careful mixing
+of uncorrelated assets, you can capture this
+true low-risk Alpha. This gives you the
+ability to add leverage and greatly increase
+your potential returns. This is the strategy that
+Dalio and Bridgewater have used successfully in
+their risk parody approach, which is described
+in the link shown.
