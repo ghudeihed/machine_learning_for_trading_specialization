@@ -1,0 +1,67 @@
+In this section, we
+will shift our focus to managing risk from an investment
+and trading perspective. By the end of this session, you will be able to
+distinguish between risk management techniques
+for a trading portfolio, as opposed to an
+investment portfolio. You will also understand
+how to achieve the benefits of
+diversification in a trading portfolio and be able to identify potential criteria for optimizing risk management at the strategy and
+portfolio levels. To begin, we'll talk about risk management in an
+investment portfolio. Investment and trading portfolios have the same overall objective, maximizing risk adjusted return. Investment managers
+accomplish this by identifying undervalued
+assets based on fundamentals or other criteria and combining them
+into a portfolio. Systematic risk affects the value of all assets but to
+different degrees, which we will discuss later. For now, think of
+systematic risk is coming from macro factors
+such as GDP growth, employment, interest
+rates, or credit spreads. Systematic risk is often measured by the volatility of
+the overall market. In an absolute sense, the market should include
+all investable assets, such as stocks, bonds, real estate, commodities,
+and cryptos. As a practical matter, it is usually represented
+by Beta or by the VIX, which is the volatility
+of the S&P 500 index. Idiosyncratic or
+unsystematic risk affects a single assets, such as the stock of
+a particular company. The impact of quarterly
+earnings announcements, especially surprises,
+is a good example. We will measure risk by the volatility of
+an asset's price. You can reduce idiosyncratic risk by diversifying your portfolio. You can achieve diversification
+on many levels, including across asset classes, geographic regions,
+and industry sectors. Two main ways to diversify
+a portfolio or to hold them perfectly correlated assets and to increase the number
+of assets held. The risk of a portfolio is measured by the ratio
+of the covariance of a portfolio's return to the variance of
+the market return. This is portfolio Beta. A portfolio of US
+stocks that is fully diversified would
+have a Beta of one. When a portfolio is diversified, the risk of the portfolio or its variance is reduced to
+the level of systematic risk, the risk of the market itself. You can see that a high
+level of diversification can be achieved with
+as few as 10 assets. The total risk of any
+portfolio is composed of systematic risk and
+unsystematic risk. Increasing the number
+of securities in a portfolio reduces the
+unsystematic risk component, leaving the systematic
+risk components unchanged. You can see how the addition of geographically diversified
+stocks allows you to achieve a higher reduction in risk than a portfolio composed
+solely of domestic stocks. Next, you will see
+that the level of additional diversification
+that is possible by including international
+stocks depends on which geographical region
+the stocks come from. The table shows the correlation between different
+asset categories. You can see that the
+correlation between US large cap equities and
+equities from EAFE or Europe, Africa, and the Far East
+and emerging markets, EME are still fairly high. This could be due to the
+fact that global markets were in a long uptrend
+during the period these correlations were
+measured between 2009 and 2019. To get maximum diversification, you really need to add other asset classes
+to your portfolio, such as currencies
+or fixed income, which have a negative correlation with US large cap stocks. One thing to keep in mind when you are diversifying
+geographically, is that you will be
+exposed to FX risk when you convert your foreign
+returns into your own currency. As we saw in the previous
+correlation matrix, exposure to FX risk can also
+be a good way to diversify. Most of the funds managed
+by portfolio managers are constrained to invest in
+a single asset category. This means investors must
+diversify their portfolios by investing in several funds focused on different
+asset classes.

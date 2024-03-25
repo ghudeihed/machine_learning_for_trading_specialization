@@ -1,0 +1,69 @@
+Next, we'll talk about
+risk management in an algorithmic or automated
+trading strategy portfolio. DRL strategies and other
+algorithmic trading systems are designed to run with minimal or no human operator intervention. This means that the
+most important part of the design and implementation of these systems is the capital and risk
+management strategy. In most firms, risk
+management is divided into strategy level decisions and
+portfolio level guidelines. We talked before about using different types of stop-losses
+in a trading strategy. Stop-losses put a limit on the downside risk you have
+in a trader strategy. They can be static, which means your
+downside risk is fixed. They can also be dynamic or
+variable where you reduce your downside risk by tightening your stop-loss when a trade
+is made in unrealized profit. Recall that tightening a
+stop-loss means moving the stop-loss price closer
+to the current market price. This reduces your potential
+loss from the trade. We also talked about using
+different metrics to predict the profitability
+of a trade or strategy. These included
+win-loss percentage and average win and loss. These metrics are your
+estimate of what percent of your trades will be profited
+out versus stopped out, and what will be the average gain or loss on these trades. You should design
+the reward system of your RL algorithm so
+that it will optimize the stop-loss levels and profit targets to maximize
+your return on a strategy. One metric that the RL algo must optimize is the average
+trade completion time. If the profit targets
+are too big or the stop-loss levels
+are set too far above or below the
+trade entry price, which would increase the
+downside risk of each trade, then it may take too long for the trade to profit
+out or stop out. The maximum time to
+complete may be mandated by a day trading only policy
+or other considerations. Trade completion time
+is also constrained by the opportunity cost of tying up trading capital for
+long periods of time, which leads to fewer
+trades being made in a lower annualized return
+on trading capital. The RL reward design must take these factors
+into consideration. A global stop-loss can
+be used in addition to or instead of a stop-loss
+set for each trade. It is a general stop-loss set for all trades opened on any of the strategies currently
+in use regardless of the number of open trades or
+the direction of the trades. When the aggregate P&L of
+all open trades reaches a specified negative
+amount which is usually a percentage of the
+trading capital ranging from one
+percent to 10 percent, the global stop-loss level is
+touched and all trades are closed out or hedged to
+protect against large losses. Using a global stop-loss is a key factor in ensuring the
+survival of a trading firm. The second way you
+can manage risk is by strategy diversification. You can reduce risk
+by implementing multiple strategies spread across different asset classes. You can also reduce risk by using the same strategy on different
+assets within each class. If you trade pairs of assets, you can diversify
+your risk by using a variety of methods
+to choose pairs, such as principal
+components analysis, fundamentals or momentum. You can also trade
+multiple pairs within each asset class and trade
+multiple asset classes. The objective here is to have trading revenue streams from a number of different and
+uncorrelated sources. Next, we'll talk about
+optimizing risk management by combining uncorrelated
+revenue streams in a trading portfolio. A trading asset is
+a combination of a particular strategy applied to an asset to generate
+a revenue stream. The amount of risk
+reduction from holding a portfolio of trading
+assets will depend on the level of correlation
+between trading assets and also the number of unique trading assets that
+are held in the portfolio. This is similar to the
+diversification benefit that an investment portfolio
+manager obtains by holding several assets in
+multiple asset classes, such as holding a
+diversified portfolio of stocks and bonds.
